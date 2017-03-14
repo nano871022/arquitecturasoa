@@ -9,4 +9,5 @@ package co.com.arquitectura.librerias.refleccion;
  */
 public class ConstantesLibreria {
 	public static final String CONSTANTE_GET = "get";
+	public static final String CONSTANTE_SET = "set";
 }
