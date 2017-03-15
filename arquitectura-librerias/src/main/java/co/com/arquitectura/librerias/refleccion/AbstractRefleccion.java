@@ -3,6 +3,8 @@ package co.com.arquitectura.librerias.refleccion;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import co.com.arquitectura.librerias.constantes.ConstantesLibreria;
+
 /**
  * Esta clase es estatica y se encarga de implementar secciones de codigo para
  * utilizacion de la refleccion en el resto de la aplicacion, el uso de esta es
@@ -14,44 +16,93 @@ import java.lang.reflect.Method;
  * @version 0.0.2
  */
 public class AbstractRefleccion {
-	
+	/**
+	 * pone en el nombre del campo suministrado el valor suministrado
+	 * 
+	 * @param nombreCampo
+	 *            {@link String} nombre de la propiedad de lña clase de la cual
+	 *            se desa obtener el valor
+	 * @param valor
+	 *            {@link Object} recibe un objeto del mismo tipo del campo del
+	 *            cual se desea poner el nuevo valor
+	 * @throws Exception
+	 */
+	public final <T extends Object> void set(String nombreCampo, T valor) throws Exception {
+		ponerValor(obtenerCampo(nombreCampo), valor);
+	}
+	/**
+	 * obtuene el listado de campos ( {@link Field} ) o propiedades del sistema
+	 * @return {@link Field} array de campos
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public final <T extends Object> Field[] obtenerListaCampos()throws Exception{
+		Class<T> clase = (Class<T>) this.getClass();
+		return clase.getFields();
+	}
+	/**
+	 * obtiene el valor asociado al nombre del campo
+	 * 
+	 * @param nombreCampo
+	 *            {@link String} nombre de la propiedad de la clase de la cual
+	 *            se desea obtener el valor
+	 * @return {@link Object} retorna un objeto del mismo tipo del campo del
+	 *         cual se obtuvo el valor
+	 * @throws Exception
+	 */
+	public final <T extends Object> T get(String nombreCampo) throws Exception {
+		return obtenerValor(obtenerCampo(nombreCampo));
+	}
+
 	/**
 	 * se encarga de obtener el Campo {@link Field} apartir del nombre del campo
-	 * @param nombreCampo {@link String} nombre del campo a obtener
+	 * 
+	 * @param nombreCampo
+	 *            {@link String} nombre del campo a obtener
 	 * @return {@link Field} Campo obtenido
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	protected final <T extends Object> Field obtenerCampo(String nombreCampo)throws Exception{
-		Class<T> clase = (Class<T>)this.getClass();
+	protected final <T extends Object> Field obtenerCampo(String nombreCampo) throws Exception {
+		Class<T> clase = (Class<T>) this.getClass();
 		Field campo = clase.getField(nombreCampo);
 		return campo;
 	}
-	
+
 	/**
-	 * este metodo se encarga de obtener el valor de un campo, directamete , tomando valores de las instancia y de claseF
+	 * este metodo se encarga de obtener el valor de un campo, directamete ,
+	 * tomando valores de las instancia y de claseF
+	 * 
 	 * @param campo
 	 * @return
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	protected final <T extends Object> T obtenerValor(Field campo)throws Exception{
+	protected final <T extends Object> T obtenerValor(Field campo) throws Exception {
 		Class<T> clase = (Class<T>) this.getClass();
-		T instancia = (T)this;
+		T instancia = (T) this;
 		return obtenerValor(campo, instancia, clase);
 	}
+
 	/**
-	 * este metodo se encarga de ponerl el valor indicado en el campo, directamente, tomando los valores del a instancia de la clase actual
-	 * @param campo {@link Field}
-	 * @param valor {@link Object} cualquier tipo de dato, este valor sera castiado para tratar de que sea compatible con el campo de destino
+	 * este metodo se encarga de ponerl el valor indicado en el campo,
+	 * directamente, tomando los valores del a instancia de la clase actual
+	 * 
+	 * @param campo
+	 *            {@link Field}
+	 * @param valor
+	 *            {@link Object} cualquier tipo de dato, este valor sera
+	 *            castiado para tratar de que sea compatible con el campo de
+	 *            destino
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	protected final <T extends Object> void ponerValor(Field campo,Object valor)throws Exception{
-		Class<T> clase = (Class<T>)this.getClass();
+	protected final <T extends Object> void ponerValor(Field campo, Object valor) throws Exception {
+		Class<T> clase = (Class<T>) this.getClass();
 		T instancia = (T) this;
-		ponerValor(campo,instancia,clase,valor);
+		ponerValor(campo, instancia, clase, valor);
 	}
+
 	/**
 	 * este campo se encarga de obtener el valor que tiene almacenado un objeto
 	 * el cual es accedido por medio de refleccion
@@ -70,7 +121,7 @@ public class AbstractRefleccion {
 			Method metodo = clase.getMethod(obtenerGet(campo.getName()));
 			if (metodo != null) {
 				valor = (T) metodo.invoke(instancia);
-			}else{
+			} else {
 				campo.setAccessible(true);
 				valor = obtenerValor(campo, instancia, clase);
 			}

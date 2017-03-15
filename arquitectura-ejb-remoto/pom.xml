@@ -1,7 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>co.com.arquitectura.ejb.remoto</groupId>
-  <artifactId>arquitectura-ejb-remoto</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <description>Contiene todas las interfaces de servicios ejb remotos</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.arquitectura.ejb.remoto</groupId>
+	<artifactId>arquitectura-ejb-remoto</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Contiene todas las interfaces de servicios ejb remotos</description>
+	<dependencies>
+		<dependency>
+			<groupId>co.com.arquitectura.pojo</groupId>
+			<artifactId>arquitectura-pojos</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
 </project>
