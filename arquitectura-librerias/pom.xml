@@ -4,4 +4,12 @@
   <artifactId>arquitecrura-librerias</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <description>Tiene las librerias que se usan trasversales a toda la aplicacion</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.apache.commons</groupId>
+  		<artifactId>commons-lang3</artifactId>
+  		<version>3.0</version>
+  		<scope>runtime</scope>
+  	</dependency>
+  </dependencies>
 </project>

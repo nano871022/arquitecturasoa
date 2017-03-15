@@ -1,4 +1,4 @@
-package co.com.arquitectura.librerias.refleccion;
+package co.com.arquitectura.librerias.constantes;
 /**
  * esta clase contiene las constantes a usar por el modulo de librerias
  * 
