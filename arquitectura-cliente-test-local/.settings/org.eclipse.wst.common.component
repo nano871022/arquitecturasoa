@@ -16,6 +16,9 @@
         <dependent-module archiveName="arquitectura-pojos-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-pojos/arquitectura-pojos">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="arquitetura-anotaciones-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitetura-anotaciones/arquitetura-anotaciones">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="arquitectura-cliente-test-local"/>
         <property name="java-output-path" value="/arquitectura-cliente-test-local/target/classes"/>
     </wb-module>
