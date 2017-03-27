@@ -30,16 +30,19 @@ public class AbstractRefleccion {
 	public final <T extends Object> void set(String nombreCampo, T valor) throws Exception {
 		ponerValor(obtenerCampo(nombreCampo), valor);
 	}
+
 	/**
 	 * obtuene el listado de campos ( {@link Field} ) o propiedades del sistema
+	 * 
 	 * @return {@link Field} array de campos
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public final <T extends Object> Field[] obtenerListaCampos()throws Exception{
+	public final <T extends Object> Field[] obtenerListaCampos() throws Exception {
 		Class<T> clase = (Class<T>) this.getClass();
 		return clase.getFields();
 	}
+
 	/**
 	 * obtiene el valor asociado al nombre del campo
 	 * 
@@ -114,19 +117,28 @@ public class AbstractRefleccion {
 	 */
 	@SuppressWarnings("unchecked")
 	protected final <T extends Object> T obtenerValor(Field campo, T instancia, Class<T> clase) throws Exception {
-		T valor = null;
-		if (campo.isAccessible()) {
-			valor = (T) campo.get(instancia);
-		} else {
-			Method metodo = clase.getMethod(obtenerGet(campo.getName()));
-			if (metodo != null) {
-				valor = (T) metodo.invoke(instancia);
+		try {
+			T valor = null;
+			if (campo.isAccessible()) {
+				valor = (T) campo.get(instancia);
 			} else {
-				campo.setAccessible(true);
-				valor = obtenerValor(campo, instancia, clase);
+				Method metodo = clase.getMethod(obtenerGet(campo.getName()));
+				if (metodo != null) {
+					valor = (T) metodo.invoke(instancia);
+				} else {
+					campo.setAccessible(true);
+					valor = obtenerValor(campo, instancia, clase);
+				}
+				return valor;
 			}
+		} catch (ClassNotFoundException e) {
+			Class<?> clase2 = clase.getSuperclass();
+			if(clase2 != null){
+				return obtenerValor(campo, instancia, (Class<T>) clase2);
+			}
+			throw new Exception(e);
 		}
-		return valor;
+		return null;
 	}
 
 	/**
