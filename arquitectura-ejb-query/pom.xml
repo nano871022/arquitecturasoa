@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.arquitectura.ejb-query</groupId>
+	<artifactId>arquitectura-ejb-query</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Se encarga de tener todas las interfaces para el manejo de la base de datos</description>
+	<dependencies>
+		<dependency>
+			<groupId>co.com.arquitectura.anotaciones</groupId>
+			<artifactId>arquitetura-anotaciones</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+    		<groupId>javax.ejb</groupId>
+    		<artifactId>javax.ejb-api</artifactId>
+    		<version>3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitecrura-librerias</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+</project>
