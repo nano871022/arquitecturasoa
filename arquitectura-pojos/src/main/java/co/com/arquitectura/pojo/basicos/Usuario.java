@@ -69,12 +69,11 @@ public class Usuario extends ADTO {
 		this.fechaBloqueo = fechaBloqueo;
 	}
 
-	public Persona getAsociado() {
+	public final Persona getAsociado() {
 		return asociado;
 	}
 
-	public void setAsociado(Persona asociado) {
+	public final void setAsociado(Persona asociado) {
 		this.asociado = asociado;
 	}
-
 }

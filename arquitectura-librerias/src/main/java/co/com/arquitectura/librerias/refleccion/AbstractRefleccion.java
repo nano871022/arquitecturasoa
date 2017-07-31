@@ -3,6 +3,8 @@ package co.com.arquitectura.librerias.refleccion;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import co.com.arquitectura.librerias.constantes.ConstantesLibreria;
 
 /**
@@ -113,14 +115,14 @@ public class AbstractRefleccion {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	protected final <T extends Object> T obtenerValor(Field campo, T instancia, Class<T> clase) throws Exception {
-		T valor = null;
+	protected final <T,L extends Object> L obtenerValor(Field campo, T instancia, Class<T> clase) throws Exception {
+		L valor = null;
 		if (campo.isAccessible()) {
-			valor = (T) campo.get(instancia);
+			valor = (L) campo.get(instancia);
 		} else {
 			Method metodo = clase.getMethod(obtenerGet(campo.getName()));
 			if (metodo != null) {
-				valor = (T) metodo.invoke(instancia);
+				valor = (L) metodo.invoke(instancia);
 			} else {
 				campo.setAccessible(true);
 				valor = obtenerValor(campo, instancia, clase);
@@ -198,4 +200,79 @@ public class AbstractRefleccion {
 	private final String obtenerSet(String nombre) throws Exception {
 		return ConstantesLibreria.CONSTANTE_SET + obtenerNombreCamel(nombre);
 	}
+	/**
+	 * se encarga de modificar el texto dentro de la variable para codificarla en codigo html y despues
+	 * este valor sera devuelto a la variable dentro del objeto
+	 * @param campo {@link Field}
+	 * @param instancia {@link Object}
+	 * @param clase {@link Class}
+	 * @throws Exception
+	 */
+	protected final <T,L extends Object> void fieldCleanHtml(Field campo,T instancia,Class<T> clase)throws Exception{
+		if(campo.getType() == String.class ) {
+			String valor = obtenerValor(campo, instancia, clase);
+			valor = StringEscapeUtils.escapeHtml4(valor);
+			ponerValor(campo, instancia, clase, valor);
+		}
+		
+	}//end limpiar campos html
+	/**
+	 * se encarga de modificar el texto dentro de la variable para decodificarla en codigo html y despues
+	 * este valor sera devuelto a la variable dentro del objeto
+	 * @param campo {@link Field}
+	 * @param instancia {@link Object}
+	 * @param clase {@link Class}
+	 * @throws Exception
+	 */
+	protected final <T,L extends Object> void fieldHtml(Field campo,T instancia,Class<T> clase)throws Exception{
+		if(campo.getType() == String.class ) {
+			String valor = obtenerValor(campo, instancia, clase);
+			valor = StringEscapeUtils.unescapeHtml4(valor);
+			ponerValor(campo, instancia, clase, valor);
+		}
+		
+	}//end limpiar campos html
+
+	/**
+	 * Se encarga de limpiar los campos de tipo caracter en un objeto, y que cambia sus valores
+	 * y los transforma y los codifica en html. 
+	 * @param instance {@link Object} puede o no ser suministrada
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public final <T extends Object> void fieldsCleanHtml(T... instancia)throws Exception{
+		T instance = null;
+		Class<T> clase = null;
+		if ( instancia == null || instancia.length == 0) {
+			instance = (T)this;
+		}else {
+			instance = instancia[0];
+		}
+		clase = (Class<T>) instance.getClass();
+		Field[] fields = clase.getFields();
+		for(Field  field : fields) {
+			fieldCleanHtml(field, instance, clase);
+		}
+	}// end limpiar todos los campos html
+	/**
+	 * Se encarga de limpiar los campos de tipo caracter en un objeto, y que cambia sus valores
+	 * y los transforma y los decodifica en html. 
+	 * @param instance {@link Object} puede o no ser suministrada
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public final <T extends Object> void fieldsHtml(T... instancia)throws Exception{
+		T instance = null;
+		Class<T> clase = null;
+		if ( instancia == null || instancia.length == 0) {
+			instance = (T)this;
+		}else {
+			instance = instancia[0];
+		}
+		clase = (Class<T>) instance.getClass();
+		Field[] fields = clase.getFields();
+		for(Field  field : fields) {
+			fieldHtml(field, instance, clase);
+		}
+	}// end limpiar todos los campos html
 }

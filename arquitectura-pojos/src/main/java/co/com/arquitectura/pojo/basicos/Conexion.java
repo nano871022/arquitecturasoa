@@ -14,11 +14,39 @@ public class Conexion extends ADTO {
 	private String referenciaConexion;
 	private Date fechaConexion;
 	private Date fechaUltimaConexion;
+	private Date fechaActual;
 	private String estadoConexion;
 	private String moduloConexion;
 	private String navegador;
 	private Usuario usuario;
+	private String recordar;
+	private String autoLog;
+	private Integer verificacion;
 	
+	public Integer getVerificacion() {
+		return verificacion;
+	}
+	public void setVerificacion(Integer verificacion) {
+		this.verificacion = verificacion;
+	}
+	public String getRecordar() {
+		return recordar;
+	}
+	public void setRecordar(String recordar) {
+		this.recordar = recordar;
+	}
+	public String getAutoLog() {
+		return autoLog;
+	}
+	public void setAutoLog(String autoLog) {
+		this.autoLog = autoLog;
+	}
+	public Date getFechaActual() {
+		return fechaActual;
+	}
+	public void setFechaActual(Date fechaActual) {
+		this.fechaActual = fechaActual;
+	}
 	public String getIpConexion() {
 		return ipConexion;
 	}
