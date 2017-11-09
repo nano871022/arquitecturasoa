@@ -1,10 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.arquitectura.DBConnectMock</groupId>
-	<artifactId>arquitecrura-DBConnect-Mock</artifactId>
+	<groupId>co.com.arquitectura.DBConnect-Mock</groupId>
+	<artifactId>arquitectura-DBConnect-Mock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Modulo Encargado de encapsular la conexion a la base de datos version MOCK</description>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>co.com.arquitectura.librerias</groupId>
