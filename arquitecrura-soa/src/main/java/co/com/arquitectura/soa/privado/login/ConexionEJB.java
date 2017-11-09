@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import co.com.arquitectura.ejb.query.IQuery;
 import co.com.arquitectura.pojo.basicos.Usuario;
 import co.com.arquitectura.soa.privado.interfaz.login.IConexion;
+import co.com.arquitectura.pojo.basicos.Conexion;
 
 /**
  * se encarga de implentar todas las acciones pertinentes para realizar login 
@@ -19,36 +20,31 @@ import co.com.arquitectura.soa.privado.interfaz.login.IConexion;
  * @since 31/07/2017
  */
 @Stateless
-public class Conexion implements IConexion {
+public class ConexionEJB implements IConexion {
 	@EJB
 	private IQuery query;
-	@Override
-	public co.com.arquitectura.pojo.basicos.Conexion getConnect(co.com.arquitectura.pojo.basicos.Conexion connect)
+	public Conexion getConnect(Conexion connect)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Boolean validToken(String token, co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public Boolean validToken(String token, Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public String login(Usuario user, co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public String login(Usuario user, Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void logout(String token, co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public void logout(String token, Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public Integer getCodeVerify(co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public Integer getCodeVerify(Conexion connect) throws Exception {
 		if(StringUtils.isBlank(connect.getIpConexion() )) {
 			throw new Exception("La conexión no contiene la direccón IP.");
 		}
@@ -69,26 +65,22 @@ public class Conexion implements IConexion {
 		return users.getActual().getVerificacion();
 	}
 
-	@Override
-	public String autoConnect(co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public String autoConnect(Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void changeAutoConnect(String token, co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public void changeAutoConnect(String token, Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void changeAutoRemember(String token, co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public void changeAutoRemember(String token, Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public List<String> getUsuarios(co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception {
+	public List<String> getUsuarios(Conexion connect) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

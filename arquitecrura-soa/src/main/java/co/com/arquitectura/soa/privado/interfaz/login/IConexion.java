@@ -20,7 +20,7 @@ public interface IConexion {
 	 * @param connect {@link co.com.arquitectura.pojo.basicos.Conexion}
 	 * @return {@link co.com.arquitectura.pojo.basicos.Conexion}
 	 */
-	public co.com.arquitectura.pojo.basicos.Conexion getConnect(co.com.arquitectura.pojo.basicos.Conexion connect) throws Exception;
+	public Conexion getConnect(Conexion connect) throws Exception;
 	/**
 	 * Se encarga de validar que el token suministrado si sea valido para la conexion suministrada
 	 * @param token {@link String} codigo token pre generado
@@ -28,7 +28,7 @@ public interface IConexion {
 	 * @return {@link Boolean}
 	 * @throws Exception
 	 */
-	public Boolean validToken(String token,co.com.arquitectura.pojo.basicos.Conexion connect)throws Exception;
+	public Boolean validToken(String token,Conexion connect)throws Exception;
 	/**
 	 * Suministra el usuario y el password(encriptado) para ser validado y envia la información de conexión
 	 * para realizar el respectivo login y generar el token.
@@ -37,14 +37,14 @@ public interface IConexion {
 	 * @return {@link String} token generado
 	 * @throws Exception
 	 */
-	public String login(Usuario user,co.com.arquitectura.pojo.basicos.Conexion connect)throws Exception;
+	public String login(Usuario user,Conexion connect)throws Exception;
 	/**
 	 * Se encarga de terminar la sesion con el token suministrado
 	 * @param token {@link String} pre - generado
 	 * @param connect {@link IConexion}
 	 * @throws Exception
 	 */
-	public void logout(String token,co.com.arquitectura.pojo.basicos.Conexion connect)throws Exception;
+	public void logout(String token,Conexion connect)throws Exception;
 	/**
 	 * Genera el codigo de verificación para realizar el login
 	 * @param connect {@link co.com.arquitectura.pojo.basicos.Conexion}
