@@ -10,18 +10,58 @@
 			<groupId>co.com.arquitectura.pojo</groupId>
 			<artifactId>arquitectura-pojos</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.anotaciones</groupId>
 			<artifactId>arquitetura-anotaciones</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-				<scope>runtime</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-    		<groupId>javax.ejb</groupId>
-    		<artifactId>javax.ejb-api</artifactId>
-    		<version>3.2</version>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.proccessor</groupId>
+			<artifactId>arquitectura-proccessor</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>-proc:none</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<version>3.3.2</version>
+				<executions>
+					<execution>
+						<id>process</id>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<processors>
+								<processor>co.com.arquitectura.proccessor.implement.ImmutableProccessor</processor>
+								<processor>co.com.arquitectura.proccessor.implement.ConstantsProccessor</processor>
+							</processors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
