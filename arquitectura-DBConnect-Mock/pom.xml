@@ -1,10 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.arquitectura.DBConnectMock</groupId>
-	<artifactId>arquitecrura-DBConnect-Mock</artifactId>
+	<groupId>co.com.arquitectura.DBConnect-Mock</groupId>
+	<artifactId>arquitectura-DBConnect-Mock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Modulo Encargado de encapsular la conexion a la base de datos version MOCK</description>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>co.com.arquitectura.librerias</groupId>
@@ -23,21 +24,23 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-    		<groupId>javax.ejb</groupId>
-    		<artifactId>javax.ejb-api</artifactId>
-    		<version>3.2</version>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
 		</dependency>
 	</dependencies>
 	<build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-ejb-plugin</artifactId>
-        <version>2.5.1</version>
-        <configuration>
-          <ejbVersion>3.0</ejbVersion>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>-proc:none</compilerArgs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
