@@ -22,8 +22,8 @@ import co.com.arquitectura.librerias.objetos.Posicion;
  */
 public final class Validacion {
 	/**
-	 * realiza la validacion de un texto, valida si es obligatorio, y si la
-	 * longitud del texto no sumera el valor de maximaLongitud
+	 * realiza la validacion de un texto, valida si es obligatorio, y si la longitud
+	 * del texto no sumera el valor de maximaLongitud
 	 * 
 	 * @param valor
 	 *            {@link String} valor a validar
@@ -88,18 +88,17 @@ public final class Validacion {
 	}
 
 	/**
-	 * se encarga de buscar la coincidencia del patron y retornar una lista de
-	 * tipo {@link Posicion}, con los valores de X(Inicio), Y(Fin) y
-	 * Descripion(que encontro), lo cual indica las posiciones que encontro
-	 * informacion y que patron encontro, para posteriormente obtener esos
-	 * valores
+	 * se encarga de buscar la coincidencia del patron y retornar una lista de tipo
+	 * {@link Posicion}, con los valores de X(Inicio), Y(Fin) y Descripion(que
+	 * encontro), lo cual indica las posiciones que encontro informacion y que
+	 * patron encontro, para posteriormente obtener esos valores
 	 * 
 	 * @param valor
 	 *            {@link String} valor en el cual se va a realizar la busqueda
 	 * @param patron
 	 *            {@link String} patron con el cual se realiza la busqueda
-	 * @return {@link List} de < {@link Posicion} > listado con las posiciones
-	 *         de donde se encontro la informacion dentro del campo valor
+	 * @return {@link List} de < {@link Posicion} > listado con las posiciones de
+	 *         donde se encontro la informacion dentro del campo valor
 	 * @throws Exception
 	 */
 	public final static List<Posicion> buscarCoincidenciasPos(String valor, String patron) throws Exception {
@@ -122,8 +121,7 @@ public final class Validacion {
 	 * coincidencias encontradas y retornarlas en una lista
 	 * 
 	 * @param valor
-	 *            {@link String} valor donde se realiza la busqueda de
-	 *            coincidencias
+	 *            {@link String} valor donde se realiza la busqueda de coincidencias
 	 * @param patron
 	 *            {@link String} patron con el cual se realiza la busqueda
 	 * @return {@link List}< {@link String} > lista de coincidencias encontradas
@@ -140,25 +138,25 @@ public final class Validacion {
 	}
 
 	/**
-	 * se encarga de remplazar pos un texto o un valor dentro de las
-	 * coincidencias encontradas del patron
+	 * se encarga de remplazar pos un texto o un valor dentro de las coincidencias
+	 * encontradas del patron
 	 * 
 	 * @param valor
-	 *            {@link String} valor en el cual se realizara busqueda y
-	 *            remplazo
+	 *            {@link String} valor en el cual se realizara busqueda y remplazo
 	 * @param patron
 	 *            {@link String} patron con el cual se realizara la busqueda
 	 * @param nuevo
 	 *            {@link String} valor por el cual sera remplazado el patron
 	 *            encontrado
 	 * @param todo
-	 *            {@link Boolean} si es <code>true</code> indica que se
-	 *            remplazara en todas las coincidencias, de lo contrario solo
-	 *            sera en la primera coincidencia enocntrada
+	 *            {@link Boolean} si es <code>true</code> indica que se remplazara
+	 *            en todas las coincidencias, de lo contrario solo sera en la
+	 *            primera coincidencia enocntrada
 	 * @return
 	 * @throws Exception
 	 */
-	public final static String buscarRemplazar(String valor, String patron, String nuevo, boolean todo) throws Exception {
+	public final static String buscarRemplazar(String valor, String patron, String nuevo, boolean todo)
+			throws Exception {
 		Pattern pattern = Pattern.compile(patron);
 		Matcher cruce = pattern.matcher(valor);
 		String salida = null;
@@ -169,11 +167,11 @@ public final class Validacion {
 		}
 		return salida;
 	}
-	
+
 	/**
-	 * Realiza la busqueda en el texto suministrado y apartir de las
-	 * conincidencias sirven para dividir el texto en gruppos y retorna el texto
-	 * que no es parte de la concidencia en varios registros
+	 * Realiza la busqueda en el texto suministrado y apartir de las conincidencias
+	 * sirven para dividir el texto en gruppos y retorna el texto que no es parte de
+	 * la concidencia en varios registros
 	 * 
 	 * @param valor
 	 *            {@link String} valor en el cual se realiza la busqueda
@@ -206,8 +204,8 @@ public final class Validacion {
 	}
 
 	/**
-	 * valida que el valor de tipo big decimal no se encuentre vacio según la
-	 * valor de obligatorio
+	 * valida que el valor de tipo big decimal no se encuentre vacio según la valor
+	 * de obligatorio
 	 * 
 	 * @param valor
 	 *            {@link BigDecimal} valor a validar
@@ -240,8 +238,8 @@ public final class Validacion {
 	}
 
 	/**
-	 * valida si el valor es obligatorio, y si el valor esta entre el minimo y
-	 * el maximo
+	 * valida si el valor es obligatorio, y si el valor esta entre el minimo y el
+	 * maximo
 	 * 
 	 * @param valor
 	 *            {@link Integer} valor a validar
@@ -277,7 +275,8 @@ public final class Validacion {
 	 * @return {@link Boolean} <code>true</code> / <code>false</code>
 	 * @throws Exception
 	 */
-	public final static boolean isEntre(BigDecimal valor, boolean obligatorio, BigDecimal min, BigDecimal max) throws Exception {
+	public final static boolean isEntre(BigDecimal valor, boolean obligatorio, BigDecimal min, BigDecimal max)
+			throws Exception {
 		boolean valido = true;
 		valido &= obligatorio ? valor != null : true;
 		valido &= valor.compareTo(min) >= 0;
@@ -286,8 +285,8 @@ public final class Validacion {
 	}
 
 	/**
-	 * valida si el valor es obligatorio y si el valor esta entre la fecha
-	 * minima y maxima
+	 * valida si el valor es obligatorio y si el valor esta entre la fecha minima y
+	 * maxima
 	 * 
 	 * @param valor
 	 *            {@link Date} valor a validar
@@ -309,9 +308,9 @@ public final class Validacion {
 	}
 
 	/**
-	 * valida si el valor es obligatorio y si el valor esta entre la fecha
-	 * minima y maxima, las fechas son suministradas en cualquier formato en
-	 * texto y se suministra el formato en el cual se ponene las fehca
+	 * valida si el valor es obligatorio y si el valor esta entre la fecha minima y
+	 * maxima, las fechas son suministradas en cualquier formato en texto y se
+	 * suministra el formato en el cual se ponene las fehca
 	 * 
 	 * @param fecha
 	 *            {@link String} fecha a validar
@@ -327,8 +326,8 @@ public final class Validacion {
 	 * @return {@link Boolean} <code>true</code> / <code>false</code>
 	 * @throws Exception
 	 */
-	public final static boolean isEntre(String fecha, boolean obligatorio, String fechaMin, String fechaMax, String formato)
-			throws Exception {
+	public final static boolean isEntre(String fecha, boolean obligatorio, String fechaMin, String fechaMax,
+			String formato) throws Exception {
 		boolean valido = true;
 		SimpleDateFormat formateo = new SimpleDateFormat(formato);
 		Date valor = formateo.parse(fecha);
@@ -338,6 +337,31 @@ public final class Validacion {
 		valido &= valor.compareTo(min) >= 0;
 		valido &= valor.compareTo(max) <= 0;
 		return valido;
+	}
+
+	/**
+	 * Se encarga de contar el numero de veces que aparece un texto dentro de otro
+	 * texto
+	 * 
+	 * @param texto
+	 *            {@link String} texto en el cual se realiza la busqueda
+	 * @param buscar
+	 *            {@link String} texxto el cual va ser buscado en el anterior
+	 * @return {@link Integer} cantidad de registros encontrados
+	 * @throws Exception
+	 */
+	public static final int contarTexto(String texto, String buscar) throws Exception {
+		int i = 0;
+		int j = 0;
+		int h = 0;
+		while (i < texto.length() && i >= 0 && j < texto.length() && h >= 0) {
+			h = texto.substring(i, texto.length()).indexOf(buscar);
+			if (h >= 0) {
+				i = i + h + 1;
+				j++;
+			}
+		}
+		return j;
 	}
 
 }
