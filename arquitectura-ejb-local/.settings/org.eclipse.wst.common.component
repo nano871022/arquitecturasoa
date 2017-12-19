@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/apt"/>
         <property name="java-output-path" value="/arquitectura-ejb-local/target/classes"/>
     </wb-module>
 </project-modules>

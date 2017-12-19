@@ -4,12 +4,13 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <dependent-module archiveName="arquitecrura-librerias-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-librerias/arquitectura-librerias">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="arquitectura-ejb-local-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-ejb-local/arquitectura-ejb-local">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arquitectura-proccessor-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-proccessor/arquitectura-proccessor">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="arquitectura-ejb-remoto-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-ejb-remoto/arquitectura-ejb-remoto">

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="soa2">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="arquitecrura-soa.jar" deploy-path="/" handle="module:/resource/arquitecrura-soa/arquitecrura-soa">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arquitecrura-soa-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/arquitectura-DBConnect-Mock/arquitectura-DBConnect-Mock">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arquitectura-ejb-local.jar" deploy-path="/" handle="module:/resource/arquitectura-ejb-query/arquitectura-ejb-query">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
