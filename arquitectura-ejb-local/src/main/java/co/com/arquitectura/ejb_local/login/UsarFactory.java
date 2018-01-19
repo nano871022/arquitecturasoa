@@ -1,13 +1,16 @@
 package co.com.arquitectura.ejb_local.login;
 
 import javax.ejb.Local;
+
+import org.apache.log4j.Logger;
 /**
  * Clase que usara la fabrica
- * @author Ing-0-0013
-// * @since 20/11/2017
+ * @author Alejandro Parra
+ * @since 20/11/2017
  */
 @Local
 public class UsarFactory  {
+	Logger log = Logger.getLogger(this.getClass());
 	/**
 	 * Inteface que tendra la fabrica
 	 */
@@ -17,13 +20,16 @@ public class UsarFactory  {
 	 * Comentatios de pruebas
 	 * @return {@link String}
 	 */
-	public String getSaludo() {
+	public String getSaludo() throws Exception{
 		ISaludar saludar = fabrica.getSaludo("Saludo1");
+		if(saludar == null)
+				throw new Exception("No se encontro implementacion buscada");
 		return saludar.saludo();
 	}
-	
-	public static void main(String...strings) {
-		UsarFactory usar = new UsarFactory();
-		usar.getSaludo();
+	public String getSaludo(String name) throws Exception{
+		ISaludar saludar = fabrica.getSaludo(name,"name");
+		if(saludar == null)
+				throw new Exception("No se encontro implementacion buscada");
+		return saludar.saludo();
 	}
 }

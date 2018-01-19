@@ -197,7 +197,7 @@ public class AbstractRefleccion {
 	private final String obtenerNombreCamel(String nombre) throws Exception {
 		char[] nombres = nombre.toCharArray();
 		nombres[0] = Character.toUpperCase(nombres[0]);
-		return nombre.toString();
+		return String.valueOf(nombres);
 	}
 
 	/**

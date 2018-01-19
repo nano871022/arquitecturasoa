@@ -23,13 +23,15 @@ public class TestFabrica {
 			for(Method method : methods)
 				 System.out.println(method.getName());
 			
-			Object ret = clase.getMethod("getfabrica").invoke(userFactory);
+			Object ret = clase.getMethod("getSaludo").invoke(userFactory);
 			
 			System.out.println("Se obtubo el valor"+ret);
 			System.out.println(userFactory.getSaludo());
+			System.out.println(userFactory.getSaludo("fabrica2"));
+			System.out.println(userFactory.getSaludo("fabrica3"));
 			
 		}catch(Exception e) {
-			//System.err.println(e);
+			e.printStackTrace();
 		}
 	}
 }

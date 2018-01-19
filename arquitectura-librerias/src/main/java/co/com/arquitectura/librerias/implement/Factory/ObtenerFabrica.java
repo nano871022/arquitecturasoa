@@ -1,4 +1,4 @@
-package co.com.arquitectura.proccessor.implement.Factory;
+package co.com.arquitectura.librerias.implement.Factory;
 
 import java.util.List;
 
@@ -29,10 +29,15 @@ public abstract class ObtenerFabrica<M extends Object, T extends IListFactory<M>
 			throw new Exception("Debe suministrar el namePath al construir la clase");
 		}
 		String canonicalName = interfaz.getCanonicalName();
-		String path = "."+namePath+"." + interfaz.getName();
-		path = canonicalName.replace("." + interfaz.getName(), path);
+		String path = "."+namePath+"." + interfaz.getSimpleName();
+		path = canonicalName.replace("." + interfaz.getSimpleName(), path);
 		Class<T> clase = (Class<T>) Class.forName(path);
-		if (clase.isInstance(interfaz)) {
+		Class<?>[] clases = clase.getInterfaces();
+		for(Class<?> cla : clases) {
+			if(cla.getSimpleName().contains("IListFactory"))
+			 return clase.newInstance();
+		}
+		if (clase.isInstance(IListFactory.class)) {
 			return clase.newInstance();
 		}
 		return null;
@@ -94,6 +99,8 @@ public abstract class ObtenerFabrica<M extends Object, T extends IListFactory<M>
 				}
 			} catch (NoSuchFieldException e) {
 				continue;
+			}catch (NoSuchMethodException e) {
+				continue;
 			}
 		}
 		return null;
@@ -117,7 +124,8 @@ public abstract class ObtenerFabrica<M extends Object, T extends IListFactory<M>
 		if (StringUtils.isBlank(fieldName.trim())) {
 			throw new Exception("No se suministro el nombre del campo a buscar");
 		}
-		if (obtenerValor(fieldName, obj) == value) {
+		Object v = obtenerValor(fieldName, obj);
+		if (v == value) {
 			return obj;
 		}
 		return null;
@@ -138,11 +146,7 @@ public abstract class ObtenerFabrica<M extends Object, T extends IListFactory<M>
 			throw new Exception("No se suministro el nombre del objeto");
 		}
 		Class<M> clas = (Class<M>) obj.getClass();
-		co.com.arquitectura.annotation.proccessor.Fabrica fabrica = clas.getDeclaredAnnotation(co.com.arquitectura.annotation.proccessor.Fabrica.class);
-		if(fabrica != null && fabrica.id().contentEquals(name)) {
-			return obj;
-		}
-		if (clas.getName().contentEquals(name)) {
+		if (clas.getName().contains(name)) {
 			return obj;
 		}
 		return null;

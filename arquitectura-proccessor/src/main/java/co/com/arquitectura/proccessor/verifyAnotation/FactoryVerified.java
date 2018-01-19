@@ -16,7 +16,7 @@ import co.com.arquitectura.annotation.proccessor.Fabrica;
  * @since 2017/11/14
  *
  */
-public class FactoryVerified {
+public class FactoryVerified implements IVerified {
 	private TypeElement clase;
 	private String id;
 	private String canonicClass;
