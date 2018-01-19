@@ -25,7 +25,6 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 import javax.tools.FileObject;
-import javax.tools.JavaFileManager.Location;
 import javax.tools.StandardLocation;
 
 import org.apache.commons.lang3.StringUtils;

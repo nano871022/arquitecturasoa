@@ -1,8 +1,6 @@
 package co.com.arquitectura.ejb_local.login;
 
 import javax.ejb.Local;
-
-import co.com.arquitectura.annotation.proccessor.InjectFabrica;
 /**
  * Clase que usara la fabrica
  * @author Ing-0-0013
@@ -13,14 +11,19 @@ public class UsarFactory  {
 	/**
 	 * Inteface que tendra la fabrica
 	 */
-	@InjectFabrica
-	private IFabrica fabrica;
+	private IFabrica fabrica = new Fabrica();
 	
 	/**
 	 * Comentatios de pruebas
 	 * @return {@link String}
 	 */
 	public String getSaludo() {
-		return "test";
+		ISaludar saludar = fabrica.getSaludo("Saludo1");
+		return saludar.saludo();
+	}
+	
+	public static void main(String...strings) {
+		UsarFactory usar = new UsarFactory();
+		usar.getSaludo();
 	}
 }

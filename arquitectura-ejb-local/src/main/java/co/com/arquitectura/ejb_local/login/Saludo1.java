@@ -2,11 +2,11 @@ package co.com.arquitectura.ejb_local.login;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
 
-@Fabrica(id = "fabrica1", type = IFabrica.class)
-public class Fabrica1 implements IFabrica {
+@Fabrica(id = "fabrica1", type = ISaludar.class)
+public class Saludo1 implements ISaludar {
 	private String name;
 
-	public Fabrica1() {
+	public Saludo1() {
 		name = "fabrica1";
 	}
 
