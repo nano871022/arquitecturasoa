@@ -14,6 +14,7 @@ import com.squareup.java.JavaWriter;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
 import co.com.arquitectura.proccessor.exception.IdAlreadyUsedException;
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
 
 /**
  * Se encarga de agrupar las clases anotadas con @{@link Fabrica}

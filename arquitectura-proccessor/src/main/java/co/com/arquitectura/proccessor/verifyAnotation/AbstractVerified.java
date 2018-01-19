@@ -3,6 +3,8 @@ package co.com.arquitectura.proccessor.verifyAnotation;
 import java.lang.annotation.Annotation;
 
 import javax.lang.model.element.TypeElement;
+
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IVerified;
 /**
  * Se encarga de implmentar la interfaz de verificacion de clases para procesor
  * Esta clase es de tipo abstract y sera que ser implementado el codigo final en otra clase 

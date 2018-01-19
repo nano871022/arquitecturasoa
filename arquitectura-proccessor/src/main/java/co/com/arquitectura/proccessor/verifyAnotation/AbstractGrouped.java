@@ -3,7 +3,10 @@ package co.com.arquitectura.proccessor.verifyAnotation;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public abstract class AbstractGrouped <T extends IVerified>implements IGrouped <T>{
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IVerified;
+
+public abstract class AbstractGrouped <T extends IVerified>implements IGrouped<T>{
 	protected Map<String,T> items;
 	protected String canonicName;
 	protected String nameClass;

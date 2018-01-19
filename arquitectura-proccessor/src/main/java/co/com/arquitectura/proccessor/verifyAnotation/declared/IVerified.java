@@ -1,4 +1,4 @@
-package co.com.arquitectura.proccessor.verifyAnotation;
+package co.com.arquitectura.proccessor.verifyAnotation.declared;
 
 import javax.lang.model.element.TypeElement;
 /**

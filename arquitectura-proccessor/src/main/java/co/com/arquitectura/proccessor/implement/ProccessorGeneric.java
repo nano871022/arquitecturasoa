@@ -11,8 +11,8 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
 import co.com.arquitectura.proccessor.abstracts.ManagementMessage;
-import co.com.arquitectura.proccessor.verifyAnotation.IGrouped;
-import co.com.arquitectura.proccessor.verifyAnotation.IVerified;
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public abstract class ProccessorGeneric<S extends IVerified, T extends IGrouped<S>, N extends Annotation>
