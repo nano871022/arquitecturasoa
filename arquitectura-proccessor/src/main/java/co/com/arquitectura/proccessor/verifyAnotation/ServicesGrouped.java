@@ -1,6 +1,5 @@
 package co.com.arquitectura.proccessor.verifyAnotation;
 
-import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Modifier;
 
@@ -12,40 +11,34 @@ import javax.tools.JavaFileObject;
 
 import com.squareup.java.JavaWriter;
 
-import co.com.arquitectura.annotation.proccessor.Fabrica;
+import co.com.arquitectura.constants.proccessor.FileNameConstants;
 import co.com.arquitectura.constants.proccessor.PackageConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
-import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
 
-/**
- * Se encarga de agrupar las clases anotadas con @{@link Fabrica}
- * 
- * @author Alejandro Parra
- * @since 2017/11/14
- */
-public class FactoryGrouped extends AbstractGrouped<FactoryVerified> implements IGrouped<FactoryVerified>{
+public class ServicesGrouped extends AbstractGrouped<ServicesVerified> {
 
-	public FactoryGrouped(String canonicName) {
-		super(canonicName,PackageConstants.FACTORY);
+	public ServicesGrouped(String canonicName) {
+		super(canonicName, PackageConstants.SERVICE);
 	}
 
-	public void add(FactoryVerified factory) throws IdAlreadyUsedException {
-		FactoryVerified existente = items.get(factory.getId());
-		if (existente != null) {
+	@Override
+	public void add(ServicesVerified verified) throws IdAlreadyUsedException {
+		ServicesVerified existente = items.get(verified.getId());
+		if(existente != null)
 			throw new IdAlreadyUsedException(existente.getSimpleNameClass(),existente.getId());
-		}
-		items.put(factory.getId(), factory);
-
+		items.put(verified.getId(), verified);
 	}
+	
 
-	public void generateSource(Elements elementUtils, Filer filer) throws IOException {
+	@Override
+	public void generateSource(Elements elementUtils, Filer filer) throws Exception {
 		TypeElement superClassName = elementUtils.getTypeElement(canonicName);
 		String factoryClassName = superClassName.getSimpleName() +"" ;
 		nameClass = factoryClassName;
 		int lastDot = canonicName.lastIndexOf(".");
 		String name = canonicName.substring(lastDot);
 		name = name.replace(".", "");
-		name = canonicName.replace(name, packagesSave+"."+name);
+		name = canonicName.replace(name, packagesSave+"."+FileNameConstants.SERVICE_NAME);
 		JavaFileObject jfo = filer.createSourceFile(name);
 		Writer writer = jfo.openWriter();
 		JavaWriter jw = new JavaWriter(writer);
@@ -59,12 +52,20 @@ public class FactoryGrouped extends AbstractGrouped<FactoryVerified> implements 
 			jw.emitPackage("");
 		}
 		jw.emitImports("co.com.arquitectura.librerias.implement.listProccess.AbstractListFromProccess"
-				      ,"co.com.arquitectura.librerias.implement.listProccess.IListFromProccess");
-		jw.beginType(factoryClassName, "class", Modifier.PUBLIC, "AbstractListFromProccess", "IListFromProccess");
+				      ,"co.com.arquitectura.librerias.implement.listProccess.IListFromProccess"
+				      ,"co.com.arquitectura.librerias.implement.Services.ServicePOJO");
+		jw.beginType(factoryClassName, "class", Modifier.PUBLIC, "AbstractListFactory", "IListFactory");
 		jw.emitEmptyLine();
 		jw.beginMethod("void", "load", Modifier.PUBLIC);
-		for (FactoryVerified item : items.values()) {
-			jw.emitStatement("lista.add(new %s())", item.getClase().getQualifiedName().toString());
+		for (ServicesVerified item : items.values()) {
+			jw.emitStatement("lista.add("
+					+ "new ServicePOJO(%s,%s,%s,%s,%s,%s))"
+					, item.getClase().getSimpleName()
+					, item.getId()
+					, item.getDescripcion()
+					, item.getTipo()
+					, item.getAlcance()
+					, item.getClase().getQualifiedName().toString());
 			jw.emitEmptyLine();
 		}
 		jw.endMethod();
@@ -73,4 +74,5 @@ public class FactoryGrouped extends AbstractGrouped<FactoryVerified> implements 
 
 		jw.close();
 	}
+
 }

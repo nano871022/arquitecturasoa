@@ -1,6 +1,6 @@
 package co.com.arquitectura.ejb_local.login;
 
-import co.com.arquitectura.librerias.implement.Factory.IListFactory;
+import co.com.arquitectura.librerias.implement.listProccess.IListFromProccess;
 import co.com.arquitectura.librerias.implement.Factory.ObtenerFabrica;
 
 /**
@@ -8,7 +8,7 @@ import co.com.arquitectura.librerias.implement.Factory.ObtenerFabrica;
  * @author Alejandro Parra
  * @since 19/01/2018
  */
-public class Fabrica extends ObtenerFabrica <ISaludar,IListFactory<ISaludar>> implements IFabrica {
+public class Fabrica extends ObtenerFabrica <ISaludar,IListFromProccess<ISaludar>> implements IFabrica {
 	public Fabrica() {
 		namePath = "FactoryPackage";
 	}
@@ -30,6 +30,12 @@ public class Fabrica extends ObtenerFabrica <ISaludar,IListFactory<ISaludar>> im
 			e.printStackTrace();
 		}
 		return null;
+	}
+	@Override
+	protected String getFilePathName(String simpleNameClass, String canonicalName){
+		String path = "."+namePath+"." + simpleNameClass;
+		path = canonicalName.replace("." + simpleNameClass, path);
+		return path;
 	}
 
 }

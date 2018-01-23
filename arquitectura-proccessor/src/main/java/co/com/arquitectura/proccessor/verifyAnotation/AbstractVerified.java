@@ -1,6 +1,8 @@
 package co.com.arquitectura.proccessor.verifyAnotation;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.lang.model.element.TypeElement;
 
@@ -54,6 +56,18 @@ public abstract class AbstractVerified <T extends Annotation> implements IVerifi
 	@Override
 	public String getSimpleNameClass() {
 		return simpleNameClass;
+	}
+	@SuppressWarnings("unchecked")
+	protected <I extends Object> List<Class<I>> superClass(Class<?> parent) throws Exception {
+		List<Class<I>> lista = new ArrayList<Class<I>>();
+		if (parent != null) {
+			Class<I>[] classs = (Class<I>[]) (parent.getInterfaces());
+			for (Class<I> clas : classs)
+				lista.add(clas);
+		}
+		lista.addAll(superClass(parent.getSuperclass()));
+		lista.remove(null);
+		return lista;
 	}
 
 }

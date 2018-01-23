@@ -29,16 +29,17 @@ import org.apache.commons.lang3.SystemUtils;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
 import co.com.arquitectura.annotation.proccessor.InjectFabrica;
+import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 import co.com.arquitectura.librerias.java_source.JavaSources;
 import co.com.arquitectura.librerias.java_source.constants.ConstJavaSources;
-import co.com.arquitectura.proccessor.exception.IdAlreadyUsedException;
+import co.com.arquitectura.proccessor.abstracts.AbstractProccessorGeneric;
 import co.com.arquitectura.proccessor.verifyAnotation.FactoryGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.FactoryVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes({ "co.com.arquitectura.annotation.proccessor.Fabrica",
 		"co.com.arquitectura.annotation.proccessor.InjectFabrica" })
-public class FabricaProccessor extends ProccessorGeneric<FactoryVerified,FactoryGrouped,Fabrica> {
+public class FabricaProccessor extends AbstractProccessorGeneric<FactoryVerified,FactoryGrouped,Fabrica> {
 
 	public FabricaProccessor() {
 		super(Fabrica.class);
@@ -111,7 +112,6 @@ public class FabricaProccessor extends ProccessorGeneric<FactoryVerified,Factory
 		} catch (Exception e) {
 			error(typeElement, "Problema " + e.getMessage());
 		}
-
 		return fabrica;
 	}
 

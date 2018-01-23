@@ -3,7 +3,7 @@ package co.com.arquitectura.proccessor.verifyAnotation.declared;
 import javax.annotation.processing.Filer;
 import javax.lang.model.util.Elements;
 
-import co.com.arquitectura.proccessor.exception.IdAlreadyUsedException;
+import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 
 public interface IGrouped<T extends IVerified> {
 	/**

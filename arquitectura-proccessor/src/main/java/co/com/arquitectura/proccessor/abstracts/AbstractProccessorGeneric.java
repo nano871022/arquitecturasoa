@@ -1,4 +1,4 @@
-package co.com.arquitectura.proccessor.implement;
+package co.com.arquitectura.proccessor.abstracts;
 
 import java.lang.annotation.Annotation;
 import java.util.LinkedHashMap;
@@ -10,17 +10,16 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
-import co.com.arquitectura.proccessor.abstracts.ManagementMessage;
 import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.declared.IVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-public abstract class ProccessorGeneric<S extends IVerified, T extends IGrouped<S>, N extends Annotation>
+public abstract class AbstractProccessorGeneric<S extends IVerified, T extends IGrouped<S>, N extends Annotation>
 		extends ManagementMessage<S> {
 	protected Class<N> annotation;
 	protected Map<String, T> groupClass = new LinkedHashMap<String, T>();
 
-	public ProccessorGeneric(Class<N> annotation) {
+	public AbstractProccessorGeneric(Class<N> annotation) {
 		this.annotation = annotation;
 	}
 	/**
@@ -28,9 +27,11 @@ public abstract class ProccessorGeneric<S extends IVerified, T extends IGrouped<
 	 */
 	@Override
 	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+		info(null,"Load procces init");
 		if (!verifiedTypeElement(roundEnv))
 			return false;
 		try {
+			info(null,"call procces");
 			proccess(roundEnv);
 		} catch (Exception e) {
 			error(null, e.getMessage());

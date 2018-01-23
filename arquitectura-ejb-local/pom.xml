@@ -19,6 +19,16 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>co.com.arquitectura.constants</groupId>
+			<artifactId>arquitectura-constants</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitecrura-librerias</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
@@ -76,6 +86,7 @@
 								<processor>co.com.arquitectura.proccessor.implement.ImmutableProccessor</processor>
 								<processor>co.com.arquitectura.proccessor.implement.ConstantsProccessor</processor>
 								<processor>co.com.arquitectura.proccessor.implement.FabricaProccessor</processor>
+								<processor>co.com.arquitectura.proccessor.implement.ServiceProccessor</processor>
 							</processors>
 						</configuration>
 					</execution>
