@@ -4,6 +4,7 @@
   <artifactId>arquitectura-parent-test-local</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>arquitectura-parent-test-local</name>
   	<build>
 		<plugins>
 			<plugin>
@@ -18,10 +19,10 @@
 		</plugins>
 	</build>
 	<modules>
-		<module>arquitectura-ejb-local</module>
-		<module>arquitectura-proccessor</module>
+<!-- 		<module>arquitectura-ejb-local</module> -->
+<!-- 		<module>arquitectura-proccessor</module> -->
 		<module>arquitecrura-librerias</module>
-		<module>arquitectura-anotaciones</module>
-		<module>arquitectura-exceptions</module>
+<!-- 		<module>arquitectura-anotaciones</module> -->
+<!-- 		<module>arquitectura-exceptions</module> -->
 	</modules>
 </project>
