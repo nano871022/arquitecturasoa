@@ -33,7 +33,7 @@ public class UsarServices extends AbstractObtenerServices<IListFromProccess<Serv
 						"No se encontro el archivo generado con los Servicios para este modulo");
 			}
 			for (ServicePOJO services : lista.getList()) {
-				log.info(String.format("Servicio : %s , alias : %s ", services.getName(), services.getAlias()));
+				System.out.println(String.format("Servicio : %s , alias : %s ", services.getName(), services.getAlias()));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

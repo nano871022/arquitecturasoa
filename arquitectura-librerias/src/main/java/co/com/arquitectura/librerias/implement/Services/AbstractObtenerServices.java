@@ -27,7 +27,8 @@ public abstract class AbstractObtenerServices<T extends IListFromProccess<Servic
 		if (clase.isInstance(IListFromProccess.class)) {
 			return clase.newInstance();
 		}
-		Class<?>[] clases = (Class<?>[]) getInterfaces(clase).toArray();
+		System.out.println(clase);
+		List<Class<?>> clases = getInterfaces(clase);
 		for (Class<?> clas : clases) {
 			if (clas.getSimpleName().contains("IListFromProccess")) {
 				return clase.newInstance();

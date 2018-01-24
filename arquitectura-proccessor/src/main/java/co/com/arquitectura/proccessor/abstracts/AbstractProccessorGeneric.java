@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
+import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 
 import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
@@ -27,11 +28,9 @@ public abstract class AbstractProccessorGeneric<S extends IVerified, T extends I
 	 */
 	@Override
 	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-		info(null,"Load procces init");
 		if (!verifiedTypeElement(roundEnv))
 			return false;
 		try {
-			info(null,"call procces");
 			proccess(roundEnv);
 		} catch (Exception e) {
 			error(null, e.getMessage());
@@ -64,7 +63,8 @@ public abstract class AbstractProccessorGeneric<S extends IVerified, T extends I
 	 * @param typeElement
 	 * @return
 	 */
-	protected abstract S proccessAnnotation(TypeElement typeElement);
+	protected S proccessAnnotation(TypeElement typeElement) {return null;};
+	protected S proccessAnnotation(Element typeElement) {return null;};
 
 	protected abstract boolean isValidClass(S annotationClass);
 }

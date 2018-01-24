@@ -4,40 +4,51 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 
 import co.com.arquitectura.proccessor.verifyAnotation.declared.IVerified;
+
 /**
  * Se encarga de implmentar la interfaz de verificacion de clases para procesor
- * Esta clase es de tipo abstract y sera que ser implementado el codigo final en otra clase 
+ * Esta clase es de tipo abstract y sera que ser implementado el codigo final en
+ * otra clase
+ * 
  * @author Alejandro Parra
  * @param <T>
  */
-public abstract class AbstractVerified <T extends Annotation> implements IVerified {
-	
+public abstract class AbstractVerified<T extends Annotation> implements IVerified {
+
 	protected TypeElement clase;
 	protected String id;
 	protected String canonicClass;
 	protected String simpleNameClass;
+
 	/** constructor **/
-	public AbstractVerified(TypeElement clase)throws IllegalArgumentException, Exception  {
+	public AbstractVerified(TypeElement clase,boolean... noAuto) throws IllegalArgumentException, Exception {
 		this.clase = clase;
-		getAnnotation(analized());
+		if(noAuto.length > 0 && noAuto.length == 1 && noAuto[0])
+			getAnnotation(analized());
 	}
-	/** 
-	 * metodo que se encarga de obtener la anotacion principal de la clase suministrada
-	 * ademas de almacenar el campo id en el objeto
+
+	/**
+	 * metodo que se encarga de obtener la anotacion principal de la clase
+	 * suministrada ademas de almacenar el campo id en el objeto
+	 * 
 	 * @return {@link Annotation}
 	 * @throws Exception
 	 */
-	protected abstract T analized () throws Exception;
+	protected abstract T analized() throws Exception;
+
 	/**
-	 * Se encarga de obtener el nombre canonico de la clase
-	 * se encarga de obtener el nombre simple de la calse
+	 * Se encarga de obtener el nombre canonico de la clase se encarga de obtener el
+	 * nombre simple de la calse
+	 * 
 	 * @param obj
 	 * @throws Exception
 	 */
-	protected abstract void getAnnotation(T obj)throws Exception;
+	protected abstract void getAnnotation(T obj) throws Exception;
+
 	@Override
 	public TypeElement getClase() {
 		return clase;
@@ -57,6 +68,7 @@ public abstract class AbstractVerified <T extends Annotation> implements IVerifi
 	public String getSimpleNameClass() {
 		return simpleNameClass;
 	}
+
 	@SuppressWarnings("unchecked")
 	protected <I extends Object> List<Class<I>> superClass(Class<?> parent) throws Exception {
 		List<Class<I>> lista = new ArrayList<Class<I>>();

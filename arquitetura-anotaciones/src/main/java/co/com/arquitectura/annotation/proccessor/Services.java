@@ -49,6 +49,4 @@ public @interface Services {
     * @return {@link scope}
     */
    public scope alcance() default scope.ALL;
-   
-   public Class<?> parent() ;
 }

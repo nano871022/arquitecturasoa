@@ -14,7 +14,7 @@ public class ServicePOJO {
 	private Object scope;
 	private Class<?> classs;
 
-	public <T, S, M extends Object> ServicePOJO(String name, String alias, String description, T kind, S scope,
+	public <M extends Object> ServicePOJO(String name, String alias, String description, Object kind, Object scope,
 			Class<M> classs) {
 		this.name = name;
 		this.alias = alias;

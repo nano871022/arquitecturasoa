@@ -11,6 +11,7 @@ import javax.tools.JavaFileObject;
 
 import com.squareup.java.JavaWriter;
 
+import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.constants.proccessor.FileNameConstants;
 import co.com.arquitectura.constants.proccessor.PackageConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
@@ -53,14 +54,15 @@ public class ServicesGrouped extends AbstractGrouped<ServicesVerified> {
 		}
 		jw.emitImports("co.com.arquitectura.librerias.implement.listProccess.AbstractListFromProccess"
 				      ,"co.com.arquitectura.librerias.implement.listProccess.IListFromProccess"
-				      ,"co.com.arquitectura.librerias.implement.Services.ServicePOJO");
-		jw.beginType(factoryClassName, "class", Modifier.PUBLIC, "AbstractListFactory", "IListFactory");
+				      ,"co.com.arquitectura.librerias.implement.Services.ServicePOJO"
+				      ,"co.com.arquitectura.annotation.proccessor.Services");
+		jw.beginType(FileNameConstants.SERVICE_NAME, GenericConstants.CLASS, Modifier.PUBLIC, "AbstractListFromProccess", "IListFromProccess");
 		jw.emitEmptyLine();
-		jw.beginMethod("void", "load", Modifier.PUBLIC);
+		jw.beginMethod(GenericConstants.VOID, "load", Modifier.PUBLIC);
 		for (ServicesVerified item : items.values()) {
 			jw.emitStatement("lista.add("
-					+ "new ServicePOJO(%s,%s,%s,%s,%s,%s))"
-					, item.getClase().getSimpleName()
+					+ "new ServicePOJO(\"%s\",\"%s\",\"%s,\",Services.kind.%s,Services.scope.%s,%s.class))"
+					, item.getMethod().getSimpleName().toString()
 					, item.getId()
 					, item.getDescripcion()
 					, item.getTipo()

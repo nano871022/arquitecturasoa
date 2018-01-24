@@ -1,7 +1,6 @@
 package co.com.arquitectura.proccessor.implement;
 
 import java.io.IOException;
-import java.lang.reflect.Modifier;
 
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -9,13 +8,14 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.Modifier;
 
 import co.com.arquitectura.annotation.proccessor.Services;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 import co.com.arquitectura.proccessor.abstracts.AbstractProccessorGeneric;
 import co.com.arquitectura.proccessor.verifyAnotation.ServicesGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.ServicesVerified;
+
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes("co.com.arquitectura.annotation.proccessor.Services")
 public class ServiceProccessor extends AbstractProccessorGeneric<ServicesVerified, ServicesGrouped, Services> {
@@ -27,76 +27,71 @@ public class ServiceProccessor extends AbstractProccessorGeneric<ServicesVerifie
 	@Override
 	protected void proccess(RoundEnvironment roundEnv) throws Exception {
 		try {
-			info(null,"Load procces");
-			for(ServicesGrouped services : groupClass.values()) {
-				services.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());
+			if (groupClass != null && groupClass.values() != null) {
+				for (ServicesGrouped services : groupClass.values()) {
+					services.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());
+				}
 			}
-		}catch(IOException e) {
-			error(null,e.getMessage());
+		} catch (IOException e) {
+			error(null, e.getMessage());
 		}
+		info(null,"fin proccess");
 	}
 
 	@SuppressWarnings("unused")
 	@Override
 	protected Boolean verifiedTypeElement(RoundEnvironment roundEnv) {
-		info(null,"verified");
 		ServicesVerified veryfied = null;
-		info(null,annotation.getSimpleName());
-		for(Element method : roundEnv.getElementsAnnotatedWith(annotation)) {
-			info(null," "+method.getSimpleName());
-			if(method.getKind() == ElementKind.METHOD) {
-				TypeElement typeElement = (TypeElement) method;
-				info(null," "+typeElement.getSimpleName());
-				veryfied = proccessAnnotation(typeElement);
-			}else {
-				error(method," Solo se deben anotar methodos con @"+annotation.getSimpleName());
+		for (Element method : roundEnv.getElementsAnnotatedWith(annotation)) {
+			if (method.getKind() == ElementKind.METHOD) {
+				veryfied = proccessAnnotation(method);
+			} else {
+				error(method, " Solo se deben anotar methodos con @" + annotation.getSimpleName());
 			}
 		}
 		return true;
 	}
 
 	@Override
-	protected ServicesVerified proccessAnnotation(TypeElement typeElement) {
+	protected ServicesVerified proccessAnnotation(Element method) {
+		info(method, "proccessAnotation "+method.getEnclosingElement().toString());
 		ServicesVerified services = null;
 		try {
-			 services = new ServicesVerified(typeElement);
-			 if(!isValidClass(services)) {
-				 return null;
-			 }
+			services = new ServicesVerified(method);
+				if (!isValidClass(services)) {
+					return null;
+				}
 			ServicesGrouped group = groupClass.get(services.getCanonicClass());
-			if(group == null) {
-				String qualifiedGroupName = services.getParent().getCanonicalName();
+			if (group == null) {
+				String qualifiedGroupName = services.getCanonicClass();
 				group = new ServicesGrouped(qualifiedGroupName);
-				groupClass.put(qualifiedGroupName,group);
+				groupClass.put(qualifiedGroupName, group);
 			}
 			group.add(services);
-		}	catch (IllegalArgumentException e) {
-			error(typeElement, e.getMessage());
+		} catch (IllegalArgumentException e) {
+			error(method, e.getMessage());
 		} catch (IdAlreadyUsedException e) {
-			error(typeElement, "Conflicto: La clase " + services.getSimpleNameClass() + " tiene el id duplicado "
+			error(method, "Conflicto: La clase " + services.getSimpleNameClass() + " tiene el id duplicado "
 					+ services.getId());
 		} catch (Exception e) {
-			error(typeElement, "Problema " + e.getMessage());
+			error(method, "Problema:: " + e.getMessage());
 		}
-	return null;
+		return null;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	protected boolean isValidClass(ServicesVerified annotationClass) {
-		TypeElement clase = annotationClass.getClase();
-		if(!clase.getModifiers().contains(Modifier.PUBLIC)) {
-			error(clase,"El metodo "+annotationClass.getSimpleNameClass()+" no es publico");
+		Element method = annotationClass.getMethod();
+		if (!method.getModifiers().contains(Modifier.PUBLIC)) {
+			error(method, "El metodo " + annotationClass.getMethod().getSimpleName().toString() + " no es publico");
 			return false;
 		}
-		if(clase.getModifiers().contains(Modifier.ABSTRACT)) {
-			error(clase,"El metodo "+annotationClass.getSimpleNameClass()+" no debe ser abstracto");
+		if (method.getModifiers().contains(Modifier.ABSTRACT)) {
+			error(method,
+					"El metodo " + annotationClass.getMethod().getSimpleName().toString() + " no debe ser abstracto");
 			return false;
 		}
 		return true;
 	}
-
-
-	
 
 }
