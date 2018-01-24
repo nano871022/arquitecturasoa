@@ -3,8 +3,6 @@ package co.com.arquitectura.proccessor.verifyAnotation;
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Modifier;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.PackageElement;
@@ -15,7 +13,9 @@ import javax.tools.JavaFileObject;
 import com.squareup.java.JavaWriter;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
-import co.com.arquitectura.proccessor.exception.IdAlreadyUsedException;
+import co.com.arquitectura.constants.proccessor.PackageConstants;
+import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
 
 /**
  * Se encarga de agrupar las clases anotadas con @{@link Fabrica}
@@ -23,21 +23,16 @@ import co.com.arquitectura.proccessor.exception.IdAlreadyUsedException;
  * @author Alejandro Parra
  * @since 2017/11/14
  */
-public class FactoryGrouped {
-	private String canonicName;
-	private Map<String, FactoryVerified> items;
-	private static final String SUFFIX = "Factory";
-	private String nameClase;
+public class FactoryGrouped extends AbstractGrouped<FactoryVerified> implements IGrouped<FactoryVerified>{
 
 	public FactoryGrouped(String canonicName) {
-		this.canonicName = canonicName;
-		items = new LinkedHashMap<String, FactoryVerified>();
+		super(canonicName,PackageConstants.FACTORY);
 	}
 
 	public void add(FactoryVerified factory) throws IdAlreadyUsedException {
 		FactoryVerified existente = items.get(factory.getId());
 		if (existente != null) {
-			throw new IdAlreadyUsedException(existente);
+			throw new IdAlreadyUsedException(existente.getSimpleNameClass(),existente.getId());
 		}
 		items.put(factory.getId(), factory);
 
@@ -45,48 +40,37 @@ public class FactoryGrouped {
 
 	public void generateSource(Elements elementUtils, Filer filer) throws IOException {
 		TypeElement superClassName = elementUtils.getTypeElement(canonicName);
-		String factoryClassName = superClassName.getSimpleName() + SUFFIX;
-		nameClase = factoryClassName;
-		JavaFileObject jfo = filer.createSourceFile(canonicName + SUFFIX);
+		String factoryClassName = superClassName.getSimpleName() +"" ;
+		nameClass = factoryClassName;
+		int lastDot = canonicName.lastIndexOf(".");
+		String name = canonicName.substring(lastDot);
+		name = name.replace(".", "");
+		name = canonicName.replace(name, packagesSave+"."+name);
+		JavaFileObject jfo = filer.createSourceFile(name);
 		Writer writer = jfo.openWriter();
 		JavaWriter jw = new JavaWriter(writer);
 
 		// Write package
 		PackageElement pkg = elementUtils.getPackageOf(superClassName);
 		if (!pkg.isUnnamed()) {
-			jw.emitPackage(pkg.getQualifiedName().toString());
+			jw.emitPackage(pkg.getQualifiedName().toString()+"."+packagesSave);
 			jw.emitEmptyLine();
 		} else {
 			jw.emitPackage("");
 		}
-
-		jw.beginType(factoryClassName, "class", Modifier.PUBLIC);
+		jw.emitImports("co.com.arquitectura.librerias.implement.listProccess.AbstractListFromProccess"
+				      ,"co.com.arquitectura.librerias.implement.listProccess.IListFromProccess");
+		jw.beginType(factoryClassName, "class", Modifier.PUBLIC, "AbstractListFromProccess", "IListFromProccess");
 		jw.emitEmptyLine();
-		jw.beginMethod(canonicName, "create", Modifier.PUBLIC, "String", "id");
-
-		jw.beginControlFlow("if (id == null)");
-		jw.emitStatement("throw new IllegalArgumentException(\"id is null!\")");
-		jw.endControlFlow();
-
+		jw.beginMethod("void", "load", Modifier.PUBLIC);
 		for (FactoryVerified item : items.values()) {
-			jw.beginControlFlow("if (\"" + item.getId() + "\".equals(id))");
-			jw.emitStatement("return new %s()", item.getClase().getQualifiedName().toString());
-			jw.endControlFlow();
+			jw.emitStatement("lista.add(new %s())", item.getClase().getQualifiedName().toString());
 			jw.emitEmptyLine();
 		}
-
-		jw.emitStatement("throw new IllegalArgumentException(\"Unknown id = \" + id)");
 		jw.endMethod();
 
 		jw.endType();
 
 		jw.close();
-	}
-
-	public String getCanonicaName() {
-		return canonicName + SUFFIX;
-	}
-	public String getNameClass() {
-		return nameClase;
 	}
 }

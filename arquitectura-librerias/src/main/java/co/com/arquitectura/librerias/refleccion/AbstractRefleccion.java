@@ -130,6 +130,19 @@ public class AbstractRefleccion {
 		}
 		return valor;
 	}
+	/**
+	 * Este caso se usa solo para obtener un valor suministrando el nombre del campo y la instancia
+	 * @param nombreCampo {@link String}
+	 * @param instancia {@link Object} extendido
+	 * @return {@link Object} extendido, valor obtenido
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	protected final <T,L extends Object> L obtenerValor(String nombreCampo, T instancia)throws Exception{
+		Class<T> clas = (Class<T>) instancia.getClass();
+		Field field = clas.getDeclaredField(nombreCampo);
+		return obtenerValor(field,instancia,clas);
+	}
 
 	/**
 	 * se encarga de agregar un valor directo a la propiedad del objeto o ppor
@@ -184,7 +197,7 @@ public class AbstractRefleccion {
 	private final String obtenerNombreCamel(String nombre) throws Exception {
 		char[] nombres = nombre.toCharArray();
 		nombres[0] = Character.toUpperCase(nombres[0]);
-		return nombre.toString();
+		return String.valueOf(nombres);
 	}
 
 	/**

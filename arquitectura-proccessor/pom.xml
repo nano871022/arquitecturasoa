@@ -22,6 +22,16 @@
 			<artifactId>arquitecrura-librerias</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.constants</groupId>
+			<artifactId>arquitectura-constants</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.exceptions</groupId>
+			<artifactId>arquitectura-exceptions</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.squareup/javawriter -->
 		<dependency>
 			<groupId>com.squareup</groupId>

@@ -19,6 +19,16 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>co.com.arquitectura.constants</groupId>
+			<artifactId>arquitectura-constants</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitecrura-librerias</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
@@ -40,6 +50,13 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -69,6 +86,7 @@
 								<processor>co.com.arquitectura.proccessor.implement.ImmutableProccessor</processor>
 								<processor>co.com.arquitectura.proccessor.implement.ConstantsProccessor</processor>
 								<processor>co.com.arquitectura.proccessor.implement.FabricaProccessor</processor>
+								<processor>co.com.arquitectura.proccessor.implement.ServiceProccessor</processor>
 							</processors>
 						</configuration>
 					</execution>

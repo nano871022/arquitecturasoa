@@ -7,6 +7,9 @@
         <dependent-module archiveName="arquitecrura-librerias-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-librerias/arquitectura-librerias">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="arquitectura-exceptions-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-exceptions/arquitectura-exceptions">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="arquitectura-ejb-local-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-ejb-local/arquitectura-ejb-local">
             <dependency-type>uses</dependency-type>
         </dependent-module>

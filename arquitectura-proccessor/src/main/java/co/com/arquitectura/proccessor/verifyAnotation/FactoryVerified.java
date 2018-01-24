@@ -7,6 +7,7 @@ import javax.lang.model.type.MirroredTypeException;
 import org.apache.commons.lang3.StringUtils;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
+import co.com.arquitectura.proccessor.verifyAnotation.declared.IVerified;
 
 /**
  * Se encarga de verificar los campos anotados y los puede retornar con los
@@ -16,7 +17,7 @@ import co.com.arquitectura.annotation.proccessor.Fabrica;
  * @since 2017/11/14
  *
  */
-public class FactoryVerified {
+public class FactoryVerified implements IVerified {
 	private TypeElement clase;
 	private String id;
 	private String canonicClass;

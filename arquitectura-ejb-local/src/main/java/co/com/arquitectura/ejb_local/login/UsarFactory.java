@@ -2,25 +2,34 @@ package co.com.arquitectura.ejb_local.login;
 
 import javax.ejb.Local;
 
-import co.com.arquitectura.annotation.proccessor.InjectFabrica;
+import org.apache.log4j.Logger;
 /**
  * Clase que usara la fabrica
- * @author Ing-0-0013
-// * @since 20/11/2017
+ * @author Alejandro Parra
+ * @since 20/11/2017
  */
 @Local
 public class UsarFactory  {
+	Logger log = Logger.getLogger(this.getClass());
 	/**
 	 * Inteface que tendra la fabrica
 	 */
-	@InjectFabrica
-	private IFabrica fabrica;
+	private IFabrica fabrica = new Fabrica();
 	
 	/**
 	 * Comentatios de pruebas
 	 * @return {@link String}
 	 */
-	public String getSaludo() {
-		return "test";
+	public String getSaludo() throws Exception{
+		ISaludar saludar = fabrica.getSaludo("Saludo1");
+		if(saludar == null)
+				throw new Exception("No se encontro implementacion buscada");
+		return saludar.saludo();
+	}
+	public String getSaludo(String name) throws Exception{
+		ISaludar saludar = fabrica.getSaludo(name,"name");
+		if(saludar == null)
+				throw new Exception("No se encontro implementacion buscada");
+		return saludar.saludo();
 	}
 }

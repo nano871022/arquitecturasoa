@@ -8,9 +8,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -25,7 +22,6 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 import javax.tools.FileObject;
-import javax.tools.JavaFileManager.Location;
 import javax.tools.StandardLocation;
 
 import org.apache.commons.lang3.StringUtils;
@@ -33,32 +29,38 @@ import org.apache.commons.lang3.SystemUtils;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
 import co.com.arquitectura.annotation.proccessor.InjectFabrica;
+import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 import co.com.arquitectura.librerias.java_source.JavaSources;
 import co.com.arquitectura.librerias.java_source.constants.ConstJavaSources;
-import co.com.arquitectura.proccessor.abstracts.ManagementMessage;
-import co.com.arquitectura.proccessor.exception.IdAlreadyUsedException;
+import co.com.arquitectura.proccessor.abstracts.AbstractProccessorGeneric;
 import co.com.arquitectura.proccessor.verifyAnotation.FactoryGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.FactoryVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes({ "co.com.arquitectura.annotation.proccessor.Fabrica",
 		"co.com.arquitectura.annotation.proccessor.InjectFabrica" })
-public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
-	private Map<String, FactoryGrouped> factoryClases = new LinkedHashMap<String, FactoryGrouped>();
+public class FabricaProccessor extends AbstractProccessorGeneric<FactoryVerified,FactoryGrouped,Fabrica> {
 
-	@Override
-	public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-		FactoryVerified fabricaV = null;
-		for (Element clase : roundEnv.getElementsAnnotatedWith(Fabrica.class)) {
+	public FabricaProccessor() {
+		super(Fabrica.class);
+	}
+	@SuppressWarnings("unused")
+	protected Boolean verifiedTypeElement(RoundEnvironment roundEnv) {
+		FactoryVerified veryfied = null;
+		for (Element clase : roundEnv.getElementsAnnotatedWith(annotation)) {
+			info(" "+clase.getSimpleName());
 			if (clase.getKind() == ElementKind.CLASS) {
 				TypeElement typeElement = (TypeElement) clase;
-				fabricaV = processAnnotation(typeElement);
+				veryfied = proccessAnnotation(typeElement);
 			} else {
-				error(clase, "Solo se deben anotar Clases con @Fabrica ");
+				error(clase, "Solo se deben anotar clases con @" + annotation.getSimpleName());
 			}
 		}
+		return true;
+	}
+	protected void proccess(RoundEnvironment roundEnv) throws Exception{
 		try {
-			for (FactoryGrouped factoryClass : factoryClases.values()) {
+			for (FactoryGrouped factoryClass : groupClass.values()) {
 				factoryClass.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());
 			}
 		} catch (IOException e) {
@@ -74,22 +76,19 @@ public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
 
 			}
 		}
-		factoryClases.clear();
-		return true;
 	}
-
 	private String getNameClaseGenerated(String name) {
 		info(name);
-		for (FactoryGrouped factory : factoryClases.values()) {
-			info(name + " -- " + factory.getCanonicaName());
-			if (factory.getCanonicaName().toUpperCase().contains(name.toUpperCase())) {
+		for (FactoryGrouped factory : groupClass.values()) {
+			info(name + " -- " + factory.getCanonicName());
+			if (factory.getCanonicName().toUpperCase().contains(name.toUpperCase())) {
 				return factory.getNameClass();
 			}
 		}
 		return null;
 	}
 
-	private FactoryVerified processAnnotation(TypeElement typeElement) {
+	protected FactoryVerified proccessAnnotation(TypeElement typeElement) {
 		FactoryVerified fabrica = null;
 		try {
 			info(typeElement, "antes validando clase");
@@ -98,11 +97,11 @@ public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
 				return null;
 			}
 			info(null, "validando clase");
-			FactoryGrouped factoryClass = factoryClases.get(fabrica.getCanonicClass());
+			FactoryGrouped factoryClass = groupClass.get(fabrica.getCanonicClass());
 			if (factoryClass == null) {
 				String qualifiedGroupName = fabrica.getCanonicClass();
 				factoryClass = new FactoryGrouped(qualifiedGroupName);
-				factoryClases.put(qualifiedGroupName, factoryClass);
+				groupClass.put(qualifiedGroupName, factoryClass);
 			}
 			factoryClass.add(fabrica);
 		} catch (IllegalArgumentException e) {
@@ -113,7 +112,6 @@ public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
 		} catch (Exception e) {
 			error(typeElement, "Problema " + e.getMessage());
 		}
-
 		return fabrica;
 	}
 
@@ -131,7 +129,6 @@ public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
 		try {
 			javaS.readFile(file);
 			String[] name = file.split(separador + separador);
-			// name[name.length-1]
 			writeFile(javaS.getSource(), typeElement.getQualifiedName().toString(), name[name.length - 1]);
 			info(javaS.getSource());
 		} catch (Exception e) {
@@ -144,10 +141,8 @@ public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
 	private void writeFile(String text, String paquete, String name) throws Exception {
 		paquete = paquete.replaceAll("."+name.replace(".java", ConstJavaSources.EMPTY), ConstJavaSources.EMPTY);
 		FileObject filerO = processingEnv.getFiler().createResource(StandardLocation.SOURCE_OUTPUT, paquete, name);
-//		text = text.replace("\\", "");
 		Writer writer = filerO.openWriter();
 		writer.write(text);
-//		writer.write("public class UsarFactory{}");
 		writer.flush();
 		writer.close();
 	}
@@ -197,10 +192,9 @@ public class FabricaProccessor extends ManagementMessage<FactoryVerified> {
 		}
 
 	}
-
 	@Override
 	protected boolean isValidClass(FactoryVerified annotationClass) {
-		info(null, "vaidando clase");
+		info(null, "validando clase");
 		TypeElement clase = annotationClass.getClase();
 		if (!clase.getModifiers().contains(Modifier.PUBLIC)) {
 			error(clase, "La clase " + annotationClass.getSimpleNameClass() + " no es público.");
