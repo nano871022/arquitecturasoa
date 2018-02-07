@@ -3,7 +3,7 @@ package co.com.arquitectura.ejb_local.login;
 import javax.ejb.Local;
 
 import co.com.arquitectura.pojo.basicos.Conexion;
-import co.com.arquitectura.pojo.basicos.Usuario;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 
 /**
  * esta intefaz se encarga de publicar los servicios que se expondran servicios locales 

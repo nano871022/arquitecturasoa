@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import org.apache.commons.lang3.StringUtils;
 
 import co.com.arquitectura.ejb.query.IQuery;
-import co.com.arquitectura.pojo.basicos.Usuario;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 import co.com.arquitectura.soa.privado.interfaz.login.IConexion;
 
 /**

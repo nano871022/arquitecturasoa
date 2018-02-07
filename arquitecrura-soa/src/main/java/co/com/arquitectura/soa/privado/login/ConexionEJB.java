@@ -9,9 +9,9 @@ import javax.ejb.Stateless;
 import org.apache.commons.lang3.StringUtils;
 
 import co.com.arquitectura.ejb.query.IQuery;
-import co.com.arquitectura.pojo.basicos.Usuario;
 import co.com.arquitectura.soa.privado.interfaz.login.IConexion;
 import co.com.arquitectura.pojo.basicos.Conexion;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 
 /**
  * se encarga de implentar todas las acciones pertinentes para realizar login 

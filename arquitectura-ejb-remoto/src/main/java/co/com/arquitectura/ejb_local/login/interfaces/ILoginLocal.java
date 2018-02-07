@@ -1,7 +1,7 @@
 package co.com.arquitectura.ejb_local.login.interfaces;
 
 import co.com.arquitectura.pojo.basicos.Conexion;
-import co.com.arquitectura.pojo.basicos.privated.Usuario;
+import co.com.arquitectura.pojo.basicos.publics.Usuario;
 
 public interface ILoginLocal {
 	/**

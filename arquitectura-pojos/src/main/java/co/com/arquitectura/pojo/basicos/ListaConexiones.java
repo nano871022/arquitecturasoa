@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
+
 /**
  * se encarga de almacenar el listado de las conexiones activas que tiene el
  * usuario

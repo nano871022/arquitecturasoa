@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.arquitectura.soa</groupId>
 	<artifactId>arquitectura-soa</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<description>Modulo Encargado de encapsular toda la arquitecrua soa</description>
 	<dependencies>
 		<dependency>
@@ -62,4 +61,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	<parent>
+		<groupId>co.com.arquitectura.parent.soa</groupId>
+		<artifactId>arquitectura-parent-soa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 </project>
