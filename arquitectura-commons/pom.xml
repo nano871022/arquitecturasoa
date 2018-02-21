@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.arquitectura.parent.commons</groupId>
+	<artifactId>arquitectura-parent-commons</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<dependencies>
+		<dependency>
+			<artifactId>arquitectura-anotaciones</artifactId>
+			<groupId>co.com.arquitectura.anotaciones</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<artifactId>arquitectura-exceptions</artifactId>
+			<groupId>co.com.arquitectura.exceptions</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<artifactId>arquitectura-constants</artifactId>
+			<groupId>co.com.arquitectura.constants</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<artifactId>arquitectura-librerias</artifactId>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>../arquitectura-constants</module>
+		<module>../arquitectura-exceptions</module>
+		<module>../arquitectura-librerias</module>
+		<module>../arquitetura-anotaciones</module>
+	</modules>
+</project>
