@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>soa2</name>
+	<name>Ear-soa</name>
 	<comment></comment>
 	<projects>
-		<project>arquitecrura-soa</project>
-		<project>arquitectura-DBConnect-Mock</project>
-		<project>arquitectura-ejb-query</project>
+		<project>arquitectura-parent-soa</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

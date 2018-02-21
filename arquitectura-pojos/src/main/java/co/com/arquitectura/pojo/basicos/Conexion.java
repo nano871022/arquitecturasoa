@@ -3,6 +3,7 @@ package co.com.arquitectura.pojo.basicos;
 import java.util.Date;
 
 import co.com.arquitectura.librerias.abstracts.ADTO;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 /**
  * tiene la informacion de la conexion actual del usuario
  * @author Alejandro Parra

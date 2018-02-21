@@ -6,7 +6,7 @@ import co.com.arquitectura.annotation.proccessor.Services.scope;
 import co.com.arquitectura.ejb_local.login.interfaces.ILoginLocal;
 import co.com.arquitectura.librerias.abstracts.AbstractLogger;
 import co.com.arquitectura.pojo.basicos.Conexion;
-import co.com.arquitectura.pojo.basicos.Usuario;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 
 public class LoginLocal extends AbstractLogger implements ILoginLocal {
 	@Services(alcance = scope.EJB, tipo = kind.PUBLIC, alias = "IniciarSesion", descripcion = "Se encarga de iniciar sesion en la aplicacion, retornado las condiciones de coneion para el usuario")

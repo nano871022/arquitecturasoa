@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import co.com.arquitectura.pojo.basicos.Conexion;
-import co.com.arquitectura.pojo.basicos.Usuario;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 
 /**
  * se encarga de implentar todas las acciones pertinentes para realizar login 

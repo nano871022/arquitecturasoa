@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import co.com.arquitectura.pojo.basicos.Conexion;
 import co.com.arquitectura.pojo.basicos.ListaConexiones;
-import co.com.arquitectura.pojo.basicos.Usuario;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 /**
  * esta clase es la encarga a de realizar el login sobre el sistema y obtener la
  * informacion de la persona asociada a ese login

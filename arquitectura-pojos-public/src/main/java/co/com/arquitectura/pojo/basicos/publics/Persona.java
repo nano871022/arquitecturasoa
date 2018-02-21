@@ -1,4 +1,4 @@
-package co.com.arquitectura.pojo.basicos;
+package co.com.arquitectura.pojo.basicos.publics;
 
 import java.util.Date;
 

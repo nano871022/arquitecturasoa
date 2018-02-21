@@ -4,7 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import co.com.arquitectura.pojo.basicos.Conexion;
-import co.com.arquitectura.pojo.basicos.Usuario;
+import co.com.arquitectura.pojo.basicos.privated.Usuario;
 import co.com.arquitectura.soa.privado.interfaz.login.IConexion;
 @Stateless
 public class verifyPassword implements co.com.arquitectura.ejb_local.login.verifyPassword {
