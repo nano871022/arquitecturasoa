@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>arquitetura-rest</project>
+		<project>arquitectura-cliente-primefaces</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

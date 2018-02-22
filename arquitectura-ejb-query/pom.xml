@@ -5,24 +5,11 @@
 	<artifactId>arquitectura-ejb-query</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Se encarga de tener todas las interfaces para el manejo de la base de datos</description>
-	<dependencies>
-		<dependency>
-			<groupId>co.com.arquitectura.anotaciones</groupId>
-			<artifactId>arquitetura-anotaciones</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.librerias</groupId>
-			<artifactId>arquitecrura-librerias</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
-		</dependency>
-	</dependencies>
+	<parent>
+		<groupId>co.com.arquitectura.parent.soa</groupId>
+		<artifactId>arquitectura-parent-soa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<build>
 		<plugins>
 			<plugin>

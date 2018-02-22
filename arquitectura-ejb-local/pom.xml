@@ -3,36 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.arquitectura.ejb.local</groupId>
 	<artifactId>arquitectura-ejb-local</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<description>Se encarga de tener todas las interfaces de servicios locales</description>
+	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>co.com.arquitectura.parent.soa</groupId>
+		<artifactId>arquitectura-parent-soa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<dependencies>
-		<dependency>
-			<groupId>co.com.arquitectura.pojo</groupId>
-			<artifactId>arquitectura-pojos</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.anotaciones</groupId>
-			<artifactId>arquitetura-anotaciones</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.constants</groupId>
-			<artifactId>arquitectura-constants</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.librerias</groupId>
-			<artifactId>arquitecrura-librerias</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2</version>
-		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.proccessor</groupId>
 			<artifactId>arquitectura-proccessor</artifactId>
@@ -44,19 +22,6 @@
 			<artifactId>javax.inject</artifactId>
 			<version>2.5.0-b60</version>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>

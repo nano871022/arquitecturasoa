@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.arquitectura.parent.web.local</groupId>
+	<artifactId>arquitectura-parent-web-local</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<version-all>0.0.1-SNAPSHOT</version-all>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>co.com.arquitectura.parent.commons</groupId>
+			<artifactId>arquitectura-parent-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.ejb.local</groupId>
+			<artifactId>arquitectura-ejb-local</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>../arquitectura-commons</module>
+		<module>../arquitectura-cliente-primefaces</module>
+	</modules>
+</project>

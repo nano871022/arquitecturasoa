@@ -3,7 +3,15 @@
 	<name>Ear-soa</name>
 	<comment></comment>
 	<projects>
-		<project>arquitectura-parent-soa</project>
+		<project>arquitecrura-soa</project>
+		<project>arquitectura-constants</project>
+		<project>arquitectura-DBConnect-Mock</project>
+		<project>arquitectura-ejb-query</project>
+		<project>arquitectura-exceptions</project>
+		<project>arquitectura-librerias</project>
+		<project>arquitectura-pojos</project>
+		<project>arquitetura-anotaciones</project>
+		<project>arquitectura-cliente-primefaces</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

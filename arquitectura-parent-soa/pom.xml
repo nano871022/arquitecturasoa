@@ -1,10 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>co.com.arquitectura.parent.soa</groupId>
-  <artifactId>arquitectura-parent-soa</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <properties>
-  	<applicationVersion>0.0.1-SNAPSHOT</applicationVersion>
-  </properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.arquitectura.parent.soa</groupId>
+	<artifactId>arquitectura-parent-soa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<applicationVersion>0.0.1-SNAPSHOT</applicationVersion>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.pojo</groupId>
+			<artifactId>arquitectura-pojos</artifactId>
+			<version>${applicationVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.ejb.query</groupId>
+			<artifactId>arquitectura-ejb-query</artifactId>
+			<version>${applicationVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.parent.commons</groupId>
+			<artifactId>arquitectura-parent-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>../arquitectura-ejb-local</module>
+		<module>../arquitectura-ejb-query</module>
+		<module>../arquitectura-pojos</module>
+		<module>../arquitectura-commons</module>
+	</modules>
 </project>

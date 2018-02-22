@@ -1,10 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.arquitectura.cliente.test</groupId>
-	<artifactId>arquitectura-cliente-test</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>co.com.arquitectura.cliente.primefaces</groupId>
+	<artifactId>arquitectura-cliente-primefaces</artifactId>
 	<description>Se encarga de tener codigo para realizar pruebas de servicios remotos</description>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>co.com.arquitectura.parent.web.local</groupId>
+		<artifactId>arquitectura-parent-web-local</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<build>
 		<plugins>
 			<plugin>
@@ -18,4 +23,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

@@ -4,49 +4,6 @@
 	<groupId>co.com.arquitectura.soa</groupId>
 	<artifactId>arquitectura-soa</artifactId>
 	<description>Modulo Encargado de encapsular toda la arquitecrua soa</description>
-	<dependencies>
-		<dependency>
-			<groupId>co.com.arquitectura.librerias</groupId>
-			<artifactId>arquitecrura-librerias</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.DBConnect-Mock</groupId>
-			<artifactId>arquitectura-DBConnect-Mock</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.ejb.local</groupId>
-			<artifactId>arquitectura-ejb-local</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.ejb.remoto</groupId>
-			<artifactId>arquitectura-ejb-remoto</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.rest</groupId>
-			<artifactId>arquitetura-rest</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>co.com.arquitectura.pojo</groupId>
-			<artifactId>arquitectura-pojos</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.anotaciones</groupId>
-			<artifactId>arquitetura-anotaciones</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2</version>
-		</dependency>
-	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
