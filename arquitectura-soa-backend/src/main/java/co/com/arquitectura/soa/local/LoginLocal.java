@@ -1,4 +1,4 @@
-package co.com.arquitectura.ejb.local.login;
+package co.com.arquitectura.soa.local;
 
 import javax.ejb.Stateless;
 

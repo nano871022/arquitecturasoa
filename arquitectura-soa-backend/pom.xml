@@ -24,6 +24,12 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.proccessor</groupId>
+			<artifactId>arquitectura-proccessor</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -36,6 +42,28 @@
 					<target>1.8</target>
 					<compilerArgs>-proc:none</compilerArgs>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<version>3.3.2</version>
+				<executions>
+					<execution>
+						<id>process</id>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<processors>
+								<processor>co.com.arquitectura.proccessor.implement.ImmutableProccessor</processor>
+								<processor>co.com.arquitectura.proccessor.implement.ConstantsProccessor</processor>
+								<processor>co.com.arquitectura.proccessor.implement.FabricaProccessor</processor>
+								<processor>co.com.arquitectura.proccessor.implement.ServiceProccessor</processor>
+							</processors>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

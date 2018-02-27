@@ -1,4 +1,6 @@
-package co.com.arquitectura.ejb.local.login;
+package co.com.arquitectura.soa.local.login;
+
+import co.com.arquitectura.soa.local.login.ISaludar;
 
 public interface IFabrica  {
 	/**

@@ -1,16 +1,16 @@
 package co.com.arquitectura.cliente.login.bean;
 
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import co.com.arquitectura.ejb.local.login.interfaces.ILoginLocal;
 import co.com.arquitectura.ejb.local.login.interfaces.IVerifyPassword;
 import co.com.arquitectura.pojo.basicos.Conexion;
 import co.com.arquitectura.pojo.basicos.privated.Usuario;
 
-@ManagedBean(name="loginBean")
-@ViewScoped
+@RequestScoped
+@Named
 public class LoginBean {
 	@EJB
 	private ILoginLocal login;
@@ -18,6 +18,19 @@ public class LoginBean {
 	private IVerifyPassword verifyPass;
 	private String valor;
 	private String token;
+	
+	public ILoginLocal getLogin() {
+		return login;
+	}
+	public void setLogin(ILoginLocal login) {
+		this.login = login;
+	}
+	public IVerifyPassword getVerifyPass() {
+		return verifyPass;
+	}
+	public void setVerifyPass(IVerifyPassword verifyPass) {
+		this.verifyPass = verifyPass;
+	}
 	public LoginBean(){
 		valor = "texto";
 	}

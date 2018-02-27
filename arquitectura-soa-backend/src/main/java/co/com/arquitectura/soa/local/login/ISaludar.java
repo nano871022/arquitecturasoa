@@ -1,4 +1,4 @@
-package co.com.arquitectura.ejb.local.login;
+package co.com.arquitectura.soa.local.login;
 /**
  * Interfaz creada para crear Fabrica a partir de esta
  * @author Alejandro Parra

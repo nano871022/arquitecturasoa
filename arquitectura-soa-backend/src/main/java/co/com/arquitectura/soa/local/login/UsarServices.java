@@ -1,9 +1,10 @@
-package co.com.arquitectura.ejb.local.login;
+package co.com.arquitectura.soa.local.login;
 
 import java.nio.file.NoSuchFileException;
 
 import org.apache.log4j.Logger;
 
+import co.com.arquitectura.annotation.proccessor.Constantes;
 import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.constants.proccessor.FileNameConstants;
 import co.com.arquitectura.constants.proccessor.PackageConstants;
@@ -46,6 +47,7 @@ public class UsarServices extends AbstractObtenerServices<IListFromProccess<Serv
 		String simpleName = this.getClass().getSimpleName();
 		String path = canonicalName.replace(GenericConstants.DOT + simpleName,
 				GenericConstants.DOT + namePath + GenericConstants.DOT + FileNameConstants.SERVICE_NAME);
+		path = path.replace("login.", "");
 		return path;
 	}
 }

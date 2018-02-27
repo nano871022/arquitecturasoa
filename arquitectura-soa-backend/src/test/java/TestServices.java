@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import co.com.arquitectura.ejb.local.login.UsarServices;
+import co.com.arquitectura.soa.local.login.UsarServices;
 
 public class TestServices {
 	@Test

@@ -3,7 +3,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/ejbModule"/>
-        <wb-resource deploy-path="/" source-path="/target/generated-sources/apt"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/annotations"/>
         <property name="java-output-path" value="/arquitectura-ejb-local/target/classes"/>
     </wb-module>
 </project-modules>

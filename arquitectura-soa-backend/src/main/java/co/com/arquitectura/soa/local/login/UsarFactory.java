@@ -1,8 +1,9 @@
-package co.com.arquitectura.ejb.local.login;
+package co.com.arquitectura.soa.local.login;
 
 import javax.ejb.Local;
 
 import org.apache.log4j.Logger;
+
 /**
  * Clase que usara la fabrica
  * @author Alejandro Parra

@@ -1,6 +1,8 @@
-package co.com.arquitectura.ejb.local.login;
+package co.com.arquitectura.soa.local.login;
 
 import co.com.arquitectura.librerias.implement.listProccess.IListFromProccess;
+import co.com.arquitectura.soa.local.login.IFabrica;
+import co.com.arquitectura.soa.local.login.ISaludar;
 import co.com.arquitectura.librerias.implement.Factory.ObtenerFabrica;
 
 /**

@@ -33,6 +33,12 @@
 			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.cliente.primefaces</groupId>
+			<artifactId>arquitectura-cliente-primefaces</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -62,6 +68,11 @@
 							<groupId>co.com.arquitectura.soa.backend</groupId>
 							<artifactId>arquitectura-soa-backend</artifactId>
 						</ejbModule>
+						<webModule>
+							<groupId>co.com.arquitectura.cliente.primefaces</groupId>
+							<artifactId>arquitectura-cliente-primefaces</artifactId>
+							<contextRoot>/Cliente-Web</contextRoot>
+						</webModule>
 					</modules>
 				</configuration>
 			</plugin>
