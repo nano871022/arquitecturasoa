@@ -5,36 +5,41 @@
 	<artifactId>arquitectura-ejb-local</artifactId>
 	<description>Se encarga de tener todas las interfaces de servicios locales</description>
 	<version>0.0.1-SNAPSHOT</version>
-	<parent>
-		<groupId>co.com.arquitectura.parent.soa</groupId>
-		<artifactId>arquitectura-parent-soa</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
 	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.anotaciones</groupId>
+			<artifactId>arquitectura-anotaciones</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitectura-librerias</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.proccessor</groupId>
 			<artifactId>arquitectura-proccessor</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.glassfish.hk2.external</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>2.5.0-b60</version>
+			<groupId>co.com.arquitectura.pojo</groupId>
+			<artifactId>arquitectura-pojos</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.dependency.commons</groupId>
+			<artifactId>arquitectura-dependency-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<compilerArgs>-proc:none</compilerArgs>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.bsc.maven</groupId>
 				<artifactId>maven-processor-plugin</artifactId>
@@ -57,6 +62,17 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>-proc:none</compilerArgs>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
 </project>

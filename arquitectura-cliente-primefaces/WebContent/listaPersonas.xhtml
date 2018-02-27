@@ -5,13 +5,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
       
-<h:form id="formulariioLogin">
+<h:form id="formularioLogin">
 	<h:panelGrid columns="1">
 		<h:outputText value="#{loginBean.valor}" />
 		<h:commandLink value="Boton Faces"/>
 		<p:outputLabel value="#{loginBean.valor}"/>
-		<p:inputText value="#{loginBean.valor}" id="valor" label="Test"  />
-		<h:inputText value="#{loginBean.valor}" id="valor" label="Test"  />
+		<p:inputText value="#{loginBean.token}" id="token" label="Tocken"  />
+		<h:inputText value="#{loginBean.valor}" id="valor2" label="Test"  />
+		<h:commandLink value="Salir session" actionListener="#{loginBean.logout}"/>
 	</h:panelGrid>
 </h:form>
 

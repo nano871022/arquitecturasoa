@@ -3,24 +3,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.arquitectura.librerias</groupId>
 	<artifactId>arquitecrura-librerias</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<description>Tiene las librerias que se usan trasversales a toda la aplicacion</description>
+	<parent>
+		<groupId>co.com.arquitectura.parent.commons</groupId>
+		<artifactId>arquitectura-parent-commons</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.0</version>
-			<scope>compile</scope>
-		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.exceptions</groupId>
 			<artifactId>arquitectura-exceptions</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

@@ -3,23 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.arquitectura.parent.web.local</groupId>
 	<artifactId>arquitectura-parent-web-local</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<properties>
-		<version-all>0.0.1-SNAPSHOT</version-all>
-	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>co.com.arquitectura.parent.commons</groupId>
-			<artifactId>arquitectura-parent-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.ejb.local</groupId>
-			<artifactId>arquitectura-ejb-local</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -31,9 +16,21 @@
 			<version>2.2</version>
 		</dependency>
 	</dependencies>
-
-	<modules>
-		<module>../arquitectura-commons</module>
-		<module>../arquitectura-cliente-primefaces</module>
-	</modules>
+	<parent>
+		<groupId>co.com.arquitectura.parent</groupId>
+		<artifactId>arquitectura-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

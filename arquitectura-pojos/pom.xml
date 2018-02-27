@@ -10,4 +10,13 @@
 		<artifactId>arquitectura-parent-commons</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>co.com.arquitectura.dependency.commons</groupId>
+			<artifactId>arquitectura-dependency-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
 </project>

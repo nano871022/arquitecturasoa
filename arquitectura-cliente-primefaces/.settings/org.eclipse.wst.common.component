@@ -5,13 +5,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <dependent-module archiveName="arquitectura-exceptions-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-exceptions/arquitectura-exceptions">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="arquitectura-constants-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-constants/arquitectura-constants">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="arquitectura-ejb-local-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-ejb-local/arquitectura-ejb-local">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arquitectura-exceptions-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-exceptions/arquitectura-exceptions">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="arquitectura-proccessor-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-proccessor/arquitectura-proccessor">
@@ -21,6 +18,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="arquitecrura-librerias-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-librerias/arquitectura-librerias">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="arquitectura-constants-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-constants/arquitectura-constants">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="arquitectura-pojos-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/arquitectura-pojos/arquitectura-pojos">

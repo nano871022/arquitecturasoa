@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 import org.junit.Test;
 
-import co.com.arquitectura.ejb_local.login.UsarFactory;
+import co.com.arquitectura.ejb.local.login.UsarFactory;
 public class TestFabrica {
 	private UsarFactory userFactory;
 

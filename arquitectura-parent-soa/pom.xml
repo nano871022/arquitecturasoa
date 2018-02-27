@@ -3,38 +3,39 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.arquitectura.parent.soa</groupId>
 	<artifactId>arquitectura-parent-soa</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<properties>
-		<applicationVersion>0.0.1-SNAPSHOT</applicationVersion>
-	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
 		</dependency>
 		<dependency>
-			<groupId>co.com.arquitectura.pojo</groupId>
-			<artifactId>arquitectura-pojos</artifactId>
-			<version>${applicationVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.ejb.query</groupId>
-			<artifactId>arquitectura-ejb-query</artifactId>
-			<version>${applicationVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.parent.commons</groupId>
-			<artifactId>arquitectura-parent-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>co.com.arquitectura.dependency.commons</groupId>
+			<artifactId>arquitectura-dependency-commons</artifactId>
+			<version>${version}</version>
 			<type>pom</type>
 		</dependency>
 	</dependencies>
-	<modules>
-		<module>../arquitectura-ejb-local</module>
-		<module>../arquitectura-ejb-query</module>
-		<module>../arquitectura-pojos</module>
-		<module>../arquitectura-commons</module>
-	</modules>
+	<parent>
+		<groupId>co.com.arquitectura.parent</groupId>
+		<artifactId>arquitectura-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<ejbVersion>3.2</ejbVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.arquitectura.parent.service</groupId>
+	<artifactId>arquitectura-parent-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<application-version>0.0.1-SNAPSHOT</application-version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>co.com.arquitectura.pojo</groupId>
+			<artifactId>arquitectura-pojos</artifactId>
+			<version>${application-version}</version>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>../arquitectura-pojos</module>
+	</modules>
+</project>

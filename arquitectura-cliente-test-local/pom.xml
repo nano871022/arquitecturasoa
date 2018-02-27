@@ -3,21 +3,20 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.com.arquitectura.cliente.local</groupId>
 	<artifactId>arquitectura-cliente-test-local</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>co.com.arquitectura.parent</groupId>
+		<artifactId>arquitectura-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<packaging>war</packaging>
 	<description>Se encarga de tener codigo para realziar pruebas de los servicios locales</description>
 	<dependencies>
-		<dependency>
-			<groupId>co.com.arquitectura.librerias</groupId>
-			<artifactId>arquitectura-librerias</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.ejb.local</groupId>
 			<artifactId>arquitectura-ejb-local</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>runtime</scope>
+			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.ejb.remoto</groupId>
@@ -32,9 +31,10 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>co.com.arquitectura.anotaciones</groupId>
-			<artifactId>arquitetura-anotaciones</artifactId>
+			<groupId>co.com.arquitectura.dependency.commons</groupId>
+			<artifactId>arquitectura-dependency-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 	<build>

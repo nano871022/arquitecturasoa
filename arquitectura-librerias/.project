@@ -3,7 +3,6 @@
 	<name>arquitectura-librerias</name>
 	<comment></comment>
 	<projects>
-		<project>arquitectura-parent-test-local</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
