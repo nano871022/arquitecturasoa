@@ -28,4 +28,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	<parent>
+		<groupId>co.com.arquitectura.parent.soa</groupId>
+		<artifactId>arquitectura-parent-soa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 </project>
