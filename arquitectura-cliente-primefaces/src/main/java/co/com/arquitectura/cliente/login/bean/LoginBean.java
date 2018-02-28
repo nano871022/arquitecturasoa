@@ -4,8 +4,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import co.com.arquitectura.ejb.local.login.interfaces.ILoginLocal;
-import co.com.arquitectura.ejb.local.login.interfaces.IVerifyPassword;
+import co.com.arquitectura.ejb.login.interfaces.ILoginLocal;
+import co.com.arquitectura.ejb.login.interfaces.IVerifyPassword;
 import co.com.arquitectura.pojo.basicos.Conexion;
 import co.com.arquitectura.pojo.basicos.privated.Usuario;
 

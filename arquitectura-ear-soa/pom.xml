@@ -12,6 +12,11 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>co.com.arquitectura.ejb.login</groupId>
+			<artifactId>arquitectura-ejb-login</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>co.com.arquitectura.librerias</groupId>
 			<artifactId>arquitectura-librerias</artifactId>
 			<version>${project.version}</version>
@@ -30,6 +35,12 @@
 		<dependency>
 			<groupId>co.com.arquitectura.soa.backend</groupId>
 			<artifactId>arquitectura-soa-backend</artifactId>
+			<version>${project.version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.soa.login</groupId>
+			<artifactId>arquitectura-soa-login</artifactId>
 			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
@@ -53,6 +64,10 @@
 							<artifactId>arquitectura-librerias</artifactId>
 						</jarModule>
 						<jarModule>
+							<groupId>co.com.arquitectura.ejb.login</groupId>
+							<artifactId>arquitectura-ejb-login</artifactId>
+						</jarModule>
+						<jarModule>
 							<groupId>co.com.arquitectura.ejb.local</groupId>
 							<artifactId>arquitectura-ejb-local</artifactId>
 						</jarModule>
@@ -67,6 +82,10 @@
 						<ejbModule>
 							<groupId>co.com.arquitectura.soa.backend</groupId>
 							<artifactId>arquitectura-soa-backend</artifactId>
+						</ejbModule>
+						<ejbModule>
+							<groupId>co.com.arquitectura.soa.login</groupId>
+							<artifactId>arquitectura-soa-login</artifactId>
 						</ejbModule>
 						<webModule>
 							<groupId>co.com.arquitectura.cliente.primefaces</groupId>

@@ -15,5 +15,7 @@
 		<module>../arquitectura-soa-dbconnect-mock</module>
 		<module>../arquitectura-soa-backend</module>
 		<module>../arquitectura-cliente-primefaces</module>
+		<module>../arquitectura-ejb-login</module>
+		<module>../arquitectura-soa-login</module>
 	</modules>
 </project>

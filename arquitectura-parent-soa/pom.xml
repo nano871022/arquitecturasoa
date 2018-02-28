@@ -15,12 +15,6 @@
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
 		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.dependency.commons</groupId>
-			<artifactId>arquitectura-dependency-commons</artifactId>
-			<version>${version}</version>
-			<type>pom</type>
-		</dependency>
 	</dependencies>
 	<parent>
 		<groupId>co.com.arquitectura.parent</groupId>
