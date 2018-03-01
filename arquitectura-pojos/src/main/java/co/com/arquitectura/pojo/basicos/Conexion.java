@@ -12,7 +12,8 @@ import co.com.arquitectura.pojo.basicos.privated.Usuario;
  */
 public class Conexion extends ADTO {
 	private String ipConexion;
-	private String referenciaConexion;
+	private String token;
+	private String tokenLogin;
 	private Date fechaConexion;
 	private Date fechaUltimaConexion;
 	private Date fechaActual;
@@ -27,6 +28,14 @@ public class Conexion extends ADTO {
 	public Integer getVerificacion() {
 		return verificacion;
 	}
+	public String getTokenLogin() {
+		return tokenLogin;
+	}
+
+	public void setTokenLogin(String tokenLogin) {
+		this.tokenLogin = tokenLogin;
+	}
+
 	public void setVerificacion(Integer verificacion) {
 		this.verificacion = verificacion;
 	}
@@ -54,11 +63,11 @@ public class Conexion extends ADTO {
 	public void setIpConexion(String ipConexion) {
 		this.ipConexion = ipConexion;
 	}
-	public String getReferenciaConexion() {
-		return referenciaConexion;
+	public String getToken() {
+		return token;
 	}
-	public void setReferenciaConexion(String referenciaConexion) {
-		this.referenciaConexion = referenciaConexion;
+	public void setToken(String token) {
+		this.token = token;
 	}
 	public Date getFechaConexion() {
 		return fechaConexion;

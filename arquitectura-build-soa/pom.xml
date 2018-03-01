@@ -6,16 +6,17 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>
-  		../arquitectura-ear-soa
-  	</module>
-		<module>
-  		../arquitectura-ejb-query
-  	</module>
+		<module>../arquitectura-exceptions</module>
+		<module>../arquitectura-constants</module>
+		<module>../arquitectura-librerias</module>
+		<module>../arquitectura-dependency-commons</module>
+		<module>../arquitectura-pojos</module>
+		<module>../arquitectura-ejb-login</module>
+		<module>../arquitectura-ear-soa</module>
+		<module>../arquitectura-ejb-query</module>
+		<module>../arquitectura-soa-login</module>
 		<module>../arquitectura-soa-dbconnect-mock</module>
 		<module>../arquitectura-soa-backend</module>
 		<module>../arquitectura-cliente-primefaces</module>
-		<module>../arquitectura-ejb-login</module>
-		<module>../arquitectura-soa-login</module>
 	</modules>
 </project>

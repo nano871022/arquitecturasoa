@@ -9,4 +9,5 @@ public static final String Name1 = "";
 public static final String name2 = "";
 public static final String name3 ="";
 public static final String name4 = "";
+public static final String VACIO = "";
 }

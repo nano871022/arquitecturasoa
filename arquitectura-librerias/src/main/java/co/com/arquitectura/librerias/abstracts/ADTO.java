@@ -12,7 +12,7 @@ import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
  * @since 15/03/2017
  * @version 0.0.1
  */
-public abstract class ADTO extends AbstractRefleccion{
+public class ADTO extends AbstractRefleccion{
 	private String llave;
 	private String usarioCreacion;
 	private Date fechaCreacion;
@@ -49,5 +49,4 @@ public abstract class ADTO extends AbstractRefleccion{
 	public void setUsarioCreacion(String usarioCreacion) {
 		this.usarioCreacion = usarioCreacion;
 	}
-	
 }
