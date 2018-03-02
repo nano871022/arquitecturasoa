@@ -24,7 +24,23 @@ public class Conexion extends ADTO {
 	private String recordar;
 	private String autoLog;
 	private Integer verificacion;
+	/** Usada para consultar en rango de fechas **/
+	private Date fechaIni;
+	/** Usada para consultar en rango de fechas **/
+	private Date fechaEnd;
 	
+	public Date getFechaIni() {
+		return fechaIni;
+	}
+	public void setFechaIni(Date fechaIni) {
+		this.fechaIni = fechaIni;
+	}
+	public Date getFechaEnd() {
+		return fechaEnd;
+	}
+	public void setFechaEnd(Date fechaEnd) {
+		this.fechaEnd = fechaEnd;
+	}
 	public Integer getVerificacion() {
 		return verificacion;
 	}
