@@ -3,7 +3,6 @@
 	<name>Ear-soa</name>
 	<comment></comment>
 	<projects>
-		<project>arquitectura-parent-soa</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

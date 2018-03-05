@@ -10,7 +10,7 @@
 			<groupId>co.com.arquitectura.pojo</groupId>
 			<artifactId>arquitectura-pojos-public</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.pojo</groupId>

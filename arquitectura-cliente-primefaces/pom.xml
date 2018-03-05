@@ -1,21 +1,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.arquitectura.cliente.test</groupId>
-	<artifactId>arquitectura-cliente-test</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>co.com.arquitectura.cliente.primefaces</groupId>
+	<artifactId>arquitectura-cliente-primefaces</artifactId>
 	<description>Se encarga de tener codigo para realizar pruebas de servicios remotos</description>
+	<packaging>war</packaging>
+	<name>Cliente-Web</name>
+	<parent>
+		<groupId>co.com.arquitectura.parent.web.local</groupId>
+		<artifactId>arquitectura-parent-web-local</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>co.com.arquitectura.ejb.local</groupId>
+			<artifactId>arquitectura-ejb-local</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitectura-librerias</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.ejb.login</groupId>
+			<artifactId>arquitectura-ejb-login</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
+		<finalName>Cliente-Web</finalName>
 	</build>
 </project>

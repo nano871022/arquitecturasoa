@@ -2,7 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>co.com.arquitectura.exceptions</groupId>
   <artifactId>arquitectura-exceptions</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>arquitectura-exception</name>
   <description>Se almacenan todas las excepciones que maneja la aplicacion</description>
+  <parent>
+  	<groupId>co.com.arquitectura.parent.commons</groupId>
+  	<artifactId>arquitectura-parent-commons</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
 </project>

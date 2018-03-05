@@ -2,7 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>co.com.arquitectura.constants</groupId>
   <artifactId>arquitectura-constants</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>arquitectura-constants</name>
   <description>Contiene las constantes que se usaran por varios modulos para evitar llamadas entre modulos inecesariamente</description>
+  <parent>
+  	<groupId>co.com.arquitectura.parent.commons</groupId>
+  	<artifactId>arquitectura-parent-commons</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
 </project>

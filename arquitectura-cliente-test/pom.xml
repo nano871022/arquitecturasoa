@@ -7,27 +7,20 @@
 	<description>Se encarga de tener codigo para realizar pruebas de servicios remotos</description>
 	<dependencies>
 		<dependency>
-			<groupId>co.com.arquitectura.librerias</groupId>
-			<artifactId>arquitecrura-librerias</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>co.com.arquitectura.ejb.remoto</groupId>
 			<artifactId>arquitectura-ejb-remoto</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.pojo</groupId>
 			<artifactId>arquitectura-pojos</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>co.com.arquitectura.anotaciones</groupId>
-			<artifactId>arquitetura-anotaciones</artifactId>
+			<groupId>co.com.arquitectura.dependency.commons</groupId>
+			<artifactId>arquitectura-dependency-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 </project>

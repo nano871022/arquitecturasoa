@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.com.arquitectura.dependency.commons</groupId>
+  <artifactId>arquitectura-dependency-commons</artifactId>
+  <packaging>pom</packaging>
+  <parent>
+  	<groupId>co.com.arquitectura.parent</groupId>
+  	<artifactId>arquitectura-parent</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <dependencies>
+  	<dependency>
+  		<groupId>co.com.arquitectura.librerias</groupId>
+  		<artifactId>arquitectura-librerias</artifactId>
+  		<version>${version}</version>
+  		<type>jar</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>co.com.arquitectura.constants</groupId>
+  		<artifactId>arquitectura-constants</artifactId>
+  		<version>${version}</version>
+  		<type>jar</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>co.com.arquitectura.anotaciones</groupId>
+  		<artifactId>arquitectura-anotaciones</artifactId>
+  		<version>${version}</version>
+  		<type>jar</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>co.com.arquitectura.exceptions</groupId>
+  		<artifactId>arquitectura-exceptions</artifactId>
+  		<version>${version}</version>
+  		<type>jar</type>
+  	</dependency>
+  </dependencies>
+</project>
