@@ -1,5 +1,8 @@
 package co.com.arquitectura.constantes.java_source.constants;
 
+import co.com.arquitectura.annotation.proccessor.Constantes;
+
+@Constantes
 public class ConstJavaSources {
 	public static final String PUBLIC = "PUBLIC";
 	public static final String THROWS = "THROWS";

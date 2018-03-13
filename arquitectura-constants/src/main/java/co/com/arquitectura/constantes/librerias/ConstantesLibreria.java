@@ -1,4 +1,7 @@
 package co.com.arquitectura.constantes.librerias;
+
+import co.com.arquitectura.annotation.proccessor.Constantes;
+
 /**
  * esta clase contiene las constantes a usar por el modulo de librerias
  * 
@@ -7,6 +10,7 @@ package co.com.arquitectura.constantes.librerias;
  * @version 0.0.1
  *
  */
+@Constantes
 public class ConstantesLibreria {
 	public static final String CONSTANTE_GET = "get";
 	public static final String CONSTANTE_SET = "set";

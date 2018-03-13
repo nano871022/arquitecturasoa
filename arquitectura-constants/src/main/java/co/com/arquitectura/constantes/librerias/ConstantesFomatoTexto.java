@@ -1,4 +1,7 @@
 package co.com.arquitectura.constantes.librerias;
+
+import co.com.arquitectura.annotation.proccessor.Constantes;
+
 /**
  * Esta clase se encarga de tener todos los codigos en costantes
  * para realziar el formateo de los textos segun la configuracion
@@ -6,6 +9,7 @@ package co.com.arquitectura.constantes.librerias;
  * @author Alejandro Parra
  * @since 30/11/2017
  */
+@Constantes
 public class ConstantesFomatoTexto {
 	public static final String BOOLEAN = "b";
 	public static final String CHAR_UNICODE = "c";

@@ -1,5 +1,8 @@
 package co.com.arquitectura.constants.generics;
 
+import co.com.arquitectura.annotation.proccessor.Constantes;
+
+@Constantes
 public final class GenericConstants {
 	public static final String DOT = ".";
 	public static final String CLASS = "class";
