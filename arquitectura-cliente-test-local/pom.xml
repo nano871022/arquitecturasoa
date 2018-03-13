@@ -14,21 +14,21 @@
 		<dependency>
 			<groupId>co.com.arquitectura.ejb.local</groupId>
 			<artifactId>arquitectura-ejb-local</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.ejb.remoto</groupId>
 			<artifactId>arquitectura-ejb-remoto</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.pojo</groupId>
 			<artifactId>arquitectura-pojos</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<scope>runtime</scope>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.dependency.commons</groupId>

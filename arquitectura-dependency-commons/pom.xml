@@ -13,24 +13,28 @@
   		<groupId>co.com.arquitectura.librerias</groupId>
   		<artifactId>arquitectura-librerias</artifactId>
   		<version>${project.version}</version>
+  		<scope>provided</scope>
   		<type>jar</type>
   	</dependency>
   	<dependency>
   		<groupId>co.com.arquitectura.constants</groupId>
   		<artifactId>arquitectura-constants</artifactId>
   		<version>${project.version}</version>
+  		<scope>provided</scope>
   		<type>jar</type>
   	</dependency>
   	<dependency>
   		<groupId>co.com.arquitectura.anotaciones</groupId>
   		<artifactId>arquitectura-anotaciones</artifactId>
   		<version>${project.version}</version>
+  		<scope>provided</scope>
   		<type>jar</type>
   	</dependency>
   	<dependency>
   		<groupId>co.com.arquitectura.exceptions</groupId>
   		<artifactId>arquitectura-exceptions</artifactId>
   		<version>${project.version}</version>
+  		<scope>provided</scope>
   		<type>jar</type>
   	</dependency>
   </dependencies>

@@ -2,6 +2,8 @@ package co.com.arquitectura.pojo.basicos.privated;
 
 import java.util.Date;
 
+import co.com.arquitectura.librerias.abstracts.ADTO;
+
 /**
  * El objeto es de tipo persona con el cual permite tener informacion basica de
  * una persona
@@ -10,7 +12,7 @@ import java.util.Date;
  * @since 23/03/2017
  * @version 0.0.1
  */
-public class Persona {
+public class Persona extends ADTO{
 	private String nombres;
 	private String apellidos;
 	private String tipoDocumento;

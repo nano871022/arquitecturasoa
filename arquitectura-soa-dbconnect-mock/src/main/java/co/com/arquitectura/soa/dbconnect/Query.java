@@ -1,8 +1,13 @@
 package co.com.arquitectura.soa.dbconnect;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import java.util.Map;
+import java.util.stream.Stream;
 
 import javax.ejb.Stateless;
 
@@ -18,7 +23,7 @@ import co.com.arquitectura.librerias.abstracts.ADTO;
 public class Query implements IQuery {
 
 	public <T extends ADTO> List<T> select(T object, String... name) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

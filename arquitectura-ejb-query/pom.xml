@@ -4,13 +4,17 @@
 	<groupId>co.com.arquitectura.ejb.query</groupId>
 	<artifactId>arquitectura-ejb-query</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>co.com.arquitectura.parent.soa</groupId>
+		<artifactId>arquitectura-parent-soa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<description>Se encarga de tener todas las interfaces para el manejo de la base de datos</description>
 	<dependencies>
 		<dependency>
-			<groupId>co.com.arquitectura.dependency.commons</groupId>
-			<artifactId>arquitectura-dependency-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>pom</type>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitectura-librerias</artifactId>
+			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -28,9 +32,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<parent>
-		<groupId>co.com.arquitectura.parent.soa</groupId>
-		<artifactId>arquitectura-parent-soa</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
 </project>

@@ -13,7 +13,7 @@
 		</dependency>
 		<dependency>
 			<groupId>co.com.arquitectura.librerias</groupId>
-			<artifactId>arquitecrura-librerias</artifactId>
+			<artifactId>arquitectura-librerias</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>runtime</scope>
 		</dependency>
