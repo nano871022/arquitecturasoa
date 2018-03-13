@@ -3,8 +3,6 @@ package co.com.arquitectura.ejb.login.interfaces;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.ejb.Local;
-
 import co.com.arquitectura.exceptions.login.LoginException;
 import co.com.arquitectura.pojo.basicos.Conexion;
 import co.com.arquitectura.pojo.basicos.privated.Usuario;
@@ -16,7 +14,6 @@ import co.com.arquitectura.pojo.basicos.privated.Usuario;
  * @author Alejandro Parra
  * @since 01/03/2018
  */
-@Local
 public interface IConexionesLocal {
 	/**
 	 * Se encarga de obtener la informacion de la conexion asociada al token

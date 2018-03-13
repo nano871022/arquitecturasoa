@@ -1,4 +1,4 @@
-package co.com.arquitectura.librerias.java_source.constants;
+package co.com.arquitectura.constantes.java_source.constants;
 
 public class ConstJavaSources {
 	public static final String PUBLIC = "PUBLIC";

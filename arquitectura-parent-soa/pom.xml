@@ -4,6 +4,11 @@
 	<groupId>co.com.arquitectura.parent.soa</groupId>
 	<artifactId>arquitectura-parent-soa</artifactId>
 	<packaging>pom</packaging>
+	<parent>
+		<groupId>co.com.arquitectura.parent</groupId>
+		<artifactId>arquitectura-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -16,11 +21,6 @@
 			<version>3.2</version>
 		</dependency>
 	</dependencies>
-	<parent>
-		<groupId>co.com.arquitectura.parent</groupId>
-		<artifactId>arquitectura-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
 	<build>
 		<plugins>
 			<plugin>

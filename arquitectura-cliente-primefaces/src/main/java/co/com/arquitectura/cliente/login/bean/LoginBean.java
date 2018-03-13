@@ -52,7 +52,7 @@ public class LoginBean {
 	public String getToken() {
 		try {
 			System.out.println(String.format("Con:%s,Mod:%s,Nav:%s", connections.getConexion().getIpConexion(),
-					connections.getConexion().getModuloConexion(), connections.getConexion().getNavegador()));
+			connections.getConexion().getModuloConexion(), connections.getConexion().getNavegador()));
 			if (StringUtils.isBlank(connections.getConexion().getToken())) {
 				connections.getConexion().setToken(tokenService.token(connections.getConexion()));
 			}

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import org.apache.commons.lang3.StringUtils;
@@ -27,6 +28,7 @@ import co.com.arquitectura.soa.login.privado.login.GenerarTOken;
 import co.com.arquitectura.soa.login.validations.ValidacionesTokens;
 
 @Stateless
+@Local
 public class LoginLocal extends AbstractLogger implements ILoginLocal, IConexionesLocal, IUsuariosLocal, ITokenLocal {
 	@EJB
 	private IQuery queryEjb;

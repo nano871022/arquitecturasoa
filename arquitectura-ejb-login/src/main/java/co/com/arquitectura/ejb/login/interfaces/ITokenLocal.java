@@ -1,7 +1,5 @@
 package co.com.arquitectura.ejb.login.interfaces;
 
-import javax.ejb.Local;
-
 import co.com.arquitectura.exceptions.login.LoginException;
 import co.com.arquitectura.pojo.basicos.Conexion;
 
@@ -13,7 +11,6 @@ import co.com.arquitectura.pojo.basicos.Conexion;
  * @since 01/03/2018
  *
  */
-@Local
 public interface ITokenLocal {
 	/**
 	 * Se encarga de suministrar la informacion de la conexion y al validar esta

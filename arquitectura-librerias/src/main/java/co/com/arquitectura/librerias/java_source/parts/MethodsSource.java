@@ -2,11 +2,9 @@ package co.com.arquitectura.librerias.java_source.parts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import co.com.arquitectura.librerias.java_source.constants.ConstJavaSources;
-import co.com.arquitectura.librerias.java_source.constants.Modifier;
+import co.com.arquitectura.constantes.java_source.constants.ConstJavaSources;
+import co.com.arquitectura.constantes.java_source.constants.Modifier;
 import co.com.arquitectura.librerias.java_source.interfaces.ISource;
 import co.com.arquitectura.librerias.validacion.Validacion;
 

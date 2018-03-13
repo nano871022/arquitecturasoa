@@ -35,9 +35,6 @@
         <dependent-module archiveName="arquitectura-pojos-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/arquitectura-pojos/arquitectura-pojos">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="arquitectura-anotaciones-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/co/com/arquitectura/anotaciones/arquitectura-anotaciones/0.0.1-SNAPSHOT/arquitectura-anotaciones-0.0.1-SNAPSHOT.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="junit-4.11.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/junit/junit/4.11/junit-4.11.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>

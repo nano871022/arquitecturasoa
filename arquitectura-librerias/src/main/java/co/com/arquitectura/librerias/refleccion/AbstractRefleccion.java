@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import co.com.arquitectura.librerias.constantes.ConstantesLibreria;
+import co.com.arquitectura.constantes.librerias.ConstantesLibreria;
 
 /**
  * Esta clase es estatica y se encarga de implementar secciones de codigo para

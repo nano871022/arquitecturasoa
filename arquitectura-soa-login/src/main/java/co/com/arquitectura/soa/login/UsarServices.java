@@ -4,7 +4,6 @@ import java.nio.file.NoSuchFileException;
 
 import org.apache.log4j.Logger;
 
-import co.com.arquitectura.annotation.proccessor.Constantes;
 import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.constants.proccessor.FileNameConstants;
 import co.com.arquitectura.constants.proccessor.PackageConstants;

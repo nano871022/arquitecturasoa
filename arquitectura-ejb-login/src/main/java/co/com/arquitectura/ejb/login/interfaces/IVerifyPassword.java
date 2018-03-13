@@ -1,7 +1,5 @@
 package co.com.arquitectura.ejb.login.interfaces;
 
-import javax.ejb.Local;
-
 import co.com.arquitectura.pojo.basicos.Conexion;
 import co.com.arquitectura.pojo.basicos.privated.Usuario;
 
@@ -11,7 +9,6 @@ import co.com.arquitectura.pojo.basicos.privated.Usuario;
  * @since 28/07/2017
  *
  */
-@Local
 public interface IVerifyPassword {
 	/**
 	 * este servicio se encarga de verificar que el password enviado sea igual al password 

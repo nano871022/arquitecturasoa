@@ -16,7 +16,7 @@
 			<artifactId>arquitectura-dependency-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>pom</type>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

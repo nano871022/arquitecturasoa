@@ -1,4 +1,4 @@
-package co.com.arquitectura.librerias.constantes;
+package co.com.arquitectura.constantes.librerias;
 /**
  * esta clase contiene las constantes a usar por el modulo de librerias
  * 
@@ -10,4 +10,5 @@ package co.com.arquitectura.librerias.constantes;
 public class ConstantesLibreria {
 	public static final String CONSTANTE_GET = "get";
 	public static final String CONSTANTE_SET = "set";
+	public static final String CONSTANTE_VACIO = "";
 }

@@ -1,7 +1,5 @@
 package co.com.arquitectura.ejb.login.interfaces;
 
-import javax.ejb.Local;
-
 import co.com.arquitectura.exceptions.login.LoginException;
 import co.com.arquitectura.pojo.basicos.Conexion;
 import co.com.arquitectura.pojo.basicos.privated.Usuario;
@@ -12,7 +10,6 @@ import co.com.arquitectura.pojo.basicos.privated.Usuario;
  * @author Alejandro Parra
  * @since 01/03/2018
  */
-@Local
 public interface ILoginLocal {
 	/**
 	 * Suministra el usuario y el password(encriptado) para ser validado y envia la

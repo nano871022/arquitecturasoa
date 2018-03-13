@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 
+import co.com.arquitectura.constantes.librerias.ConstantesLibreria;
 import co.com.arquitectura.constants.web.WebConstants;
 import co.com.arquitectura.pojo.basicos.Conexion;
 
@@ -67,7 +68,7 @@ public class Conexiones {
 
 	public final void endSession() {
 		sessiones.removeAttribute(WebConstants.TOKEN_LOGIN_SESSION);
-		conexion.setTokenLogin("");
+		conexion.setTokenLogin(ConstantesLibreria.CONSTANTE_VACIO);
 	}
 	
 	public Conexion getConexion() {

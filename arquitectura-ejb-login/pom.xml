@@ -14,6 +14,25 @@
 			<groupId>co.com.arquitectura.pojo</groupId>
 			<artifactId>arquitectura-pojos</artifactId>
 			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.exceptions</groupId>
+			<artifactId>arquitectura-exceptions</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.constants</groupId>
+			<artifactId>arquitectura-constants</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.librerias</groupId>
+			<artifactId>arquitectura-librerias</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>

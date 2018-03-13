@@ -3,8 +3,8 @@ package co.com.arquitectura.librerias.java_source.parts;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.com.arquitectura.librerias.java_source.constants.ConstJavaSources;
-import co.com.arquitectura.librerias.java_source.constants.Modifier;
+import co.com.arquitectura.constantes.java_source.constants.ConstJavaSources;
+import co.com.arquitectura.constantes.java_source.constants.Modifier;
 import co.com.arquitectura.librerias.java_source.interfaces.ISource;
 
 /**

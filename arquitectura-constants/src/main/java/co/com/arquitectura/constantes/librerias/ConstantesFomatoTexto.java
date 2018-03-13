@@ -1,4 +1,4 @@
-package co.com.arquitectura.librerias.constantes;
+package co.com.arquitectura.constantes.librerias;
 /**
  * Esta clase se encarga de tener todos los codigos en costantes
  * para realziar el formateo de los textos segun la configuracion

@@ -1,6 +1,7 @@
 package co.com.arquitectura.soa.login;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import co.com.arquitectura.ejb.login.interfaces.IVerifyPassword;
@@ -9,6 +10,7 @@ import co.com.arquitectura.pojo.basicos.privated.Usuario;
 import co.com.arquitectura.soa.login.privado.interfaz.login.IConexion;
 
 @Stateless
+@Local
 public class verifyPassword implements IVerifyPassword {
 	
 	@EJB
