@@ -1,20 +1,20 @@
 package co.com.arquitectura.soa.dbconnect;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Map;
-import java.util.stream.Stream;
 
 import javax.ejb.Stateless;
 
 import co.com.arquitectura.ejb.query.IQuery;
 import co.com.arquitectura.librerias.abstracts.ADTO;
+import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
+
 /**
- * se encarga de relizar el mock para simular el uso de base de datos, es una prueba de conexion
+ * se encarga de relizar el mock para simular el uso de base de datos, es una
+ * prueba de conexion
+ * 
  * @author Alejandro Parra
  * @since 30/07/2017
  *
@@ -23,28 +23,63 @@ import co.com.arquitectura.librerias.abstracts.ADTO;
 public class Query implements IQuery {
 
 	public <T extends ADTO> List<T> select(T object, String... name) throws Exception {
-		
-		return null;
+		List<T> listaout = null;
+		File<T> file = new File<T>();
+		List<T> lista = file.read(object);
+		for (T obj : lista) {
+			if (((AbstractRefleccion) obj).isEqualFillField(object, obj)) {
+				if (listaout == null) {
+					listaout = new ArrayList<T>();
+				}
+				listaout.add(obj);
+			}
+		}
+		return listaout;
 	}
 
 	public <T extends ADTO> Integer selectCount(T object, String... name) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return select(object).size();
 	}
 
 	public <T extends ADTO> void update(T object, String... name) throws Exception {
-		// TODO Auto-generated method stub
-
+		File<T> file = new File<T>();
+		boolean bl = false; 
+		List<T> lista = file.read(object);
+		for (int i = 0 ; i < lista.size();i++) {
+			T obj = lista.get(i);
+			if (((ADTO) obj).getLlave() == ((ADTO)object).getLlave()) {
+				lista.set(i,object);
+				bl = true;
+			}
+		}
+		if (bl)
+			file.write(lista);
+		else
+			throw new Exception("No se logro actualizar el registro.");
 	}
 
 	public <T extends ADTO> void delete(T object, String... name) throws Exception {
-		// TODO Auto-generated method stub
-
+		File<T> file = new File<T>();
+		boolean bl = false;
+		List<T> lista = file.read(object);
+		for (T obj : lista) {
+			if (((AbstractRefleccion) obj).isEqualFillField(object, obj)) {
+				lista.remove(obj);
+				bl = true;
+			}
+		}
+		if (bl)
+			file.write(lista);
+		else
+			throw new Exception("No se logro eliminar el registro.");
 	}
 
 	public <T extends ADTO> void insert(T object, String... name) throws Exception {
-		// TODO Auto-generated method stub
-
+		File<T> file = new File<T>();
+		List<T> lista = file.read(object);
+		((ADTO)object).setLlave(new DecimalFormat("000000000").format(lista.size()));
+		lista.add(object);
+		file.write(lista);
 	}
 
 	public <T> T procedure(String name, Map<String, Object> mapaInOut, String... packageName) throws Exception {

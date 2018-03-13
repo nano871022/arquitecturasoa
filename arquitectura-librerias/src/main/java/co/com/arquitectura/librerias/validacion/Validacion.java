@@ -364,4 +364,21 @@ public final class Validacion {
 		return j;
 	}
 
+	/**
+	 * Se encarga de verificar si el objeto es diferente de null y no es un campo
+	 * vacio si es un String
+	 * 
+	 * @param value {@link Object}
+	 * @return {@link Boolean} <code>true</code>/<code>false</code>
+	 */
+	public static final <T extends Object> Boolean isNotEmpty(T value) throws Exception {
+		if(value != null) {
+			if(value instanceof String) {
+				return StringUtils.isNotBlank(((String)value));
+			}
+			return true;
+		}
+		return false;
+	}
+
 }

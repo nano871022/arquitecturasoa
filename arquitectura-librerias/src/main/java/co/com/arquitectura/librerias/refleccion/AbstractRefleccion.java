@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import co.com.arquitectura.constantes.librerias.ConstantesLibreria;
+import co.com.arquitectura.librerias.validacion.Validacion;
 
 /**
  * Esta clase es estatica y se encarga de implementar secciones de codigo para
@@ -319,20 +320,21 @@ public class AbstractRefleccion {
 		Field[] fields = clase.getDeclaredFields();
 		for (Field field : fields) {
 			if (out.length() > 0) {
-				out += ",";
+				out += "||";
 			}
-			out += String.format("%s=%s", field.getName(), obtenerValor(field));
+			out += String.format("%s::%s", field.getName(), obtenerValor(field));
 		}
 		try {
 			if (clase.getSuperclass() != null) {
-				out += toStringRecord(clase.getSuperclass());
+				String out2 = "";
+				out2 = toStringRecord(clase.getSuperclass());
+				if (out2.length() > 0) {
+					out += "||";
+					out += out2;
+				}
 			}
 		} catch (Exception e) {
 		}
-		if (out.length() > 0) {
-			out = "[" + out + "]";
-		}
-
 		return out;
 	}
 
@@ -345,6 +347,32 @@ public class AbstractRefleccion {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		if (out.length() > 0) {
+			out = "[[" + out + "]]";
+		}
 		return out;
+	}
+
+	/**
+	 * Se encarga de validar que dos objetos son del mismo tipo, ademas que los
+	 * valores de objinit se encontraron en objcompare
+	 * 
+	 * @param objInit {@link Object}
+	 * @param objCompare {@link Object}
+	 * @return {@link Boolean}
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public final <T extends Object> Boolean isEqualFillField(T objInit, T objCompare) throws Exception {
+		Field[] fields = objInit.getClass().getDeclaredFields();
+		Class<T> clase = (Class<T>) objInit.getClass();
+		for (Field field : fields) {
+			if (Validacion.isNotEmpty(obtenerValor(field, objInit, clase))) {
+				if (obtenerValor(field, objInit, clase) != obtenerValor(field, objCompare, clase)) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

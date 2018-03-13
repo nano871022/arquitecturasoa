@@ -1,6 +1,7 @@
 package co.com.arquitectura.soa.login;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -38,10 +39,27 @@ public class LoginLocal extends AbstractLogger implements ILoginLocal, IConexion
 		String token = "";
 		try {
 			List<Conexion> lista = queryEjb.select(connect);
+			if (lista != null)
+				if (lista.size() != 1) {
+					throw new LoginException("No se encontro la conección", this.getClass());
+				}
 			List<Usuario> listU = queryEjb.select(user);
+			if (listU != null)
+				if (listU.size() != 1) {
+					throw new LoginException("NO se encontro el usuario", this.getClass());
+				}
 			token = GenerarTOken.tokenSession(user.getUsuario(), connect.getIpConexion(), connect.getModuloConexion(),
 					connect.getNavegador());
-
+			connect.setToken(token);
+			connect.setEstadoConexion("A");
+			connect.setFechaConexion((new Date()));
+			connect.setUsuario(user);
+			connect.setUsarioCreacion(user.getUsuario());
+			if (StringUtils.isNotBlank(connect.getLlave())) {
+				queryEjb.update(connect);
+			} else {
+				queryEjb.insert(connect);
+			}
 			logger.info("Creando conexion del usuario con el token " + token);
 
 			return token;
