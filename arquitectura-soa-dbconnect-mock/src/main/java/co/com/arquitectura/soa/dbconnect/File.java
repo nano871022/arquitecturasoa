@@ -26,22 +26,27 @@ public class File<T extends Object> {
 					String clean = s;
 					clean = clean.replace("[[", "");
 					clean = clean.replace("]]", "");
-					String[] splits = clean.split("||");
+					String[] splits = clean.split("\\|\\|");
+					System.out.println("Campos::"+splits.length+" "+splits[0]);
 					for (String split : splits) {
+						System.out.println("valuepair::"+split);
 						String[] valuepair = split.split("::");
 						if (valuepair.length == 2)
 							((AbstractRefleccion) newObj).set(valuepair[0], valuepair[1]);
 					}
+					System.out.println("loads::"+((AbstractRefleccion)newObj).toStrings());
 					lista.add(newObj);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			});
+			stream.close();
 		} catch(NoSuchFileException e) {
 			throw new Exception("No se encontro el archivo "+e.getMessage());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return lista;
 	}
 
@@ -55,9 +60,11 @@ public class File<T extends Object> {
 				br.write(getLine(obj));
 				br.newLine();
 			}
+			br.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	private String getLine(T obj) throws Exception {

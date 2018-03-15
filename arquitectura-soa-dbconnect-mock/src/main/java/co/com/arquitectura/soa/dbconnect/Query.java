@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.ejb.Stateless;
 
+import org.apache.log4j.Logger;
+
 import co.com.arquitectura.ejb.query.IQuery;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
@@ -21,7 +23,7 @@ import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
  */
 @Stateless
 public class Query implements IQuery {
-
+	private Logger log = Logger.getLogger(this.getClass());
 	public <T extends ADTO> List<T> select(T object, String... name) throws Exception {
 		List<T> listaout = null;
 		File<T> file = new File<T>();
@@ -47,6 +49,7 @@ public class Query implements IQuery {
 		List<T> lista = file.read(object);
 		for (int i = 0 ; i < lista.size();i++) {
 			T obj = lista.get(i);
+			log.info(((ADTO) obj).getLlave() +"=="+ ((ADTO)object).getLlave());
 			if (((ADTO) obj).getLlave() == ((ADTO)object).getLlave()) {
 				lista.set(i,object);
 				bl = true;
