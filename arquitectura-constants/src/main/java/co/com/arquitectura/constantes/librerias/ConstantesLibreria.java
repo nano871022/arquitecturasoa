@@ -15,4 +15,6 @@ public class ConstantesLibreria {
 	public static final String CONSTANTE_GET = "get";
 	public static final String CONSTANTE_SET = "set";
 	public static final String CONSTANTE_VACIO = "";
+	public static final String CONSTANTE_NULL = "NULL";
 }
+

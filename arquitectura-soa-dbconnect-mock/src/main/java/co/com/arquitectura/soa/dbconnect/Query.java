@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import co.com.arquitectura.ejb.query.IQuery;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
+import co.com.arquitectura.librerias.validacion.Validacion;
 
 /**
  * se encarga de relizar el mock para simular el uso de base de datos, es una
@@ -24,6 +25,7 @@ import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
 @Stateless
 public class Query implements IQuery {
 	private Logger log = Logger.getLogger(this.getClass());
+
 	public <T extends ADTO> List<T> select(T object, String... name) throws Exception {
 		List<T> listaout = null;
 		File<T> file = new File<T>();
@@ -44,14 +46,16 @@ public class Query implements IQuery {
 	}
 
 	public <T extends ADTO> void update(T object, String... name) throws Exception {
+		if(!Validacion.isNotEmpty(((ADTO) object).getLlave())) {
+			throw new Exception("El registro a actualizar no contiene una llave.");
+		}
 		File<T> file = new File<T>();
-		boolean bl = false; 
+		boolean bl = false;
 		List<T> lista = file.read(object);
-		for (int i = 0 ; i < lista.size();i++) {
+		for (int i = 0; i < lista.size(); i++) {
 			T obj = lista.get(i);
-			log.info(((ADTO) obj).getLlave() +"=="+ ((ADTO)object).getLlave());
-			if (((ADTO) obj).getLlave() == ((ADTO)object).getLlave()) {
-				lista.set(i,object);
+			if (((ADTO) object).getLlave().contentEquals(((ADTO) obj).getLlave())) {
+				lista.set(i, object);
 				bl = true;
 			}
 		}
@@ -80,7 +84,7 @@ public class Query implements IQuery {
 	public <T extends ADTO> void insert(T object, String... name) throws Exception {
 		File<T> file = new File<T>();
 		List<T> lista = file.read(object);
-		((ADTO)object).setLlave(new DecimalFormat("000000000").format(lista.size()));
+		((ADTO) object).setLlave(new DecimalFormat("000000000").format(lista.size()));
 		lista.add(object);
 		file.write(lista);
 	}

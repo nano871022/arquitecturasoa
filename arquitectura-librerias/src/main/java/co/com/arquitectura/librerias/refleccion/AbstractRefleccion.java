@@ -2,6 +2,9 @@ package co.com.arquitectura.librerias.refleccion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
@@ -30,6 +33,7 @@ public class AbstractRefleccion {
 	 *            se desea poner el nuevo valor
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public final <T extends Object> void set(String nombreCampo, T valor) throws Exception {
 		ponerValor(obtenerCampo(nombreCampo), valor);
 	}
@@ -56,6 +60,7 @@ public class AbstractRefleccion {
 	 *         obtuvo el valor
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public final <T extends Object> T get(String nombreCampo) throws Exception {
 		return obtenerValor(obtenerCampo(nombreCampo));
 	}
@@ -69,10 +74,21 @@ public class AbstractRefleccion {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	protected final <T extends Object> Field obtenerCampo(String nombreCampo) throws Exception {
-		Class<T> clase = (Class<T>) this.getClass();
-		Field campo = clase.getField(nombreCampo);
-		return campo;
+	protected final <T extends Object> Field obtenerCampo(String nombreCampo, Class<T>... clases) throws Exception {
+		Class<T> clase = null;
+		try {
+			if (clases.length == 0)
+				clase = (Class<T>) this.getClass();
+			else
+				clase = clases[0];
+
+			return clase.getDeclaredField(nombreCampo);
+		} catch (NoSuchFieldException e) {
+			Class<T> clase2 = (Class<T>) clase.getSuperclass();
+			if (clase2 != null)
+				return obtenerCampo(nombreCampo, clase2);
+		}
+		return null;
 	}
 
 	/**
@@ -167,12 +183,20 @@ public class AbstractRefleccion {
 	 */
 	protected final <T extends Object> void ponerValor(Field campo, T instancia, Class<T> clase, Object valor)
 			throws Exception {
+		if (valor instanceof String) {
+			if (!Validacion.isNotEmpty(valor))
+				return;
+			if (((String) valor).trim().toUpperCase().contentEquals(ConstantesLibreria.CONSTANTE_NULL))
+				return;
+		}
 		if (campo.isAccessible()) {
-			campo.set(instancia, valor);
+				campo.set(instancia, parseValor(valor, campo.getType()));
 		} else {
-			Method metodo = clase.getMethod(obtenerSet(campo.getName()), valor.getClass());
+			Method metodo = null;
+				metodo = clase.getMethod(obtenerSet(campo.getName()), parseValor(valor, campo.getType()).getClass());
+
 			if (metodo != null) {
-				metodo.invoke(instancia, valor);
+					metodo.invoke(instancia, parseValor(valor, campo.getType()));
 			} else {
 				campo.setAccessible(true);
 				ponerValor(campo, instancia, clase, valor);
@@ -338,6 +362,12 @@ public class AbstractRefleccion {
 		return out;
 	}
 
+	/**
+	 * Se encarga de imprimir todas las variables del objeto separando cada campo
+	 * por || y los valores del nombre del campo con ::
+	 * 
+	 * @return {@link String}
+	 */
 	@SuppressWarnings("unchecked")
 	public final <T extends Object> String toStrings() {
 		String out = "";
@@ -357,8 +387,10 @@ public class AbstractRefleccion {
 	 * Se encarga de validar que dos objetos son del mismo tipo, ademas que los
 	 * valores de objinit se encontraron en objcompare
 	 * 
-	 * @param objInit {@link Object}
-	 * @param objCompare {@link Object}
+	 * @param objInit
+	 *            {@link Object}
+	 * @param objCompare
+	 *            {@link Object}
 	 * @return {@link Boolean}
 	 * @throws Exception
 	 */
@@ -374,5 +406,37 @@ public class AbstractRefleccion {
 			}
 		}
 		return true;
+	}
+	/**
+	 * Se encarga de procesar el valor que se entrega y transforma el valor al destino
+	 * @param original {@link Object}
+	 * @param destino {@link Class} < ? >
+	 * @param formatos {@link String} se ingresa el formato de destino si es necesario por defecto para Fechas es E MMM dd HH:mm:ss z yyyy
+	 * @return {@link Object} por defecto si no se valida se devuelve el mismo valor obtenido
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public final <T, S extends Object> T parseValor(S original, Class<T> destino, String... formatos) throws Exception {
+		if (original instanceof String) {
+			if (destino.equals(Date.class)) {
+				String formato = "EEE MMM dd HH:mm:ss z yyyy";
+				if (formatos.length == 1) {
+					formato = formatos[0];
+				}
+				SimpleDateFormat format = new SimpleDateFormat(formato,Locale.ENGLISH);
+				return (T) format.parse((String) original);
+			}
+		}
+		return (T) original;
+	}
+	
+	public static void main(String...strings) {
+		String valor = "Thu Mar 16 09:39:37 COT 2018";
+		AbstractRefleccion ar = new AbstractRefleccion();
+		try {
+			Date d = ar.parseValor(valor, Date.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -19,7 +19,7 @@ import co.com.arquitectura.pojo.basicos.Conexion;
  * @since 01/03/2018
  */
 public class Conexiones {
-	private static Conexiones conexiones;
+	
 	private Conexion conexion;
 	private FacesContext facesContext;
 	private ExternalContext externalContext;
@@ -29,11 +29,14 @@ public class Conexiones {
 	}
 
 	public final static Conexiones instance() throws Exception {
-		if (conexiones == null) {
-			conexiones = new Conexiones();
-			conexiones.init();
-		}
-		return conexiones;
+			Conexiones conexiones = new Conexiones();
+			conexiones.loadContext();
+			if((Conexiones) conexiones.sessiones.getAttribute(WebConstants.CONEXION_SESSION) != null ) {
+				return (Conexiones) conexiones.sessiones.getAttribute(WebConstants.CONEXION_SESSION);
+			}else {
+				conexiones.init();
+				return conexiones;
+			}
 	}
 
 	private void loadContext() throws Exception {
@@ -50,7 +53,6 @@ public class Conexiones {
 	}
 
 	private final void init() throws Exception {
-		loadContext();
 		conexion = new Conexion();
 		conexion.setIpConexion(((HttpServletRequest) externalContext.getRequest()).getLocalAddr());
 		conexion.setModuloConexion(externalContext.getContextName());

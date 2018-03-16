@@ -11,4 +11,5 @@ import co.com.arquitectura.annotation.proccessor.Constantes;
 public class WebConstants {
 	public final static String HEADER_USER_AGENT = "User-Agent";
 	public final static String TOKEN_LOGIN_SESSION = "TokenLogin";
+	public final static String CONEXION_SESSION = "Conexion"; 
 }

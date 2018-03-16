@@ -1,13 +1,13 @@
 package co.com.arquitectura.soa.login;
 
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Init;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
@@ -33,16 +33,19 @@ import co.com.arquitectura.soa.login.validations.ValidacionesTokens;
 public class LoginLocal extends AbstractLogger implements ILoginLocal, IConexionesLocal, IUsuariosLocal, ITokenLocal {
 	@EJB
 	private IQuery queryEjb;
-
+	@Init
 	@Services(alcance = scope.EJB, tipo = kind.PUBLIC, alias = "IniciarSesion", descripcion = "Se encarga de iniciar sesion en la aplicacion, retornado las condiciones de coneion para el usuario")
 	public String login(Usuario user, Conexion connect) throws LoginException {
 		String token = "";
 		try {
 			List<Conexion> lista = queryEjb.select(connect);
-			if (lista != null)
+			if (lista != null) {
 				if (lista.size() != 1) {
-					throw new LoginException("No se encontro la conección", this.getClass());
+					throw new LoginException("No se encontro la conexión.", this.getClass());
 				}
+			}else {
+				throw new LoginException("No se encontro la conexión.",this.getClass());
+			}
 			List<Usuario> listU = queryEjb.select(user);
 			if (listU != null)
 				if (listU.size() != 1) {
@@ -63,7 +66,9 @@ public class LoginLocal extends AbstractLogger implements ILoginLocal, IConexion
 			logger.info("Creando conexion del usuario con el token " + token);
 
 			return token;
-		} catch (Exception e) {
+		}catch(LoginException e) {
+			throw e;
+		}catch (Exception e) {
 			throw new LoginException("Se genero error en el login.", this.getClass(), e);
 		}
 	}
@@ -71,8 +76,17 @@ public class LoginLocal extends AbstractLogger implements ILoginLocal, IConexion
 	@Services(alcance = scope.EJB, tipo = kind.PUBLIC, alias = "TerminarSesion", descripcion = "Se encarga de terminar la conexion a la aplicacion para el usuario.")
 	public void logout(String token, Conexion connect) throws LoginException {
 		try {
-			queryEjb.update(connect);
-			logger.info("Sesion terminada.");
+			if (connect.getToken() == token) {
+				connect.setTokenLogin(null);
+				connect.setFechaUltimaConexion(new Date());
+				connect.setEstadoConexion("I");
+				queryEjb.update(connect);
+				logger.info("Sesion terminada.");
+			} else {
+				throw new LoginException("El token no concuerda.", this.getClass());
+			}
+		} catch (LoginException e) {
+			throw e;
 		} catch (Exception e) {
 			throw new LoginException("Se genero error en el logout", this.getClass(), e);
 		}

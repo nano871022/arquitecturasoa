@@ -5,6 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 
 import co.com.arquitectura.cliente.primefaces.singleton.Conexiones;
 import co.com.arquitectura.ejb.login.interfaces.ILoginLocal;
@@ -26,6 +27,7 @@ public class LoginBean {
 	private Usuario usuario;
 	private String valor;
 	private String token;
+	private Logger log = Logger.getLogger(this.getClass()); 
 
 	public LoginBean() {
 		try {
@@ -69,7 +71,8 @@ public class LoginBean {
 			String token = loginService.login(usuario, connections.getConexion());
 			connections.setSessionLogin(token);
 		} catch (LoginException e) {
-			e.printStackTrace();
+			log.error(e);
+//			e.printStackTrace();
 		}
 	}
 

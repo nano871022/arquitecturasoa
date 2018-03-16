@@ -16,37 +16,39 @@ import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
 public class File<T extends Object> {
 	@SuppressWarnings("unchecked")
 	public List<T> read(T obj) throws Exception {
-		T newObj = (T) obj.getClass().newInstance();
 		List<T> lista = new ArrayList<T>();
 		String fileName = obj.getClass().getSimpleName();
 		Path path = Paths.get(fileName + ".bd");
 		try (Stream<String> stream = Files.lines(path)) {
 			stream.forEach((s) -> {
 				try {
+					T newObj = (T) obj.getClass().newInstance();
 					String clean = s;
 					clean = clean.replace("[[", "");
 					clean = clean.replace("]]", "");
 					String[] splits = clean.split("\\|\\|");
-					System.out.println("Campos::"+splits.length+" "+splits[0]);
 					for (String split : splits) {
-						System.out.println("valuepair::"+split);
 						String[] valuepair = split.split("::");
 						if (valuepair.length == 2)
-							((AbstractRefleccion) newObj).set(valuepair[0], valuepair[1]);
-					}
-					System.out.println("loads::"+((AbstractRefleccion)newObj).toStrings());
+							try {
+								((AbstractRefleccion) newObj).set(valuepair[0], valuepair[1]);
+							} catch (NoSuchMethodException e) {
+								System.out.println("No se encontro metodo::"+e.getMessage());
+							}
+					}//end for
+					System.out.println("loads::" + ((AbstractRefleccion) newObj).toStrings());
 					lista.add(newObj);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			});
 			stream.close();
-		} catch(NoSuchFileException e) {
-			throw new Exception("No se encontro el archivo "+e.getMessage());
-		}catch (Exception e) {
+		} catch (NoSuchFileException e) {
+			throw new Exception("No se encontro el archivo " + e.getMessage());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return lista;
 	}
 
@@ -54,7 +56,7 @@ public class File<T extends Object> {
 		T objt = lobj.get(0);
 		String fileName = objt.getClass().getSimpleName();
 		Path path = Paths.get(fileName + ".bd");
-		System.out.println(path.getFileName()+" - "+path.getFileSystem());
+		System.out.println(path.getFileName() + " - " + path.getFileSystem());
 		try (BufferedWriter br = Files.newBufferedWriter(path, Charset.defaultCharset(), StandardOpenOption.CREATE)) {
 			for (T obj : lobj) {
 				br.write(getLine(obj));
@@ -64,7 +66,7 @@ public class File<T extends Object> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	private String getLine(T obj) throws Exception {
