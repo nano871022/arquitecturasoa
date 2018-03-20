@@ -9,7 +9,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>co.com.arquitectura.anotaciones</groupId>
-			<artifactId>arquitetura-anotaciones</artifactId>
+			<artifactId>arquitectura-anotaciones</artifactId>
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>

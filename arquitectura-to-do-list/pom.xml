@@ -18,13 +18,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>co.com.arquitectura.dependency.commons</groupId>
-			<artifactId>arquitectura-dependency-commons</artifactId>
-			<version>${project.version}</version>
-			<type>POM</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>co.com.arquitectura.pojo</groupId>
 			<artifactId>arquitectura-pojos</artifactId>
 			<version>${project.version}</version>

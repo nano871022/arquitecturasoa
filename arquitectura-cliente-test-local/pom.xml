@@ -30,12 +30,6 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>co.com.arquitectura.dependency.commons</groupId>
-			<artifactId>arquitectura-dependency-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>pom</type>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -1,4 +1,4 @@
-package co.com.arquitectura.annotation.LinkObj;
+package co.com.arquitectura.annotation.linked;
 
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
