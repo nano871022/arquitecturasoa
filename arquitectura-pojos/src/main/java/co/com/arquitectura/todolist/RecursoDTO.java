@@ -7,7 +7,8 @@ import co.com.arquitectura.pojo.basicos.privated.Persona;
 public class RecursoDTO extends ADTO {
 	@LinkKey(classLinked=ProjectoDTO.class)
 	private String idProjecto;
-	private Persona persona;
+	@LinkKey(classLinked=Persona.class)
+	private String idPersona;
 	@LinkKey(classLinked=CargoDTO.class)
 	private String idCargo;
 	private String estado;
@@ -25,11 +26,12 @@ public class RecursoDTO extends ADTO {
 	public void setIdProjecto(String idProjecto) {
 		this.idProjecto = idProjecto;
 	}
-	public Persona getPersona() {
-		return persona;
+	
+	public String getIdPersona() {
+		return idPersona;
 	}
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setIdPersona(String persona) {
+		this.idPersona = persona;
 	}
 	public String getIdCargo() {
 		return idCargo;

@@ -26,6 +26,12 @@
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
 		</dependency>
+		<dependency>
+			<groupId>co.com.arquitectura.exceptions</groupId>
+			<artifactId>arquitectura-exceptions</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

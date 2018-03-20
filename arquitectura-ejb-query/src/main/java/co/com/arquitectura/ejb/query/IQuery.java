@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.ejb.Local;
 
+import co.com.arquitectura.exceptions.query.QueryException;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 /**
  * se encarga de manejar las consultas a la base de datos, se maneja por interfaz, para realizar conexion a las
@@ -21,7 +22,7 @@ public interface IQuery {
 	 * @return {@link List} {@link ADTO} extends
 	 * @throws Exception
 	 */
-	public <T extends ADTO> List<T> select(T object,String... name)throws Exception;
+	public <T extends ADTO> List<T> select(T object,String... name)throws QueryException;
 	/**
 	 * se encarga de buscar segun el objeto suministrado y entrega un numero (usualmente usado pa|ra select count(1) from XXX)
 	 * @param object {@link ADTO} extends
@@ -29,28 +30,28 @@ public interface IQuery {
 	 * @return {@link Integer}
 	 * @throws Exception
 	 */
-	public <T extends ADTO> Integer selectCount(T object,String... name) throws Exception;
+	public <T extends ADTO> Integer selectCount(T object,String... name) throws QueryException;
 	/**
 	 * se encarga de actualziar un registro en la base de datos
 	 * @param object {@link ADTO} extends
 	 * @param name {@link String} nombre de conexion (opcional)
 	 * @throws Exception
 	 */
-	public <T extends ADTO> void update(T object,String... name) throws Exception;
+	public <T extends ADTO> void update(T object,String... name) throws QueryException;
 	/**
 	 * se encarga de eliminar un registro de la base de datos
 	 * @param object {@link ADTO} extends
 	 * @param name {@link String} nombre de conexion (opcional)
 	 * @throws Exception
 	 */
-	public <T extends ADTO> void delete(T object,String... name) throws Exception;
+	public <T extends ADTO> void delete(T object,String... name) throws QueryException;
 	/**
 	 * se encarga de ingresar un registro a la base de datos
 	 * @param object {@link ADTO} extends
 	 * @param name {@link String} nombre de conexion (opcional)
 	 * @throws Exception
 	 */
-	public <T extends ADTO> void insert(T object,String... name) throws Exception;
+	public <T extends ADTO> void insert(T object,String... name) throws QueryException;
 	/**
 	 * Se encarga de llamar a los procedimientos almacenados y retornar un valor de definido
 	 * @param name {@link String} nombre del procedimieto(sin paquete)
@@ -59,5 +60,5 @@ public interface IQuery {
 	 * @return {@link Object} objeto no definido de retornos
 	 * @throws Exception
 	 */
-	public <T extends Object> T procedure(String name, Map<String,Object> mapaInOut,String... packageName)throws Exception; 
+	public <T extends Object> T procedure(String name, Map<String,Object> mapaInOut,String... packageName)throws QueryException; 
 }

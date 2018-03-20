@@ -7,13 +7,13 @@ public class CargoDTO extends ADTO {
 	private String nombre;
 	private String descripcion;
 	@LinkKey(classLinked=ParametrosToDoDTO.class)
-	private String tipo;
+	private String idTipo;
 	private String estado;
-	public String getTipo() {
-		return tipo;
+	public String getIdTipo() {
+		return idTipo;
 	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setIdTipo(String tipo) {
+		this.idTipo = tipo;
 	}
 	public String getEstado() {
 		return estado;

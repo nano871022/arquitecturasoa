@@ -8,7 +8,9 @@ import java.util.Locale;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import co.com.arquitectura.annotation.linked.LinkKey;
 import co.com.arquitectura.constantes.librerias.ConstantesLibreria;
+import co.com.arquitectura.librerias.abstracts.ADTO;
 import co.com.arquitectura.librerias.validacion.Validacion;
 
 /**
@@ -190,13 +192,13 @@ public class AbstractRefleccion {
 				return;
 		}
 		if (campo.isAccessible()) {
-				campo.set(instancia, parseValor(valor, campo.getType()));
+			campo.set(instancia, parseValor(valor, campo.getType()));
 		} else {
 			Method metodo = null;
-				metodo = clase.getMethod(obtenerSet(campo.getName()), parseValor(valor, campo.getType()).getClass());
+			metodo = clase.getMethod(obtenerSet(campo.getName()), parseValor(valor, campo.getType()).getClass());
 
 			if (metodo != null) {
-					metodo.invoke(instancia, parseValor(valor, campo.getType()));
+				metodo.invoke(instancia, parseValor(valor, campo.getType()));
 			} else {
 				campo.setAccessible(true);
 				ponerValor(campo, instancia, clase, valor);
@@ -407,12 +409,20 @@ public class AbstractRefleccion {
 		}
 		return true;
 	}
+
 	/**
-	 * Se encarga de procesar el valor que se entrega y transforma el valor al destino
-	 * @param original {@link Object}
-	 * @param destino {@link Class} < ? >
-	 * @param formatos {@link String} se ingresa el formato de destino si es necesario por defecto para Fechas es E MMM dd HH:mm:ss z yyyy
-	 * @return {@link Object} por defecto si no se valida se devuelve el mismo valor obtenido
+	 * Se encarga de procesar el valor que se entrega y transforma el valor al
+	 * destino
+	 * 
+	 * @param original
+	 *            {@link Object}
+	 * @param destino
+	 *            {@link Class} < ? >
+	 * @param formatos
+	 *            {@link String} se ingresa el formato de destino si es necesario
+	 *            por defecto para Fechas es E MMM dd HH:mm:ss z yyyy
+	 * @return {@link Object} por defecto si no se valida se devuelve el mismo valor
+	 *         obtenido
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
@@ -423,14 +433,40 @@ public class AbstractRefleccion {
 				if (formatos.length == 1) {
 					formato = formatos[0];
 				}
-				SimpleDateFormat format = new SimpleDateFormat(formato,Locale.ENGLISH);
+				SimpleDateFormat format = new SimpleDateFormat(formato, Locale.ENGLISH);
 				return (T) format.parse((String) original);
 			}
 		}
 		return (T) original;
 	}
-	
-	public static void main(String...strings) {
+
+	/**
+	 * Se encargad e retornar la instancia de una clase anotada con @link
+	 * {@link LinkKey} con el campo llave lleno
+	 * 
+	 * @param nombreCampo
+	 *            {@link String}
+	 * @return {@link Object}
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public final <T extends Object> T obtenerLinkKey(String nombreCampo) throws Exception {
+		Field field = this.getClass().getDeclaredField(nombreCampo);
+		LinkKey lk = field.getDeclaredAnnotation(LinkKey.class);
+		if (Validacion.isNotEmpty(lk)) {
+			Class<?> clase = lk.classLinked();
+			T t = (T) clase.newInstance();
+			((ADTO) t).setLlave(obtenerValor(field));
+			if(!Validacion.isNotEmpty(((ADTO) t).getLlave())) {
+				throw new Exception ("No se encontro valor de la llave.");
+			}
+			return t;
+		}
+		throw new Exception("No se encontro la anotacion LinkKey en el campo " + nombreCampo);
+	}
+
+	@SuppressWarnings("unused")
+	public static void main(String... strings) {
 		String valor = "Thu Mar 16 09:39:37 COT 2018";
 		AbstractRefleccion ar = new AbstractRefleccion();
 		try {
@@ -439,4 +475,5 @@ public class AbstractRefleccion {
 			e.printStackTrace();
 		}
 	}
+
 }
