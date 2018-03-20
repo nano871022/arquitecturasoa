@@ -15,14 +15,15 @@ public class ToDoDTO extends ADTO{
 	private LocatedType ubicacion;
 	private LocalDateTime desde;
 	private String descripcion;
-	/**recursoDTO**/
+	@LinkKey(classLinked=RecursoDTO.class)
 	private String idResponsable;
-	/**recursoDTO**/
 	@LinkKey(classLinked=RecursoDTO.class)
 	private String idAuditor;
-	private ToDoDTO depende;
+	@LinkKey(classLinked=RecursoDTO.class)
+	private String idDepende;
 	private LocalTime tiempoEstimado;
-	private ProjectoDTO projecto;
+	@LinkKey(classLinked=ProjectoDTO.class)
+	private String idProjecto;
 	public LocatedType getUbicacion() {
 		return ubicacion;
 	}
@@ -54,23 +55,25 @@ public class ToDoDTO extends ADTO{
 	public void setIdAuditor(String idAuditor) {
 		this.idAuditor = idAuditor;
 	}
-	public ToDoDTO getDepende() {
-		return depende;
-	}
-	public void setDepende(ToDoDTO depende) {
-		this.depende = depende;
-	}
+	
 	public LocalTime getTiempoEstimado() {
 		return tiempoEstimado;
 	}
 	public void setTiempoEstimado(LocalTime tiempoEstimado) {
 		this.tiempoEstimado = tiempoEstimado;
 	}
-	public ProjectoDTO getProjecto() {
-		return projecto;
+	public String getIdDepende() {
+		return idDepende;
 	}
-	public void setProjecto(ProjectoDTO projecto) {
-		this.projecto = projecto;
+	public void setIdDepende(String idDepende) {
+		this.idDepende = idDepende;
 	}
+	public String getIdProjecto() {
+		return idProjecto;
+	}
+	public void setIdProjecto(String idProjecto) {
+		this.idProjecto = idProjecto;
+	}
+	
 	
 }

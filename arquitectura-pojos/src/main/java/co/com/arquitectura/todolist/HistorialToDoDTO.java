@@ -2,6 +2,7 @@ package co.com.arquitectura.todolist;
 
 import java.time.LocalTime;
 
+import co.com.arquitectura.annotation.linked.LinkKey;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 
 /**
@@ -11,6 +12,7 @@ import co.com.arquitectura.librerias.abstracts.ADTO;
  * @since 20/03/2018
  */
 public class HistorialToDoDTO extends ADTO{
+	@LinkKey(classLinked=ToDoDTO.class)
 	private String idToDo;
 	private LocalTime tiempoTranscurrido;
 	public String getIdToDo() {

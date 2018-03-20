@@ -1,5 +1,6 @@
 package co.com.arquitectura.todolist;
 
+import co.com.arquitectura.annotation.linked.LinkKey;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 /**
  * Se encarga de almacenar los comentario del historial en el orden que se realizan.
@@ -7,7 +8,9 @@ import co.com.arquitectura.librerias.abstracts.ADTO;
  * @since 20/03/2018
  */
 public class ComentariosToDoDto extends ADTO {
+	@LinkKey(classLinked=HistorialToDoDTO.class)
 	private String idHistorial;
+	@LinkKey(classLinked=RecursoDTO.class)
 	private String idRecurso;
 	private String comentario;
 	private Integer orden;

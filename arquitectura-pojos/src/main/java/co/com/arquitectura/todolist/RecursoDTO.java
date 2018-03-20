@@ -1,13 +1,15 @@
 package co.com.arquitectura.todolist;
 
+import co.com.arquitectura.annotation.linked.LinkKey;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 import co.com.arquitectura.pojo.basicos.privated.Persona;
 
 public class RecursoDTO extends ADTO {
-	/**{@link ProjectoDTO}**/
+	@LinkKey(classLinked=ProjectoDTO.class)
 	private String idProjecto;
 	private Persona persona;
-	private CargoDTO cargo;
+	@LinkKey(classLinked=CargoDTO.class)
+	private String idCargo;
 	private String estado;
 	
 	public String getEstado() {
@@ -29,11 +31,12 @@ public class RecursoDTO extends ADTO {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	public CargoDTO getCargo() {
-		return cargo;
+	public String getIdCargo() {
+		return idCargo;
 	}
-	public void setCargo(CargoDTO cargo) {
-		this.cargo = cargo;
+	public void setIdCargo(String idCargo) {
+		this.idCargo = idCargo;
 	}
+	
 	
 }
