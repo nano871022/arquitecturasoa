@@ -8,13 +8,17 @@ package co.com.arquitectura.todolist;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import co.com.arquitectura.annotation.linked.LinkKey;
-
+import co.com.arquitectura.annotation.validacion.NotEmpty;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 
 public class ToDoDTO extends ADTO{
+	@NotEmpty
 	private LocatedType ubicacion;
+	@NotEmpty
 	private LocalDateTime desde;
+	@NotEmpty
 	private String descripcion;
+	@NotEmpty
 	@LinkKey(classLinked=RecursoDTO.class)
 	private String idResponsable;
 	@LinkKey(classLinked=RecursoDTO.class)
@@ -23,6 +27,7 @@ public class ToDoDTO extends ADTO{
 	private String idDepende;
 	private LocalTime tiempoEstimado;
 	@LinkKey(classLinked=ProjectoDTO.class)
+	@NotEmpty
 	private String idProjecto;
 	public LocatedType getUbicacion() {
 		return ubicacion;

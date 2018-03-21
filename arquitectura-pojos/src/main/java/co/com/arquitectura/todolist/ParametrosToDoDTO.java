@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import co.com.arquitectura.annotation.linked.LinkKey;
+import co.com.arquitectura.annotation.validacion.NotEmpty;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 /**
  * Se encarga de usar y almacenar parametros sin referencia especial que se puedan usar en cualquier sitio
@@ -16,7 +17,9 @@ import co.com.arquitectura.librerias.abstracts.ADTO;
  * @since 20/03/2018
  */
 public class ParametrosToDoDTO extends ADTO{
+	@NotEmpty
 	public String nombre;
+	@NotEmpty
 	public String descripcion;
 	public String valorChar;
 	public Integer valorInt;

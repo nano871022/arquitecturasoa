@@ -11,7 +11,7 @@ import co.com.arquitectura.todolist.RecursoDTO;
  * @author Alejandro Parra
  * @since 20/03/2018
  */
-public interface ProjectoSvc {
+public interface IProjectoSvc {
 	/**
 	 * Se encarga de crear un nuevo projecto
 	 * 

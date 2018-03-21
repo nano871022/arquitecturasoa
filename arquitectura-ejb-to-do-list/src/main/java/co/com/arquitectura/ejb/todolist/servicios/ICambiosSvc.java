@@ -4,7 +4,7 @@ import co.com.arquitectura.exceptions.todo.ToDoListException;
 import co.com.arquitectura.pojo.basicos.privated.Persona;
 import co.com.arquitectura.todolist.ToDoDTO;
 
-public interface CambiosSvc {
+public interface ICambiosSvc {
 	/**
 	 * Se encarga de cambiar el estado de to-do a por hacer, se le asigna la persona
 	 * quien va a resolverlo.

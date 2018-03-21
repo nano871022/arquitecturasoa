@@ -17,7 +17,7 @@ import co.com.arquitectura.todolist.ToDoDTO;
  * @author Alejandro Parra
  * @since 20/03/2018
  */
-public interface BusquedaSvc {
+public interface IBusquedaSvc {
 	/**
 	 * Se encarga de obtner todos los todo asignados a la personas, segun projecto
 	 * @param persona {@link Persona}

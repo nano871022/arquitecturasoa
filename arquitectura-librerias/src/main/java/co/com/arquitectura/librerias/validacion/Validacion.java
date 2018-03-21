@@ -1,5 +1,6 @@
 package co.com.arquitectura.librerias.validacion;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,7 +11,9 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
+import co.com.arquitectura.annotation.validacion.NotEmpty;
 import co.com.arquitectura.librerias.objetos.Posicion;
+import co.com.arquitectura.librerias.refleccion.AbstractRefleccion;
 
 /**
  * Esta clase contiene todas los tipos de validaciones que se pueden realizar
@@ -368,17 +371,51 @@ public final class Validacion {
 	 * Se encarga de verificar si el objeto es diferente de null y no es un campo
 	 * vacio si es un String
 	 * 
-	 * @param value {@link Object}
+	 * @param value
+	 *            {@link Object}
 	 * @return {@link Boolean} <code>true</code>/<code>false</code>
 	 */
 	public static final <T extends Object> Boolean isNotEmpty(T value) throws Exception {
-		if(value != null) {
-			if(value instanceof String) {
-				return StringUtils.isNotBlank(((String)value));
+		if (value != null) {
+			if (value instanceof String) {
+				return StringUtils.isNotBlank(((String) value));
 			}
 			return true;
 		}
 		return false;
 	}
 
+	/**
+	 * Se encarga de validar por medio del is not empty para obtener si el valor o
+	 * objeto es vacio o nulo.
+	 * 
+	 * @param value {@link Object}
+	 * @return {@link Boolean}
+	 * @throws Exception
+	 */
+	public static final <T extends Object> Boolean isEmpty(T value) throws Exception {
+		return !isNotEmpty(value);
+	}
+	/**
+	 * Se encarga de verificar el objeto enviado
+	 * @param obj
+	 * @return
+	 * @throws Exception
+	 */
+	public static final <T extends Object> void validarObject(T obj)throws Exception{
+		if(obj instanceof AbstractRefleccion) {
+			throw new Exception("El objeto no usa AbstractReflection");
+		}
+		Class<?> clase = obj.getClass();
+		Field[] campos = clase.getDeclaredFields();
+		for(Field campo : campos) {
+			NotEmpty ne = campo.getDeclaredAnnotation(NotEmpty.class);
+			if(isNotEmpty(ne)) {
+				if(isEmpty(((AbstractRefleccion)obj).get(campo.getName()))){
+					 throw new Exception("El campo "+campo.getName()+" se encuentra vacio.");
+				}
+			}
+			
+		}
+	}
 }

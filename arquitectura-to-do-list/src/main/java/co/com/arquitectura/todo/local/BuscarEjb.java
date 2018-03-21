@@ -10,7 +10,7 @@ import javax.ejb.Stateless;
 import org.apache.log4j.Logger;
 
 import co.com.arquitectura.ejb.query.IQuery;
-import co.com.arquitectura.ejb.todolist.servicios.BusquedaSvc;
+import co.com.arquitectura.ejb.todolist.servicios.IBusquedaSvc;
 import co.com.arquitectura.exceptions.query.QueryException;
 import co.com.arquitectura.exceptions.todo.ToDoListException;
 import co.com.arquitectura.librerias.validacion.Validacion;
@@ -23,7 +23,7 @@ import co.com.arquitectura.todolist.ToDoDTO;
 
 @Local
 @Stateless
-public class BuscarEjb implements BusquedaSvc {
+public class BuscarEjb implements IBusquedaSvc {
 	@EJB
 	private IQuery querySvc;
 	private Logger log = Logger.getLogger(this.getClass());

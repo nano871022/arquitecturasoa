@@ -2,13 +2,18 @@ package co.com.arquitectura.todolist;
 
 import java.time.LocalDate;
 
+import co.com.arquitectura.annotation.validacion.NotEmpty;
 import co.com.arquitectura.librerias.abstracts.ADTO;
 
 public class ProjectoDTO extends ADTO{
+	@NotEmpty
 	private String nombre;
+	@NotEmpty
 	private String descripcion;
+	@NotEmpty
 	private LocalDate desde;
 	private LocalDate hasta;
+	@NotEmpty
 	private String estado;
 	
 	public String getEstado() {

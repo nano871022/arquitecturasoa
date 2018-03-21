@@ -7,7 +7,7 @@ import co.com.arquitectura.todolist.ToDoDTO;
  * @author Alejandro Parra
  * @since 20/03/2018
  */
-public interface CreacionSvc {
+public interface ICreacionSvc {
 	/**
 	 * Se encarga de la creación del to-do
 	 * @param todo {@link ToDoDTO}
