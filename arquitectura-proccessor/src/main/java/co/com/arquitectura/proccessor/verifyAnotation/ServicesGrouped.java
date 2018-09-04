@@ -1,11 +1,13 @@
 package co.com.arquitectura.proccessor.verifyAnotation;
 
 import java.io.Writer;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.type.ExecutableType;
 import javax.lang.model.util.Elements;
 import javax.tools.JavaFileObject;
 
@@ -61,13 +63,15 @@ public class ServicesGrouped extends AbstractGrouped<ServicesVerified> {
 		jw.beginMethod(GenericConstants.VOID, "load", Modifier.PUBLIC);
 		for (ServicesVerified item : items.values()) {
 			jw.emitStatement("lista.add("
-					+ "new ServicePOJO(\"%s\",\"%s\",\"%s,\",Services.kind.%s,Services.scope.%s,%s.class))"
+					+ "new ServicePOJO(\"%s\",\"%s\",\"%s,\",Services.kind.%s,Services.scope.%s,%s.class,\"%s\"))"
 					, item.getMethod().getSimpleName().toString()
 					, item.getId()
 					, item.getDescripcion()
 					, item.getTipo()
 					, item.getAlcance()
-					, item.getClase().getQualifiedName().toString());
+					, item.getClase().getQualifiedName().toString()
+					,((ExecutableType)item.getMethod().asType()).getParameterTypes() 
+					);
 			jw.emitEmptyLine();
 		}
 		jw.endMethod();
