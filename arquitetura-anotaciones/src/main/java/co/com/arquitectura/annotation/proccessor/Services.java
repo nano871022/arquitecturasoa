@@ -6,7 +6,7 @@ import static java.lang.annotation.RetentionPolicy.CLASS;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 /**
- * Esta anotacion sirve solo en tiempo de compilación
+ * Esta anotacion sirve solo en tiempo de compilaciï¿½n
  * Sirve para anotar los metodos que indican que son servicios y sus especificaciones
  * El objetivo es ser usado por la aplicacion para tener un catalogo de servicios
  * @author Alejandro Parra
@@ -22,8 +22,9 @@ public @interface Services {
 	 * @author Alejandro Parra
 	 */
    public enum kind {PUBLIC,PRIVATE};
+   public enum Type {DOWNLOAD,UPLOAD,CREATE};
    /**
-    * Enumeración que indica el tipo de recurso que se puede consumir
+    * Enumeraciï¿½n que indica el tipo de recurso que se puede consumir
     * @author ALejandro Parra
     */
    public enum scope {ALL,REST,WS,EJB,JSON};
@@ -49,4 +50,6 @@ public @interface Services {
     * @return {@link scope}
     */
    public scope alcance() default scope.ALL;
+   
+   public Type type() default Type.DOWNLOAD;
 }

@@ -63,12 +63,13 @@ public class ServicesGrouped extends AbstractGrouped<ServicesVerified> {
 		jw.beginMethod(GenericConstants.VOID, "load", Modifier.PUBLIC);
 		for (ServicesVerified item : items.values()) {
 			jw.emitStatement("lista.add("
-					+ "new ServicePOJO(\"%s\",\"%s\",\"%s,\",Services.kind.%s,Services.scope.%s,%s.class,\"%s\"))"
+					+ "new ServicePOJO(\"%s\",\"%s\",\"%s,\",Services.kind.%s,Services.scope.%s,Services.Type.%s,%s.class,\"%s\"))"
 					, item.getMethod().getSimpleName().toString()
 					, item.getId()
 					, item.getDescripcion()
 					, item.getTipo()
 					, item.getAlcance()
+					, item.getType()
 					, item.getClase().getQualifiedName().toString()
 					,((ExecutableType)item.getMethod().asType()).getParameterTypes() 
 					);

@@ -14,9 +14,10 @@ public class ServicePOJO {
 	private Object scope;
 	private Class<?> classs;
 	private String parameters;
+	private Object type;
 
 	public <M extends Object> ServicePOJO(String name, String alias, String description, Object kind, Object scope,
-			Class<M> classs, String parameters) {
+			Object type,Class<M> classs, String parameters) {
 		this.name = name;
 		this.alias = alias;
 		this.description = description;
@@ -24,6 +25,7 @@ public class ServicePOJO {
 		this.scope = scope;
 		this.classs = classs;
 		this.parameters = parameters;
+		this.type = type;
 	}
 
 	public String getName() {
@@ -40,6 +42,14 @@ public class ServicePOJO {
 
 	public void setAlias(String alias) {
 		this.alias = alias;
+	}
+
+	public Object getType() {
+		return type;
+	}
+
+	public void setType(Object type) {
+		this.type = type;
 	}
 
 	public String getDescription() {

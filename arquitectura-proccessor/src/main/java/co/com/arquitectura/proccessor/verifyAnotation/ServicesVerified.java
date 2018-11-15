@@ -13,6 +13,7 @@ public class ServicesVerified extends AbstractVerified<Services> {
 	private Services.scope alcance;
 	private Class<?> parent;
 	private Element method;
+	private Services.Type type;
 
 	public ServicesVerified(Element method) throws IllegalArgumentException, Exception {
 		 super((TypeElement)method.getEnclosingElement(),false);
@@ -37,6 +38,7 @@ public class ServicesVerified extends AbstractVerified<Services> {
 		alcance = obj.alcance();
 		canonicClass = clase.toString();
 		simpleNameClass = clase.getSimpleName().toString();
+		type = obj.type();
 	}
 	public Element getMethod() {
 		return method;
@@ -53,6 +55,9 @@ public class ServicesVerified extends AbstractVerified<Services> {
 		return alcance;
 	}
 
+	public Services.Type getType(){
+		return type;
+	}
 	public Class<?> getParent() {
 		return parent;
 	}
