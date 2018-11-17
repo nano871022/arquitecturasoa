@@ -1,4 +1,4 @@
-package co.com.arquitectura.proccessor.verifyAnotation;
+package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.Writer;
 import java.lang.reflect.Method;
@@ -17,6 +17,7 @@ import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.constants.proccessor.FileNameConstants;
 import co.com.arquitectura.constants.proccessor.PackageConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
+import co.com.arquitectura.proccessor.verifyAnotation.ServicesVerified;
 
 public class ServicesGrouped extends AbstractGrouped<ServicesVerified> {
 

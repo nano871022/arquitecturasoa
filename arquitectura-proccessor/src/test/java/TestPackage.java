@@ -1,4 +1,4 @@
-import co.com.arquitectura.proccessor.verifyAnotation.FactoryGrouped;
+import co.com.arquitectura.proccessor.groupedAnotation.FactoryGrouped;
 
 public class TestPackage {
  public static void main(String...strings) {

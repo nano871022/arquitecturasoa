@@ -13,7 +13,7 @@ import javax.lang.model.element.Modifier;
 import co.com.arquitectura.annotation.proccessor.Services;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 import co.com.arquitectura.proccessor.abstracts.AbstractProccessorGeneric;
-import co.com.arquitectura.proccessor.verifyAnotation.ServicesGrouped;
+import co.com.arquitectura.proccessor.groupedAnotation.ServicesGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.ServicesVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)

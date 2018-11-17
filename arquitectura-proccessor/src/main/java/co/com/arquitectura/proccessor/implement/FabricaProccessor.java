@@ -33,7 +33,7 @@ import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 import co.com.arquitectura.librerias.java_source.JavaSources;
 import co.com.arquitectura.librerias.java_source.constants.ConstJavaSources;
 import co.com.arquitectura.proccessor.abstracts.AbstractProccessorGeneric;
-import co.com.arquitectura.proccessor.verifyAnotation.FactoryGrouped;
+import co.com.arquitectura.proccessor.groupedAnotation.FactoryGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.FactoryVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
@@ -197,7 +197,7 @@ public class FabricaProccessor extends AbstractProccessorGeneric<FactoryVerified
 		info(null, "validando clase");
 		TypeElement clase = annotationClass.getClase();
 		if (!clase.getModifiers().contains(Modifier.PUBLIC)) {
-			error(clase, "La clase " + annotationClass.getSimpleNameClass() + " no es público.");
+			error(clase, "La clase " + annotationClass.getSimpleNameClass() + " no es pï¿½blico.");
 			return false;
 		}
 		if (clase.getModifiers().contains(Modifier.ABSTRACT)) {

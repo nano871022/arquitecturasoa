@@ -1,4 +1,4 @@
-package co.com.arquitectura.proccessor.verifyAnotation;
+package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -15,6 +15,7 @@ import com.squareup.java.JavaWriter;
 import co.com.arquitectura.annotation.proccessor.Fabrica;
 import co.com.arquitectura.constants.proccessor.PackageConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
+import co.com.arquitectura.proccessor.verifyAnotation.FactoryVerified;
 import co.com.arquitectura.proccessor.verifyAnotation.declared.IGrouped;
 
 /**

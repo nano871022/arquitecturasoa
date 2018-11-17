@@ -1,4 +1,4 @@
-package co.com.arquitectura.proccessor.verifyAnotation;
+package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
