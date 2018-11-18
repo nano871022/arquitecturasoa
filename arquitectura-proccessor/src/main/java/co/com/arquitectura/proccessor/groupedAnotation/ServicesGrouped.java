@@ -1,7 +1,6 @@
 package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.Writer;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 import javax.annotation.processing.Filer;

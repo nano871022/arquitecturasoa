@@ -17,7 +17,10 @@ public abstract class AbstractGrouped <T extends IVerified>implements IGrouped<T
 		this.packagesSave = packageSave;
 		items = new LinkedHashMap<String,T>();
 	}
-	
+	@SuppressWarnings({ "unchecked", "hiding" })
+	public <T extends IVerified> Map<String,T> getItems(){
+		return (Map<String, T>) items;
+	}
 	@Override
 	public String getCanonicName() {
 		return canonicName;
@@ -26,6 +29,10 @@ public abstract class AbstractGrouped <T extends IVerified>implements IGrouped<T
 	@Override
 	public String getNameClass() {
 		return nameClass;
+	}
+	@Override
+	public String getPackageSave() {
+		return packagesSave;
 	}
 
 }

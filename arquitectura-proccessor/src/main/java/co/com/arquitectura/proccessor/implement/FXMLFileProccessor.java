@@ -16,7 +16,7 @@ import co.com.arquitectura.proccessor.groupedAnotation.FXMLFileGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.FXMLFileVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes("org.pyt.common.annotations.FXMLFile")
+@SupportedAnnotationTypes("co.com.arquitectura.annotation.proccessor.FXMLFile")
 public class FXMLFileProccessor extends AbstractProccessorGeneric<FXMLFileVerified, FXMLFileGrouped, FXMLFile> {
 
 	public FXMLFileProccessor() {
@@ -44,7 +44,7 @@ public class FXMLFileProccessor extends AbstractProccessorGeneric<FXMLFileVerifi
 		for (Element clase : roundEnv.getElementsAnnotatedWith(annotation)) {
 			if(clase.toString().contains("Template"))continue;
 			if (clase.getKind() == ElementKind.CLASS ) {
-				info(null,"clase "+clase.getSimpleName());
+//				info(null,"clase "+clase.getSimpleName());
 				veryfied = proccessAnnotation(clase);
 			} else {
 				error(clase, " Solo se deben anotar clases con @" + annotation.getSimpleName());

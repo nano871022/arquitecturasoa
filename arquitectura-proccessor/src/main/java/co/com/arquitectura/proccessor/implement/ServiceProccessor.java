@@ -14,6 +14,8 @@ import co.com.arquitectura.annotation.proccessor.Services;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
 import co.com.arquitectura.proccessor.abstracts.AbstractProccessorGeneric;
 import co.com.arquitectura.proccessor.groupedAnotation.ServicesGrouped;
+import co.com.arquitectura.proccessor.impresion.IPrinter;
+import co.com.arquitectura.proccessor.impresion.ServicesPrinter;
 import co.com.arquitectura.proccessor.verifyAnotation.ServicesVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
@@ -24,13 +26,20 @@ public class ServiceProccessor extends AbstractProccessorGeneric<ServicesVerifie
 		super(Services.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void proccess(RoundEnvironment roundEnv) throws Exception {
 		try {
+			IPrinter<ServicesVerified> printers = new ServicesPrinter();
 			if (groupClass != null && groupClass.values() != null) {
 				for (ServicesGrouped services : groupClass.values()) {
-					services.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());
+					printers.setCanonicName(services.getCanonicName());
+					printers.setNameClass(services.getNameClass());
+					printers.setPackagesSave(services.getPackageSave());
+					printers.addAllItems(services.getItems());
+//					services.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());
 				}
+				printers.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());
 			}
 		} catch (IOException e) {
 			error(null, e.getMessage());

@@ -18,7 +18,7 @@ import co.com.arquitectura.proccessor.groupedAnotation.UpdClassGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.UpdClassVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes("org.pyt.common.annotations.UpdClass")
+@SupportedAnnotationTypes("co.com.arquitectura.annotation.proccessor.UpdClass")
 public class UpdClassProccessor extends AbstractProccessorGeneric<UpdClassVerified, UpdClassGrouped, UpdClass> {
 
 	public UpdClassProccessor() {
@@ -39,7 +39,7 @@ public class UpdClassProccessor extends AbstractProccessorGeneric<UpdClassVerifi
 		} catch (IOException e) {
 			error(null, e.getMessage());
 		}
-		info(null, "fin proccess");
+//		info(null, "fin proccess");
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class UpdClassProccessor extends AbstractProccessorGeneric<UpdClassVerifi
 		UpdClassVerified veryfied = null;
 		for (Element clase : roundEnv.getElementsAnnotatedWith(annotation)) {
 			if (clase.getKind() == ElementKind.CLASS) {
-				info(null, "clase " + clase.getSimpleName());
+//				info(null, "clase " + clase.getSimpleName());
 				veryfied = proccessAnnotation(clase);
 			} else {
 				error(clase, " Solo se deben anotar clases con @" + annotation.getSimpleName());

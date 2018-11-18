@@ -18,7 +18,7 @@ import co.com.arquitectura.proccessor.groupedAnotation.DelClassGrouped;
 import co.com.arquitectura.proccessor.verifyAnotation.DelClassVerified;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes("org.pyt.common.annotations.DelClass")
+@SupportedAnnotationTypes("co.com.arquitectura.annotation.proccessor.DelClass")
 public class DelClassProccessor extends AbstractProccessorGeneric<DelClassVerified, DelClassGrouped, DelClass> {
 
 	public DelClassProccessor() {
@@ -28,9 +28,9 @@ public class DelClassProccessor extends AbstractProccessorGeneric<DelClassVerifi
 	@Override
 	protected void proccess(RoundEnvironment roundEnv) throws Exception {
 		try {
-			// info(null,"procesando");
+			 info(null,"procesando");
 			if (groupClass != null && groupClass.values() != null) {
-				 error(null,"Errores proceso ");
+//				 error(null,"Errores proceso ");
 				for (DelClassGrouped services : groupClass.values()) {
 					if (services != null && StringUtils.isNotBlank(services.getCanonicName())) {
 						services.generateSource(processingEnv.getElementUtils(), processingEnv.getFiler());

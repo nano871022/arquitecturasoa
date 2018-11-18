@@ -1,5 +1,7 @@
 package co.com.arquitectura.proccessor.verifyAnotation.declared;
 
+import java.util.Map;
+
 import javax.annotation.processing.Filer;
 import javax.lang.model.util.Elements;
 
@@ -22,6 +24,17 @@ public interface IGrouped<T extends IVerified> {
 	 * @return {@link String}
 	 */
 	public String getNameClass();
+	/**
+	 * Se encarga de almacenar los iterms
+	 * @return
+	 */
+	@SuppressWarnings("hiding")
+	public <T extends IVerified>Map<String,T> getItems();
+	/**
+	 * usado para retorna el package donde se almacena
+	 * @return {@link String}
+	 */
+	public String getPackageSave();
 	/**
 	 * Se encarga de crear el archivo con javafuleobjet
 	 * @param element 
