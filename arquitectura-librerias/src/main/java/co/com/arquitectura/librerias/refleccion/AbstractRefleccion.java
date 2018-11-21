@@ -2,6 +2,9 @@ package co.com.arquitectura.librerias.refleccion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
@@ -17,7 +20,8 @@ import co.com.arquitectura.librerias.constantes.ConstantesLibreria;
  * @since Febrero 17 de 2017
  * @version 0.0.2
  */
-public class AbstractRefleccion {
+public final class AbstractRefleccion {
+	private List<Field> listFields;
 	/**
 	 * pone en el nombre del campo suministrado el valor suministrado
 	 * 
@@ -34,15 +38,45 @@ public class AbstractRefleccion {
 	}
 
 	/**
+	 * Se encarga de obtener todos los campos
+	 * 
+	 * @return {@link List} of {@link String}
+	 */
+	public final List<String> getNameFields() {
+		List<String> list = new ArrayList<String>();
+		getFields(this.getClass()).forEach(field -> list.add(field.getName()));
+		return list;
+	}
+
+	/**
 	 * obtuene el listado de campos ( {@link Field} ) o propiedades del sistema
 	 * 
 	 * @return {@link Field} array de campos
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
 	public final <T extends Object> Field[] obtenerListaCampos() throws Exception {
-		Class<T> clase = (Class<T>) this.getClass();
-		return clase.getFields();
+		List<Field> fields = getFields(this.getClass());
+		return fields.toArray(new Field[fields.size()]);
+	}
+
+	/**
+	 * Se encarga de obtener todos los campos de una instancia
+	 * 
+	 * @param clazz
+	 *            {@link Class}
+	 * @return {@link List} of {@link Field}
+	 */
+	private final <T extends Object> List<Field> getFields(Class<T> clazz) {
+		if(listFields != null && listFields.size()>0) {
+			return listFields;
+		}
+		listFields = new ArrayList<Field>();
+		if (clazz == Object.class)
+			return listFields;
+		Field[] fields = clazz.getFields();
+		listFields.addAll(Arrays.asList(fields));
+		listFields.addAll(getFields(clazz.getSuperclass()));
+		return listFields;
 	}
 
 	/**
