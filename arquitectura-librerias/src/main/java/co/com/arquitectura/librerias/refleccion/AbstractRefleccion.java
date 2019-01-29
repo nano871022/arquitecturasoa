@@ -20,7 +20,7 @@ import co.com.arquitectura.librerias.constantes.ConstantesLibreria;
  * @since Febrero 17 de 2017
  * @version 0.0.2
  */
-public final class AbstractRefleccion {
+public class AbstractRefleccion {
 	private List<Field> listFields;
 	/**
 	 * pone en el nombre del campo suministrado el valor suministrado
