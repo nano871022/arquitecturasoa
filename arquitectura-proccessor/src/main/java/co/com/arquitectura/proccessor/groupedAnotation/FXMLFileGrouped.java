@@ -57,7 +57,7 @@ public class FXMLFileGrouped extends AbstractGrouped<FXMLFileVerified> {
 		jw.emitPackage("org.pyt.app.beans.controllers");
 		jw.emitEmptyLine();
 		jw.emitImports(
-				"org.pyt.common.controller.FXMLFileController"
+				"co.com.japl.ea.controllers.FXMLFileController"
 				,canonicName
 				);
 		String[] split = canonicName.split("\\.");
