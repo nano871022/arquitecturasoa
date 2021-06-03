@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.arquitectura.exceptions</groupId>
-	<artifactId>arquitectura-exceptions</artifactId>
-	<name>arquitectura-exception</name>
-	<description>Se almacenan todas las excepciones que maneja la aplicacion</description>
 	<parent>
-		<groupId>co.com.arquitectura.parent.commons</groupId>
+		<groupId>co.com.japl.arquitectura</groupId>
 		<artifactId>arquitectura-parent-commons</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>co.com.japl.arquitectura</groupId>
+	<artifactId>arquitectura-constants</artifactId>
+	<name>arquitectura-constants</name>
+	<description>Contiene las constantes que se usaran por varios modulos para evitar llamadas entre modulos inecesariamente</description>
 	<build>
 		<plugins>
 			<plugin>

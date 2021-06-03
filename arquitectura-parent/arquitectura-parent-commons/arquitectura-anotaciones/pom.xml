@@ -2,22 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.arquitectura.librerias</groupId>
-	<artifactId>arquitecrura-librerias</artifactId>
-	<description>Tiene las librerias que se usan trasversales a toda la aplicacion</description>
+	<groupId>co.com.japl.arquitectura</groupId>
+	<artifactId>arquitectura-anotaciones</artifactId>
+	<name>arquitectura-anotaciones</name>
+	<description>Manejo de anotaciones</description>
 	<parent>
-		<groupId>co.com.arquitectura.parent.commons</groupId>
+		<groupId>co.com.japl.arquitectura</groupId>
 		<artifactId>arquitectura-parent-commons</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<dependencies>
-		<dependency>
-			<groupId>co.com.arquitectura.exceptions</groupId>
-			<artifactId>arquitectura-exceptions</artifactId>
-			<version>${project.version}</version>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
 	<build>
 		<plugins>
 			<plugin>

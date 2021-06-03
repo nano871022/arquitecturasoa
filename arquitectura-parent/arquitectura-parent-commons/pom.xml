@@ -1,15 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>co.com.japl.arquitectura.parent</groupId>
+		<groupId>co.com.japl.arquitectura</groupId>
 		<artifactId>arquitectura-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>co.com.japl.arquitectura.parent.commons</groupId>
+	<groupId>co.com.japl.arquitectura</groupId>
 	<artifactId>arquitectura-parent-commons</artifactId>
 	<packaging>pom</packaging>
-	<name>arquitectura-parent-commons</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -27,10 +26,10 @@
 			<version>4.11</version>
 		</dependency>
 	</dependencies>
-<!-- 	<modules> -->
-<!-- 		<module>arquitectura-anotaciones</module> -->
-<!-- 		<module>arquitectura-constants</module> -->
-<!-- 		<module>arquitectura-exceptions</module> -->
-<!-- 		<module>arquitectura-librerias</module> -->
-<!-- 	</modules> -->
+	<modules>
+		<module>arquitectura-anotaciones</module>
+		<module>arquitectura-constants</module>
+		<module>arquitectura-exceptions</module>
+		<module>arquitectura-librerias</module>
+	</modules> 
 </project>

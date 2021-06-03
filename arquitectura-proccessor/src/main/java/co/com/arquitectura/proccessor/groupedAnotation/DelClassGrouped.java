@@ -16,7 +16,7 @@ import co.com.arquitectura.proccessor.verifyAnotation.DelClassVerified;
 
 public class DelClassGrouped extends AbstractGrouped<DelClassVerified> {
 	public final static String PATH = "dels";
-	public final static String PACKAGE = "com.pyt.service.dto."+PATH;
+	public final static String PACKAGE = "co.com.japl.ea.dto.dto."+PATH;
 	public final static String LAST_NAME = "DelDTO";
 	public DelClassGrouped(String canonicName) {
 		super(canonicName, PATH);
@@ -55,7 +55,7 @@ public class DelClassGrouped extends AbstractGrouped<DelClassVerified> {
 		jw.emitEmptyLine();
 		jw.emitImports(
 				"java.time.LocalDateTime"
-				,"org.pyt.common.interfaces.IDelClass"
+				,"co.com.japl.ea.common.interfaces.IDelClass"
 				,canonicName
 				);
 		String[] split = canonicName.split("\\.");

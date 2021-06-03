@@ -16,7 +16,7 @@ import co.com.arquitectura.proccessor.verifyAnotation.UpdClassVerified;
 
 public class UpdClassGrouped extends AbstractGrouped<UpdClassVerified> {
 	public final static String PATH = "upds";
-	public final static String PACKAGE = "com.pyt.service.dto."+PATH;
+	public final static String PACKAGE = "co.com.japl.ea.dto.dto."+PATH;
 	public final static String LAST_NAME = "UpdDTO";
 	public UpdClassGrouped(String canonicName) {
 		super(canonicName, PATH);
@@ -54,7 +54,7 @@ public class UpdClassGrouped extends AbstractGrouped<UpdClassVerified> {
 		jw.emitEmptyLine();
 		jw.emitImports(
 				"java.time.LocalDateTime"
-				,"org.pyt.common.interfaces.IUpdClass"
+				,"co.com.japl.ea.common.interfaces.IUpdClass"
 				,canonicName
 				);
 		String[] split = canonicName.split("\\.");
