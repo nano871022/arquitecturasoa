@@ -183,7 +183,7 @@ public class AnalysedSource extends ProcessSource {
 	}
 
 	/**
-	 * Se encarga de validar el nombre de la clase, herencia, implementación y
+	 * Se encarga de validar el nombre de la clase, herencia, implementacion y
 	 * realizar la configuracion de esta informacion dentro del objeto de clase
 	 * 
 	 * @param line

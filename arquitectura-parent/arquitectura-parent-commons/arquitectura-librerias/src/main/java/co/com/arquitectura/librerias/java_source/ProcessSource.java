@@ -99,7 +99,7 @@ public class ProcessSource {
 	 * se encarga de buscar la clase de la cual hereda
 	 * 
 	 * @param line
-	 *            {@link String} linea de analisis de la información.
+	 *            {@link String} linea de analisis de la informacion.
 	 * @return {@link String} nombre de la clase la cual extiende
 	 */
 	@SuppressWarnings("unused")
@@ -415,7 +415,7 @@ public class ProcessSource {
 	 * @param matcher
 	 *            {@link Matcher}
 	 * @param end
-	 *            {@link String} opcional, codigo de finalización defecto ';'
+	 *            {@link String} opcional, codigo de finalizacion defecto ';'
 	 * @return {@link String}
 	 */
 	protected String limpiar(String tipo, String line, String... end) {
