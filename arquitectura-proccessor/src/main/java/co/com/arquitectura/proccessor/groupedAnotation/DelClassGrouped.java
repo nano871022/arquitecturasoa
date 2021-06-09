@@ -1,14 +1,16 @@
 package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.Writer;
-import java.lang.reflect.Modifier;
+import java.util.EnumSet;
+
+import javax.lang.model.element.Modifier;
 
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.JavaFileObject;
 
-import com.squareup.java.JavaWriter;
+import com.squareup.javawriter.JavaWriter;
 
 import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
@@ -60,21 +62,21 @@ public class DelClassGrouped extends AbstractGrouped<DelClassVerified> {
 				);
 		String[] split = canonicName.split("\\.");
 		String nombre = split[split.length-1];
-		jw.beginType(nombre.replaceAll("DTO", "") + LAST_NAME, GenericConstants.CLASS, Modifier.PUBLIC,
+		jw.beginType(nombre.replaceAll("DTO", "") + LAST_NAME, GenericConstants.CLASS, EnumSet.of(Modifier.PUBLIC),
 				nombre ,"IDelClass");
 		jw.emitEmptyLine();
-		jw.emitField("LocalDateTime", "fechaElimina", Modifier.PRIVATE);
-		jw.emitField("String", "usuarioElimina", Modifier.PRIVATE);
-		jw.beginMethod("LocalDateTime", "getFechaElimina", Modifier.PUBLIC);
+		jw.emitField("LocalDateTime", "fechaElimina", EnumSet.of(Modifier.PRIVATE));
+		jw.emitField("String", "usuarioElimina", EnumSet.of(Modifier.PRIVATE));
+		jw.beginMethod("LocalDateTime", "getFechaElimina", EnumSet.of(Modifier.PUBLIC));
 		jw.emitStatement("return fechaElimina");
 		jw.endMethod();
-		jw.beginMethod("String", "getUsuarioELimina", Modifier.PUBLIC);
+		jw.beginMethod("String", "getUsuarioELimina", EnumSet.of(Modifier.PUBLIC));
 		jw.emitStatement("return usuarioElimina");
 		jw.endMethod();
-		jw.beginMethod(GenericConstants.VOID, "setUsuarioElimina", Modifier.PUBLIC,"String","usuario");
+		jw.beginMethod(GenericConstants.VOID, "setUsuarioElimina", EnumSet.of(Modifier.PUBLIC),"String","usuario");
 		jw.emitStatement("usuarioElimina = usuario");
 		jw.endMethod();
-		jw.beginMethod(GenericConstants.VOID, "setFechaElimina", Modifier.PUBLIC,"LocalDateTime","fecha");
+		jw.beginMethod(GenericConstants.VOID, "setFechaElimina", EnumSet.of(Modifier.PUBLIC),"LocalDateTime","fecha");
 		jw.emitStatement("this.fechaElimina = fecha");
 		jw.endMethod();
 		jw.endType();

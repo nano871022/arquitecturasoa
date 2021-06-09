@@ -1,14 +1,15 @@
 package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.Writer;
-import java.lang.reflect.Modifier;
+import javax.lang.model.element.Modifier;
+import java.util.EnumSet;
 
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.JavaFileObject;
 
-import com.squareup.java.JavaWriter;
+import com.squareup.javawriter.JavaWriter;
 
 import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
@@ -59,24 +60,24 @@ public class UpdClassGrouped extends AbstractGrouped<UpdClassVerified> {
 				);
 		String[] split = canonicName.split("\\.");
 		String nombre = split[split.length-1];
-		jw.beginType(nombre.replaceAll("DTO", "") + LAST_NAME, GenericConstants.CLASS, Modifier.PUBLIC,
+		jw.beginType(nombre.replaceAll("DTO", "") + LAST_NAME, GenericConstants.CLASS, EnumSet.of(Modifier.PUBLIC),
 				nombre ,"IUpdClass");
 		jw.emitEmptyLine();
-		jw.emitField("LocalDateTime", "fechaActualizado", Modifier.PRIVATE);
-		jw.emitField("String", "usuarioActualiza", Modifier.PRIVATE);
-		jw.beginMethod("LocalDateTime", "getFechaActualizado", Modifier.PUBLIC);
+		jw.emitField("LocalDateTime", "fechaActualizado", EnumSet.of(Modifier.PRIVATE));
+		jw.emitField("String", "usuarioActualiza", EnumSet.of(Modifier.PRIVATE));
+		jw.beginMethod("LocalDateTime", "getFechaActualizado", EnumSet.of(Modifier.PUBLIC));
 		jw.emitStatement("return fechaActualizado");
 		jw.emitEmptyLine();
 		jw.endMethod();
-		jw.beginMethod("String", "getUsuarioActualizo", Modifier.PUBLIC);
+		jw.beginMethod("String", "getUsuarioActualizo", EnumSet.of(Modifier.PUBLIC));
 		jw.emitStatement("return usuarioActualiza");
 		jw.emitEmptyLine();
 		jw.endMethod();
-		jw.beginMethod(GenericConstants.VOID, "setUsuarioActualizo", Modifier.PUBLIC,"String","usuario");
+		jw.beginMethod(GenericConstants.VOID, "setUsuarioActualizo", EnumSet.of(Modifier.PUBLIC),"String","usuario");
 		jw.emitStatement("usuarioActualiza = usuario");
 		jw.emitEmptyLine();
 		jw.endMethod();
-		jw.beginMethod(GenericConstants.VOID, "setFechaActualizado", Modifier.PUBLIC,"LocalDateTime","fechaActualizado");
+		jw.beginMethod(GenericConstants.VOID, "setFechaActualizado", EnumSet.of(Modifier.PUBLIC),"LocalDateTime","fechaActualizado");
 		jw.emitStatement("this.fechaActualizado = fechaActualizado");
 		jw.emitEmptyLine();
 		jw.endMethod();

@@ -2,15 +2,16 @@ package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.Modifier;
+import java.util.EnumSet;
 
+import javax.lang.model.element.Modifier;
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.JavaFileObject;
 
-import com.squareup.java.JavaWriter;
+import com.squareup.javawriter.JavaWriter;
 
 import co.com.arquitectura.annotation.proccessor.Fabrica;
 import co.com.arquitectura.constants.proccessor.PackageConstants;
@@ -61,9 +62,9 @@ public class FactoryGrouped extends AbstractGrouped<FactoryVerified> implements 
 		}
 		jw.emitImports("co.com.arquitectura.librerias.implement.listProccess.AbstractListFromProccess"
 				      ,"co.com.arquitectura.librerias.implement.listProccess.IListFromProccess");
-		jw.beginType(factoryClassName, "class", Modifier.PUBLIC, "AbstractListFromProccess", "IListFromProccess");
+		jw.beginType(factoryClassName, "class", EnumSet.of(Modifier.PUBLIC), "AbstractListFromProccess", "IListFromProccess");
 		jw.emitEmptyLine();
-		jw.beginMethod("void", "load", Modifier.PUBLIC);
+		jw.beginMethod("void", "load", EnumSet.of(Modifier.PUBLIC));
 		for (FactoryVerified item : items.values()) {
 			jw.emitStatement("lista.add(new %s())", item.getClase().getQualifiedName().toString());
 			jw.emitEmptyLine();

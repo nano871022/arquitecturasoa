@@ -1,14 +1,15 @@
 package co.com.arquitectura.proccessor.groupedAnotation;
 
 import java.io.Writer;
-import java.lang.reflect.Modifier;
+import java.util.EnumSet;
 
+import javax.lang.model.element.Modifier;
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.JavaFileObject;
 
-import com.squareup.java.JavaWriter;
+import com.squareup.javawriter.JavaWriter;
 
 import co.com.arquitectura.constants.generics.GenericConstants;
 import co.com.arquitectura.exceptions.proccess.IdAlreadyUsedException;
@@ -62,10 +63,10 @@ public class FXMLFileGrouped extends AbstractGrouped<FXMLFileVerified> {
 				);
 		String[] split = canonicName.split("\\.");
 		String nombre = split[split.length-1];
-		jw.beginType(nombre + "Controller", GenericConstants.CLASS, Modifier.PUBLIC,
+		jw.beginType(nombre + "Controller", GenericConstants.CLASS, EnumSet.of(Modifier.PUBLIC),
 				"FXMLFileController<" + nombre + ">");
 		jw.emitEmptyLine();
-		jw.beginMethod(GenericConstants.VOID, "load", Modifier.PUBLIC);
+		jw.beginMethod(GenericConstants.VOID, "load", EnumSet.of(Modifier.PUBLIC));
 	}
 
 	private final void loadLine(FXMLFileVerified item, JavaWriter jw) throws Exception {

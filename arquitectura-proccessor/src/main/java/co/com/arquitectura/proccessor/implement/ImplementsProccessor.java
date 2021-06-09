@@ -1,24 +1,23 @@
 package co.com.arquitectura.proccessor.implement;
 
 import java.io.Writer;
-import java.lang.reflect.Modifier;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.EnumSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.annotation.processing.Filer;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.PackageElement;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic.Kind;
 import javax.tools.JavaFileObject;
 
-import com.squareup.java.JavaWriter;
+import com.squareup.javawriter.JavaWriter;
 
 import co.com.arquitectura.annotation.proccessor.Implements;
 import co.com.arquitectura.proccessor.abstracts.ManagementMessage;
@@ -53,13 +52,22 @@ public class ImplementsProccessor extends ManagementMessage<Implements> {
 					.map(value -> value.toString()+".class")
 					.collect(Collectors.toList());
 			if (list != null && list.size() > 0) {
-				JavaFileObject java = processingEnv.getFiler().createSourceFile("co.com.japl.ea.service.create.ServiceList");
+				JavaFileObject java = processingEnv.getFiler().createSourceFile("co.com.japl.ea.implement.inject.create.ServiceList");
 				Writer writer = java.openWriter();
 				JavaWriter javaW = new JavaWriter(writer);
-				javaW.emitPackage("co.com.japl.ea.service.create");
+				javaW.emitPackage("co.com.japl.ea.implement.inject.create");
+				javaW.emitImports("org.pyt.common.common.Log");
 				javaW.emitEmptyLine();
-				javaW.beginType("ServiceList", "class", Modifier.PUBLIC);
-				javaW.beginMethod("Class[]", "list", Modifier.PUBLIC);
+				javaW.beginType("ServiceList", "class", EnumSet.of(Modifier.PUBLIC));
+				javaW.emitField("Log", "logger",EnumSet.of(Modifier.PRIVATE),"Log.Log(this.getClass())");
+				javaW.emitField("ServiceList", "instance", EnumSet.of(Modifier.PRIVATE,Modifier.STATIC), "new ServiceList()");
+				javaW.beginConstructor(EnumSet.of(Modifier.PRIVATE));
+				javaW.emitStatement("try{ \nvar clazz = org.pyt.common.common.InjectUtil.class");
+				javaW.emitStatement("var instance = clazz.getDeclaredMethod(\"instance\").invoke(null)");
+				javaW.emitStatement("clazz.getDeclaredMethod(\"add\",Class.class).invoke(instance,ServiceList.class)");
+				javaW.emitStatement("}catch(Exception e){logger.logger(e);}");
+				javaW.endMethod();
+				javaW.beginMethod("Class[]", "list", EnumSet.of(Modifier.PUBLIC));
 				javaW.emitStatement("Class<?>[] clazz = %s",list.toString().replace("[", "{").replace("]", "}"));
 				javaW.emitStatement("return clazz");
 				javaW.endMethod();
